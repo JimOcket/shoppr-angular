@@ -9,7 +9,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CreateShoppinglistComponent
+    CreateShoppinglistComponent,
     AppComponent,
     MenuBarComponent
   ],
