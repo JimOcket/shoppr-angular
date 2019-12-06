@@ -1,0 +1,15 @@
+<div class="create-account-container">
+  <div class="create-account-title">Create account</div>
+  <div class="create-account-input">
+    <label>
+      <input class="input-field" #emailInput placeholder="Please enter your e-mail address" size="50"
+             (focusin)="emailInput.placeholder=''"
+             (focusout)="emailInput.placeholder='Please enter your e-mail address'"
+             (input)="account.email=emailInput.value">
+    </label>
+  </div>
+  <div class="save-bar-container">
+    <button class="create-accoun-button" (click)="save()">Create</button>
+  </div>
+
+</div>
