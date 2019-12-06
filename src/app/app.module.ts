@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateShoppinglistComponent } from './shoppinglist/create-shoppinglist/create-shoppinglist.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

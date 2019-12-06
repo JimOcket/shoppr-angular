@@ -22,7 +22,7 @@ export class CreateShoppinglistComponent implements OnInit {
   save() {
     console.log(this.shoppingList.name);
     if (this.isValid(this.shoppingList)) {
-      return;
+      this.shoppingListService.createShoppingList(this.shoppingList).subscribe(() => {});
     }
   }
 
