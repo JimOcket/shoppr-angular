@@ -8,13 +8,17 @@ import {Account} from './account';
 })
 export class UserService {
 
-  usersUrl: string;
+  usersUrl = 'http://localhost:9020/users';
 
   constructor(private http: HttpClient) {
   }
 
   createAccount(account: Account): Observable<Account> {
     return this.http.post<Account>(this.usersUrl, account);
+  }
+
+  connect(email: string): Observable<boolean> {
+    return this.http.post<boolean>(this.usersUrl + '/connect', email);
   }
 
   getAccounts(): Observable<Account[]> {

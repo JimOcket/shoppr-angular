@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../shared/user.service';
 
 @Component({
   selector: 'app-logon',
@@ -9,12 +10,15 @@ export class LogonComponent implements OnInit {
   personalEmail: string;
   domainEmail: string;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
   connect() {
-
+    const email = this.personalEmail + '@' + this.domainEmail;
+    if (this.userService.connect(email)) {
+      // todo save credentials
+    }
   }
 }
