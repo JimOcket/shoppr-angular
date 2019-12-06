@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../shared/user.service';
+import {AuthenticationService} from '../../shared/authenticationService';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-logon',
@@ -10,15 +11,17 @@ export class LogonComponent implements OnInit {
   personalEmail: string;
   domainEmail: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
 
   connect() {
     const email = this.personalEmail + '@' + this.domainEmail;
-    if (this.userService.connect(email)) {
-      // todo save credentials
-    }
+    this.authService.login(email).subscribe(() => {
+      if (localStorage.getItem('currentUser') !== undefined) {
+        this.router.navigateByUrl('http://localhost:5000').then(ignore => console.log(localStorage.getItem('currentUser')));
+      }
+    });
   }
 }
