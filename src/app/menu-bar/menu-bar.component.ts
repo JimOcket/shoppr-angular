@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu-bar',
@@ -7,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MenuBarComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   private loginStatus: string;
@@ -25,5 +26,10 @@ export class MenuBarComponent implements OnInit {
 
   ngOnInit() {
     this.loginStatus =  MenuBarComponent.getUser();
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigateByUrl(``).then(r => r);
   }
 }
