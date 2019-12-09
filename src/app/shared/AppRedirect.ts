@@ -4,7 +4,6 @@ export class AppRedirect {
   static getDefaultPage() {
     if (localStorage.getItem('currentUser') !== null) {
       const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
-      console.log('tttt');
       // return `home/${user.user.email}`;
       return 'create-shoppinglist';
     } else {
