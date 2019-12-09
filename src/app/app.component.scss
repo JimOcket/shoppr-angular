@@ -6,3 +6,15 @@
   padding-bottom: 1vw;
   border-bottom: 5px ridge #d22571;
 }
+
+.content-container {
+  height: 58vw;
+}
+
+.footer-bar-container {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  border-top: 0.5px solid gray;
+  height: 3vw;
+}

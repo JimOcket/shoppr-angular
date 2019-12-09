@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ShoppingList} from './shoppinglist/shopping-list';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,20 @@ export class ShoppingListService {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, this.httpOptions);
+    return of({
+      name: shoppingList.name, id: '1', validate(): boolean {
+        return true;
+      }
+    });
+    // return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, this.httpOptions);
+  }
+
+  getShoppingListByID(id: string) {
+    return of({
+      name: 'test', id: '1', validate(): boolean {
+        return true;
+      }
+    });
+    // return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`);
   }
 }

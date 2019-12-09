@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-menu-bar',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuBarComponent implements OnInit {
 
-  constructor() { }
+  private loginStatus: string;
+  private user: string = localStorage.getItem('user');
+
+  constructor() {
+  }
 
   ngOnInit() {
+    if (this.user === undefined || this.user === null) {
+      this.loginStatus = 'Guest';
+    } else {
+      this.loginStatus = localStorage.getItem('user');
+    }
   }
 
 }

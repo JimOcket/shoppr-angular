@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from '../../shopping-list.service';
 import {ShoppingList} from '../shopping-list';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-shoppinglist',
@@ -9,10 +10,10 @@ import {ShoppingList} from '../shopping-list';
 })
 export class CreateShoppinglistComponent implements OnInit {
 
-  private shoppingList: ShoppingList = new ShoppingList();
+  private shoppingList: ShoppingList = new ShoppingList(' ');
   errorMessage: string;
 
-  constructor(private shoppingListService: ShoppingListService) {
+  constructor(private shoppingListService: ShoppingListService, private router: Router) {
   }
 
   ngOnInit() {
@@ -20,16 +21,19 @@ export class CreateShoppinglistComponent implements OnInit {
 
 
   save() {
-    console.log(this.shoppingList.name);
     if (this.isValid(this.shoppingList)) {
-      this.shoppingListService.createShoppingList(this.shoppingList).subscribe(() => {});
+      this.shoppingListService.createShoppingList(this.shoppingList).subscribe(shoppinglist => {
+        this.shoppingList = shoppinglist;
+        this.router.navigateByUrl('shopping-list-detail/' + this.shoppingList.id).then(r => {
+        });
+      });
     }
   }
 
   private isValid(shoppingList: ShoppingList) {
-    this.errorMessage = undefined;
+    this.errorMessage = ' ';
     if (!this.shoppingList.validate()) {
-      this.errorMessage = this.shoppingList.name + ' is not a valid name!';
+      this.errorMessage = `'${this.shoppingList.name}'` + ' is not a valid name!';
       return false;
     }
     return true;
