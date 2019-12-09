@@ -5,8 +5,12 @@
   </div>
 
   <div class="navigation-bar">
-    <button class="navigation-button">home</button>
-    <button class="navigation-button">myShopprLists</button>
+    <button class="navigation-button" routerLink="">home</button>
+    <button class="navigation-button" routerLink="create-shoppinglist">myShopprLists</button>
     <button class="navigation-button">find recipes</button>
+  </div>
+  <div class="welcome-message">
+    You are logged in as:
+    <span style="color:#d22571;">{{loginStatus}}</span>
   </div>
 </div>

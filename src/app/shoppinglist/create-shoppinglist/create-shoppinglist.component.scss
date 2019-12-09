@@ -1,0 +1,46 @@
+.page-title {
+  margin-top: 1vw;
+  margin-bottom: 4vw;
+  font-size: 2.5vw;
+}
+
+.create-shoppinglist-form-container {
+  margin-top: 5vw;
+
+}
+
+.input-field-container {
+  margin-left: 2vw;
+  font-size: 1.25vw;
+  font-family: "Arial", serif;
+  margin-bottom: 2vw;
+  width: auto;
+
+  .input-field {
+    margin-left: 2vw;
+    height: 2vw;
+    width: 33vw;
+    padding-left: 1%;
+    font-size: 1.25vw;
+  }
+}
+
+
+.create-button {
+  margin-left: 2vw;
+  height: 3vw;
+  width: 10vw;
+  background-color: white;
+  border: 0.3px solid lightgrey;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.25vw;
+
+}
+
+.create-button:hover {
+  background-color: #d22571;
+  color: white;
+  border: none;
+}
+
+

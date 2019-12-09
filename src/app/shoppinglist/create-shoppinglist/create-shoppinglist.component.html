@@ -1,0 +1,25 @@
+<div class="create-shoppinglist-container">
+  <div class="page-title logo">
+    Create a new shoppinglist
+  </div>
+
+  <div class="create-shoppinglist-form-container">
+    <div class="input-field-container"> Please provide a name for your shoppinglist:
+
+      <label>
+        <input class="input-field" #nameInput placeholder="super awesome shopping list name..." size="50"
+               (focusin)="nameInput.placeholder=''"
+               (focusout)="nameInput.placeholder='super awesome shopping list name...'"
+               (input)="shoppingList.name=nameInput.value">
+      </label>
+
+    </div>
+
+  </div>
+  <button class="create-button" (click)="save()">CONFIRM</button>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{errorMessage}}
+  </div>
+</div>
+
