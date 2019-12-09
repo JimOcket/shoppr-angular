@@ -9,7 +9,7 @@ import {AppConnect} from './AppConnect';
 })
 export class ShoppingListService {
 
-  shoppingListUrl = AppConnect.getSiteUrl();
+  shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppingLists`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -21,10 +21,16 @@ export class ShoppingListService {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, this.httpOptions);
+    const user = JSON.parse(localStorage.getItem('currentUser')).user.email;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
+    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
   }
 
   getShoppingListByID(id: string) {
-    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`);
+    const user = JSON.parse(localStorage.getItem('currentUser')).user.email;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
+    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
   }
 }
