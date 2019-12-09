@@ -1,11 +1,8 @@
-fieldset{
-  border-color: transparent;
-}
-[class="header"]{
-  background-color: #eee;
-}
-[class="body"]{
-}
-[class="footer"]{
-  background-color: #eee;
+.menu-bar-container {
+  position: sticky;
+  top: 0;
+  height: 4vw;
+  background: white;
+  padding-bottom: 1vw;
+  border-bottom: 5px ridge #d22571;
 }
