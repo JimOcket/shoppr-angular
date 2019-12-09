@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ShoppingListService} from '../../shopping-list.service';
+import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ShoppingList} from '../shopping-list';
 import {Router} from '@angular/router';
 

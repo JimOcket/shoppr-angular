@@ -8,6 +8,7 @@ export class ShoppingList {
 
   name: string;
   userId: number;
+  id: number;
 
   validate() {
     return (this.name !== undefined && this.name !== ' ');
