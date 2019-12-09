@@ -1,12 +1,13 @@
 export class ShoppingList {
 
 
-  constructor(name: string) {
+  constructor(name: string, userId: number) {
     this.name = name;
+    this.userId = userId;
   }
 
   name: string;
-  id: string;
+  userId: number;
 
   validate() {
     return (this.name !== undefined && this.name !== ' ');

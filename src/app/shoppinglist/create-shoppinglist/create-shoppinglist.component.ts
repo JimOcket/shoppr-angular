@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class CreateShoppinglistComponent implements OnInit {
 
-  private shoppingList: ShoppingList = new ShoppingList(' ');
+  private shoppingList: ShoppingList = new ShoppingList(' ', 1);
   errorMessage: string;
 
   constructor(private shoppingListService: ShoppingListService, private router: Router) {

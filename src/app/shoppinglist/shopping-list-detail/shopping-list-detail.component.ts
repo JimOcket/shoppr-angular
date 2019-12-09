@@ -11,7 +11,7 @@ import {Location} from '@angular/common';
 })
 export class ShoppingListDetailComponent implements OnInit {
 
-  private shoppingList: ShoppingList = new ShoppingList();
+  private shoppingList: ShoppingList = new ShoppingList('  ',1);
   private id: string;
 
   constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute, private location: Location) {

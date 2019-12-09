@@ -20,20 +20,10 @@ export class ShoppingListService {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    return of({
-      name: shoppingList.name, id: '1', validate(): boolean {
-        return true;
-      }
-    });
-    // return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, this.httpOptions);
+    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, this.httpOptions);
   }
 
   getShoppingListByID(id: string) {
-    return of({
-      name: 'test', id: '1', validate(): boolean {
-        return true;
-      }
-    });
-    // return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`);
+    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`);
   }
 }
