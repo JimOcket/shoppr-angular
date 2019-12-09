@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'authentication', component: AuthenticationComponent},
   {path: '', pathMatch: 'full', redirectTo: `${AppRedirect.getDefaultPage()}`},
   {path: 'home/:email', component: AuthenticationComponent}
+  // todo redirect to user's homepage
 ];
 
 @NgModule({
