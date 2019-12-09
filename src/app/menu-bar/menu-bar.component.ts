@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ShopprAuthentication} from '../shared/ShopprAuthentication';
 
 @Component({
   selector: 'app-menu-bar',
@@ -8,18 +7,23 @@ import {ShopprAuthentication} from '../shared/ShopprAuthentication';
 })
 export class MenuBarComponent implements OnInit {
 
-  private loginStatus: string;
-  private user: string = JSON.parse(localStorage.getItem('currentUser')).user.email;
-
   constructor() {
   }
 
-  ngOnInit() {
-    if (this.user === undefined || this.user === null) {
-      this.loginStatus = 'Guest';
-    } else {
-      this.loginStatus = JSON.parse(localStorage.getItem('currentUser')).user.email;
+  private loginStatus: string;
+
+  private static getUser() {
+    const currentUser: string = localStorage.getItem('currentUser');
+    if (currentUser !== undefined && currentUser !== null) {
+      const email = JSON.parse(currentUser).user.email;
+      if (email !== undefined && email !== null) {
+        return email;
+      }
     }
+    return 'Guest';
   }
 
+  ngOnInit() {
+    this.loginStatus =  MenuBarComponent.getUser();
+  }
 }
