@@ -10,7 +10,7 @@
     <button class="navigation-button" routerLink="authentication">login</button>
   </div>
   <div class="welcome-message">
-    <button class="logout-button" (click)="logout()">disconnect</button>
+    <button *ngIf="loginStatus != 'Guest'" class="logout-button" (click)="logout()">disconnect</button>
     You are logged in as:
     <span style="color:#d22571;">{{loginStatus}}</span>
   </div>

@@ -15,6 +15,7 @@ export class MenuBarComponent implements OnInit {
 
   private static getUser() {
     const currentUser: string = localStorage.getItem('currentUser');
+    console.log(currentUser);
     if (currentUser !== undefined && currentUser !== null) {
       const email = JSON.parse(currentUser).user.email;
       if (email !== undefined && email !== null) {

@@ -23,8 +23,8 @@ export class LogonComponent implements OnInit {
     this.authService.login(email).subscribe(() => {
       if (localStorage.getItem('currentUser') !== undefined) {
         const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
-        this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
         this.menuBar.update();
+        this.router.navigateByUrl('create-shoppinglist').then(r => r);
       }
     });
   }

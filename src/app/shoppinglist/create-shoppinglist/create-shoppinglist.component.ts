@@ -17,6 +17,10 @@ export class CreateShoppinglistComponent implements OnInit {
   }
 
   ngOnInit() {
+    const currentUser: string = localStorage.getItem('currentUser');
+    if (currentUser === null) {
+      this.router.navigateByUrl('authentication').then(r => r);
+    }
   }
 
 
