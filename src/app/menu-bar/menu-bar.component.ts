@@ -31,5 +31,10 @@ export class MenuBarComponent implements OnInit {
   logout() {
     localStorage.removeItem('currentUser');
     this.router.navigateByUrl(`authentication`).then(r => r);
+    this.update();
+  }
+
+  update() {
+    this.loginStatus =  MenuBarComponent.getUser();
   }
 }

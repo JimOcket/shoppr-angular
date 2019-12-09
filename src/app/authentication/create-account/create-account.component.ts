@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {Account} from '../../shared/account';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
+import {MenuBarComponent} from '../../menu-bar/menu-bar.component';
 
 @Component({
   selector: 'app-create-account',
@@ -18,7 +19,8 @@ export class CreateAccountComponent implements OnInit {
     return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
   }
 
-  constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) {
+  constructor(private userService: UserService, private authService: AuthenticationService,
+              private router: Router, private menuBar: MenuBarComponent) {
   }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class CreateAccountComponent implements OnInit {
           if (localStorage.getItem('currentUser') !== undefined) {
             const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
             this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
+            this.menuBar.update();
           }
         });
       });

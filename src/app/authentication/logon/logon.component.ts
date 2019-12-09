@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
+import {MenuBarComponent} from '../../menu-bar/menu-bar.component';
 
 @Component({
   selector: 'app-logon',
@@ -12,7 +13,7 @@ export class LogonComponent implements OnInit {
   personalEmail: string;
   domainEmail: string;
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router, private menuBar: MenuBarComponent) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,7 @@ export class LogonComponent implements OnInit {
       if (localStorage.getItem('currentUser') !== undefined) {
         const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
         this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
+        this.menuBar.update();
       }
     });
   }
