@@ -1,0 +1,23 @@
+<h3>Connect</h3>
+<form (ngSubmit)="connect()">
+  <div class="form-body">
+    <div class="form-input">
+      <h4>Email : </h4>
+      <label>
+        <input name="personalEmail" id="personalEmail"
+               [(ngModel)]="personalEmail"
+               placeholder="personal">
+      </label>
+      <label> <img class="arobase" src="../../../assets/arobase.png" alt="arobase">
+        <input name="domainEmail" id="domainEmail"
+               [(ngModel)]="domainEmail"
+               placeholder="domain">
+      </label>
+      <hr>
+      <div class="form-submit">
+        <button type="submit" name="connectButton" id="connectButton">connect</button>
+      </div>
+    </div>
+  </div>
+</form>
+

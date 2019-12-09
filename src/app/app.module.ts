@@ -8,6 +8,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FooterBarComponent } from './footer-bar/footer-bar.component';
 import { ShoppingListDetailComponent } from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,10 @@ import { ShoppingListDetailComponent } from './shoppinglist/shopping-list-detail
     ShoppingListDetailComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
