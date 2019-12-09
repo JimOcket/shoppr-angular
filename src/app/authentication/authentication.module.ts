@@ -5,10 +5,11 @@ import {CreateAccountComponent} from './create-account/create-account.component'
 import {AuthenticationComponent} from './authentication.component';
 import {FormsModule} from '@angular/forms';
 import {AuthenticationService} from '../shared/authenticationService';
+import {MenuBarComponent} from '../menu-bar/menu-bar.component';
 
 
 @NgModule({
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, MenuBarComponent],
   declarations: [LogonComponent,
     CreateAccountComponent,
     AuthenticationComponent],
