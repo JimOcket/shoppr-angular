@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
-import {AppConnect} from '../../shared/AppConnect';
+import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
 
 @Component({
   selector: 'app-logon',
@@ -21,8 +21,8 @@ export class LogonComponent implements OnInit {
     const email = this.personalEmail + '@' + this.domainEmail;
     this.authService.login(email).subscribe(() => {
       if (localStorage.getItem('currentUser') !== undefined) {
-        this.router.navigateByUrl('').then(r => r);
-        // todo redirect to user's homepage
+        const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
+        this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
       }
     });
   }

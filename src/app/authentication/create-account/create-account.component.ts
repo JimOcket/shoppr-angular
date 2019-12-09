@@ -3,7 +3,7 @@ import {UserService} from '../../shared/user.service';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {Account} from '../../shared/account';
-import {AppConnect} from '../../shared/AppConnect';
+import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
 
 @Component({
   selector: 'app-create-account',
@@ -32,8 +32,8 @@ export class CreateAccountComponent implements OnInit {
       this.userService.createAccount(account).subscribe(getAccount => {
         this.authService.login(getAccount.email).subscribe(() => {
           if (localStorage.getItem('currentUser') !== undefined) {
-            this.router.navigateByUrl('').then(r => r);
-            // todo redirect to user's homepage
+            const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
+            this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
           }
         });
       });
