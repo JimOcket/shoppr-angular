@@ -3,6 +3,7 @@ import {UserService} from '../../shared/user.service';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {Account} from '../../shared/account';
+import {AppConnect} from '../../shared/AppConnect';
 
 @Component({
   selector: 'app-create-account',
@@ -14,8 +15,7 @@ export class CreateAccountComponent implements OnInit {
   domainEmail: string;
 
   private static validateEmail(email: string) {
-    return true;
-    // return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
+    return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
   }
 
   constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) {
@@ -32,7 +32,8 @@ export class CreateAccountComponent implements OnInit {
       this.userService.createAccount(account).subscribe(getAccount => {
         this.authService.login(getAccount.email).subscribe(() => {
           if (localStorage.getItem('currentUser') !== undefined) {
-            this.router.navigateByUrl('http://localhost:5000').then(ignore => console.log(localStorage.getItem('currentUser')));
+            this.router.navigateByUrl('').then(r => r);
+            // todo redirect to user's homepage
           }
         });
       });

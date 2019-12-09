@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Account} from './account';
-import {map} from 'rxjs/operators';
+import {AppConnect} from './AppConnect';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  usersUrl = 'http://localhost:5000/users';
+  usersUrl = `${AppConnect.getSiteUrl()}/users`;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
