@@ -21,8 +21,8 @@ export class LogonComponent implements OnInit {
   connect() {
     const email = this.personalEmail + '@' + this.domainEmail;
     this.authService.login(email).subscribe(() => {
-      if (localStorage.getItem('currentUser') !== undefined) {
-        const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
+      if (sessionStorage.getItem('currentUser') !== undefined) {
+        const user: ShopprAuthentication = JSON.parse(sessionStorage.getItem('currentUser'));
         this.menuBar.update();
         this.router.navigateByUrl('create-shoppinglist').then(r => r);
       }

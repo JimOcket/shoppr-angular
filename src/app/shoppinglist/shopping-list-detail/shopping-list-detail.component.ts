@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ShoppingList} from '../shopping-list';
+import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
@@ -11,7 +11,7 @@ import {Location} from '@angular/common';
 })
 export class ShoppingListDetailComponent implements OnInit {
 
-  private shoppingList: ShoppingList = new ShoppingList('  ',1);
+  private shoppingList: ShoppingList = new ShoppingList('  ', 1);
   private id: string;
 
   constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute, private location: Location) {
