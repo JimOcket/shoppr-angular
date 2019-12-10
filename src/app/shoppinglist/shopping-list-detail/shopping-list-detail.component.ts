@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import {ShoppingList} from '../../shared/shopping-list';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -15,8 +15,7 @@ export class ShoppingListDetailComponent implements OnInit {
   productQuantity: string;
   displayAddProduct = 'none';
   // add product
-
-  private shoppingList: ShoppingList = new ShoppingList('  ', 1);
+  private shoppingList: ShoppingList;
   private id: string;
 
   constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute, private location: Location) {
@@ -24,6 +23,10 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setShoppingList();
+  }
+
+  private setShoppingList() {
     this.shoppingListService.getShoppingListByID(this.id)
       .subscribe(shoppingList => this.shoppingList = shoppingList);
   }
@@ -34,8 +37,8 @@ export class ShoppingListDetailComponent implements OnInit {
 
   addProduct() {
     this.shoppingListService.addProduct(this.productName, this.productQuantity, this.shoppingList).subscribe(() => {
-        this.displayAddProduct = 'none';
-      });
-
+      this.displayAddProduct = 'none';
+      this.setShoppingList();
+    });
   }
 }
