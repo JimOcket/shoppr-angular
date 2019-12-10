@@ -3,6 +3,7 @@ import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import {AddProductComponent} from '../../add-product/add-product.component';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -10,11 +11,9 @@ import {Location} from '@angular/common';
   styleUrls: ['./shopping-list-detail.component.scss']
 })
 export class ShoppingListDetailComponent implements OnInit {
-  // add product
-  productName: string;
-  productQuantity: string;
+
   displayAddProduct = 'none';
-  // add product
+  addProductComponent: AddProductComponent;
 
   private shoppingList: ShoppingList = new ShoppingList('  ', 1);
   private id: string;
@@ -29,11 +28,11 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   showAddProduct() {
-    this.displayAddProduct = 'block';
+    this.addProductComponent = new AddProductComponent();
   }
 
   addProduct() {
-    this.shoppingListService.addProduct(this.productName, this.productQuantity, this.shoppingList);
-    this.displayAddProduct = 'none';
+    this.shoppingListService.addProduct(this.addProductComponent.product, this.shoppingList);
+    this.addProductComponent = undefined;
   }
 }
