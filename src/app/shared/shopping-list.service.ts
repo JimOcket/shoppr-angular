@@ -14,35 +14,19 @@ import {Product} from './product';
 export class ShoppingListService {
 
   shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppingLists`;
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    })
-  };
-
   constructor(private http: HttpClient) {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    const headers = AuthenticationService.createHeaders();
-    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
+    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, AuthenticationService.createHeaders());
   }
 
   getShoppingListByID(id: string) {
-    const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
-    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
+    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, AuthenticationService.createHeaders());
   }
 
-  addProduct(product: Product, shoppingList: ShoppingList) {
-    const entry: Entry = new Entry();
-    entry.product = product.productName;
-    if (product.productQuantity) {
-      entry.quantity = product.productQuantity;
-    }
-    const headers = AuthenticationService.createHeaders();
-    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, {headers});
+  addProduct(productToAdd: Product, shoppingList: ShoppingList) {
+    const entry: Entry = {product: productToAdd.productName, quantity: productToAdd.productQuantity};
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, AuthenticationService.createHeaders());
   }
 }
