@@ -19,13 +19,13 @@ export class AuthenticationService {
     return this.http.post<ShopprAuthentication>(connectUrl, email, {headers})
       .pipe(map(user => {
         if (user) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          sessionStorage.setItem('currentUser', JSON.stringify(user));
         }
         return user;
       }));
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
   }
 }
