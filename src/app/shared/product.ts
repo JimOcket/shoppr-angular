@@ -1,5 +1,5 @@
 export class Product {
-  name ;
+  name;
   constructor(name: string) {
     this.name = name;
   }

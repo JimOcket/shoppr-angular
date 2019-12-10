@@ -6,7 +6,18 @@
   <div class="create-shoppinglist-form-container">
     <div class="products-title"> Products in shopping list: 0
       <div class="product-list">
-
+        <table style="width:100%">
+          <tr>
+            <th class="desc">NAME</th>
+            <th class="desc">QUANTITY</th>
+            <th class="desc"></th>
+          </tr>
+          <tr *ngFor="let entry of shoppingList.entries">
+            <th>{{entry.product.name}}</th>
+            <th>{{entry.quantity}}</th>
+            <th></th>
+          </tr>
+        </table>
       </div>
       <hr>
       <button (click)="showAddProduct()">add product</button>
