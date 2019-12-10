@@ -1,11 +1,18 @@
-[class="form-submit"]{
+.form-submit {
   float: right;
   margin: auto;
   right: 1px;
 }
-[class="form-body"]{
+
+.form-body {
   margin: auto;
 }
-[class="arobase"]{
+
+.arobase {
   width: 20px;
+}
+
+.text-danger {
+  color: red;
+  font-size: 12px;
 }
