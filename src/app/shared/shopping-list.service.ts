@@ -28,7 +28,7 @@ export class ShoppingListService {
   }
 
   getShoppingListByID(id: string) {
-    const user = JSON.parse(localStorage.getItem('currentUser')).user.email;
+    const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
     return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
