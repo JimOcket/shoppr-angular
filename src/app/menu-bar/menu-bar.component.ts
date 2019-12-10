@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {ListenerService} from '../listener.service';
+import {switchMap} from 'rxjs/operators';
 import {AuthenticationService} from '../shared/authenticationService';
 
 @Component({
@@ -8,8 +10,7 @@ import {AuthenticationService} from '../shared/authenticationService';
   styleUrls: ['./menu-bar.component.scss']
 })
 export class MenuBarComponent implements OnInit {
-
-  constructor(private router: Router, private authService: AuthenticationService) {
+  constructor(private router: Router, private listener: ListenerService, private authService: AuthenticationService) {
   }
 
   private loginStatus: string;
@@ -28,6 +29,7 @@ export class MenuBarComponent implements OnInit {
 
   ngOnInit() {
     this.loginStatus = MenuBarComponent.getUser();
+    this.listener.user.subscribe(user => this.loginStatus = user);
   }
 
   logout() {

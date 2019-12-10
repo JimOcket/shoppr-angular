@@ -12,6 +12,13 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
+  static getCredentials() {
+    const user = JSON.parse(localStorage.getItem('currentUser')).user.email;
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
+    return headers;
+  }
+
   login(email: string) {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.set('Authorization', 'basic ' + btoa(email + ':'));

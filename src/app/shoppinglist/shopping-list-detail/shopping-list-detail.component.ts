@@ -10,6 +10,11 @@ import {Location} from '@angular/common';
   styleUrls: ['./shopping-list-detail.component.scss']
 })
 export class ShoppingListDetailComponent implements OnInit {
+  // add product
+  productName: string;
+  productQuantity: string;
+  displayAddProduct = 'none';
+  // add product
 
   private shoppingList: ShoppingList = new ShoppingList('  ', 1);
   private id: string;
@@ -23,4 +28,12 @@ export class ShoppingListDetailComponent implements OnInit {
       .subscribe(shoppingList => this.shoppingList = shoppingList);
   }
 
+  showAddProduct() {
+    this.displayAddProduct = 'block';
+  }
+
+  addProduct() {
+    this.shoppingListService.addProduct(this.productName, this.productQuantity, this.shoppingList);
+    this.displayAddProduct = 'none';
+  }
 }

@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {LogonComponent} from './logon/logon.component';
 import {CreateAccountComponent} from './create-account/create-account.component';
 import {AuthenticationComponent} from './authentication.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthenticationService} from '../shared/authenticationService';
 import {MenuBarComponent} from '../menu-bar/menu-bar.component';
 
@@ -16,10 +16,11 @@ import {MenuBarComponent} from '../menu-bar/menu-bar.component';
   exports: [
     AuthenticationComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class AuthenticationModule {
 }

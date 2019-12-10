@@ -7,11 +7,14 @@
   <div class="navigation-bar">
     <button class="navigation-button" routerLink="">home</button>
     <button class="navigation-button" routerLink="create-shoppinglist">myShopprLists</button>
-    <button class="navigation-button" routerLink="authentication">login</button>
   </div>
   <div class="welcome-message">
-    <button *ngIf="loginStatus != 'Guest'" class="logout-button" (click)="logout()">disconnect</button>
     You are logged in as:
     <span style="color:#d22571;">{{loginStatus}}</span>
+    <button class="logout-button" (click)="logout()">
+      <span *ngIf="loginStatus != 'Guest'">Log out</span>
+      <span *ngIf="loginStatus == 'Guest'">Log in</span>
+    </button>
+
   </div>
 </div>
