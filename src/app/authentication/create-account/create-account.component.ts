@@ -39,7 +39,6 @@ export class CreateAccountComponent implements OnInit {
 
   save() {
     this.submitted = true;
-
     if (this.accountForm.invalid) {
       return;
     }
@@ -59,7 +58,8 @@ export class CreateAccountComponent implements OnInit {
     );
   }
 
-  resetDuplicate() {
+  resetErrors() {
     this.duplicate = null;
+    this.submitted = false;
   }
 }

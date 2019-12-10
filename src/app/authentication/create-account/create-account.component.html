@@ -5,11 +5,11 @@
       <div class="form-body">
         <div class="form-input">
           <h4>Email : </h4>
-          <input id="email" formControlName="email" (click)="resetDuplicate()"/>
+          <input id="email" formControlName="email" (click)="resetErrors()"/>
           <div *ngIf="duplicate" class="text-danger">
             {{ duplicate.error.errors }}
           </div>
-          <div *ngIf="submitted && email.invalid && (email.dirty || email.touched)"
+          <div *ngIf="submitted && email.invalid"
                class="text-danger">
             <div *ngIf="email.errors.required">Email address is required.</div>
             <div *ngIf="email.errors.email">Please provide a valid email address.</div>
