@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Account} from '../../shared/account';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
 import {MenuBarComponent} from '../../menu-bar/menu-bar.component';
+import {ListenerService} from '../../listener.service';
 
 @Component({
   selector: 'app-create-account',
@@ -19,8 +20,10 @@ export class CreateAccountComponent implements OnInit {
     return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email);
   }
 
-  constructor(private userService: UserService, private authService: AuthenticationService,
-              private router: Router, private menuBar: MenuBarComponent) {
+  constructor(private userService: UserService,
+              private authService: AuthenticationService,
+              private router: Router,
+              private listener: ListenerService) {
   }
 
   ngOnInit() {
@@ -36,7 +39,7 @@ export class CreateAccountComponent implements OnInit {
           if (localStorage.getItem('currentUser') !== undefined) {
             const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
             this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
-            this.menuBar.update();
+            this.listener.update(JSON.parse(localStorage.getItem('currentUser')).user.email);
           }
         });
       });

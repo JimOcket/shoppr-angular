@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {ListenerService} from '../listener.service';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-menu-bar',
@@ -8,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class MenuBarComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private listener: ListenerService) {
   }
 
   private loginStatus: string;
@@ -25,12 +27,9 @@ export class MenuBarComponent implements OnInit {
     return 'Guest';
   }
 
-  ngOnChange() {
-    this.loginStatus = MenuBarComponent.getUser();
-  }
-
   ngOnInit() {
     this.loginStatus = MenuBarComponent.getUser();
+    this.listener.user.subscribe(user => this.loginStatus = user);
   }
 
   logout() {
