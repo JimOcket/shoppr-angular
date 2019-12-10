@@ -3,9 +3,8 @@ import {UserService} from '../../shared/user.service';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
-import {MenuBarComponent} from '../../menu-bar/menu-bar.component';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ListenerService} from '../../listener.service';
+import {ListenerService} from "../../listener.service";
 
 @Component({
   selector: 'app-create-account',
@@ -15,13 +14,13 @@ import {ListenerService} from '../../listener.service';
 export class CreateAccountComponent implements OnInit {
 
   accountForm: FormGroup;
-  submitted: false;
+  submitted;
   duplicate: any;
 
   constructor(private userService: UserService,
               private authService: AuthenticationService,
               private router: Router,
-              private menuBar: MenuBarComponent) {
+              private listener: ListenerService) {
   }
 
   ngOnInit() {
