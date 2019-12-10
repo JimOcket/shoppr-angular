@@ -25,8 +25,12 @@ export class MenuBarComponent implements OnInit {
     return 'Guest';
   }
 
+  ngOnChange() {
+    this.loginStatus = MenuBarComponent.getUser();
+  }
+
   ngOnInit() {
-    this.loginStatus =  MenuBarComponent.getUser();
+    this.loginStatus = MenuBarComponent.getUser();
   }
 
   logout() {
@@ -36,6 +40,6 @@ export class MenuBarComponent implements OnInit {
   }
 
   update() {
-    this.loginStatus =  MenuBarComponent.getUser();
+    this.loginStatus = MenuBarComponent.getUser();
   }
 }
