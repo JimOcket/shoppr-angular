@@ -25,7 +25,7 @@ export class ShoppingListService {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    const headers = AuthenticationService.getCredentials();
+    const headers = AuthenticationService.createHeaders();
     return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
   }
 
@@ -42,7 +42,7 @@ export class ShoppingListService {
     if (product.productQuantity) {
       entry.quantity = product.productQuantity;
     }
-    const headers = AuthenticationService.getCredentials();
+    const headers = AuthenticationService.createHeaders();
     return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, {headers});
   }
 }

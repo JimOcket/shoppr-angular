@@ -12,18 +12,21 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-  static getCredentials() {
-    const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
-    return headers;
+  static createHeaders(email?: string) {
+    let emailCredential: string;
+    if (email) {
+      emailCredential = email;
+    } else {
+      emailCredential = JSON.parse(localStorage.getItem('currentUser')).user.email;
+    }
+    const headers = new HttpHeaders('Authorization:basic ' + btoa(emailCredential + ':'));
+    return {headers};
   }
 
   login(email: string) {
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Authorization', 'basic ' + btoa(email + ':'));
-    const connectUrl = `${AppConnect.getSiteUrl()}/users/connect`;
-    return this.http.post<ShopprAuthentication>(connectUrl, email, {headers})
+    return this.http.post<ShopprAuthentication>(
+      `${AppConnect.getSiteUrl()}/users/connect`, email, AuthenticationService.createHeaders(email)
+    )
       .pipe(map(user => {
         if (user) {
           sessionStorage.setItem('currentUser', JSON.stringify(user));
