@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FooterBarComponent} from './footer-bar/footer-bar.component';
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationModule} from './authentication/authentication.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AuthenticationModule} from './authentication/authentication.module';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    AuthenticationModule
+    AuthenticationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
