@@ -33,8 +33,8 @@ export class CreateAccountComponent implements OnInit {
       account.email = email;
       this.userService.createAccount(account).subscribe(getAccount => {
         this.authService.login(getAccount.email).subscribe(() => {
-          if (localStorage.getItem('currentUser') !== undefined) {
-            const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
+          if (sessionStorage.getItem('currentUser') !== undefined) {
+            const user: ShopprAuthentication = JSON.parse(sessionStorage.getItem('currentUser'));
             this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
             this.menuBar.update();
           }
