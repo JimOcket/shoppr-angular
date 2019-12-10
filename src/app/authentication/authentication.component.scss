@@ -1,7 +1,9 @@
 .logon-container {
   display: flex;
+  height: 18vw;
+  align-items: center;
 }
-[class="item"]{
+.item{
   margin-left: auto;
   margin-right: auto;
   width:auto;
@@ -9,9 +11,10 @@
 
 .separation {
   border-left: 1px solid grey;
+  height: 10vw;
 }
 *{
-  font-family: Andale Mono, monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 h2{
   margin-bottom: 0;
