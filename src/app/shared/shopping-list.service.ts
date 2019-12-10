@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ShoppingList} from '../shoppinglist/shopping-list';
+import {ShoppingList} from './shopping-list';
 import {Observable, of} from 'rxjs';
 import {AppConnect} from './AppConnect';
 
