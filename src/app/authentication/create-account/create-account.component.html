@@ -1,23 +1,19 @@
 <div class="create-account-container">
   <h3 class="create-account-title">Create account</h3>
   <div class="create-account-input">
-    <form (ngSubmit)="save()">
+    <form [formGroup]="accountForm" (ngSubmit)="save()">
       <div class="form-body">
         <div class="form-input">
           <h4>Email : </h4>
-          <label>
-            <input name="personalEmail" id="personalEmail"
-                   [(ngModel)]="personalEmail"
-                   placeholder="personal">
-          </label>
-          <label> <img class="arobase" src="../../../assets/arobase.png" alt="arobase">
-            <input name="domainEmail" id="domainEmail"
-                   [(ngModel)]="domainEmail"
-                   placeholder="domain">
-          </label>
+          <input id="email" formControlName="email"/>
+          <div *ngIf="submitted && email.invalid && (email.dirty || email.touched)"
+               class="text-danger">
+            <div *ngIf="email.errors.required">Email address is required.</div>
+            <div *ngIf="email.errors.email">Please provide a valid email address.</div>
+          </div>
           <hr>
           <div class="form-submit">
-            <button type="submit" name="connectButton" id="connectButton">create</button>
+            <button type="submit" id="connectButton">create</button>
           </div>
         </div>
       </div>
