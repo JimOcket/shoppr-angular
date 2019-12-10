@@ -33,7 +33,9 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   addProduct() {
-    this.shoppingListService.addProduct(this.productName, this.productQuantity, this.shoppingList);
-    this.displayAddProduct = 'none';
+    this.shoppingListService.addProduct(this.productName, this.productQuantity, this.shoppingList).subscribe(() => {
+        this.displayAddProduct = 'none';
+      });
+
   }
 }

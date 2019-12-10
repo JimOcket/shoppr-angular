@@ -5,6 +5,7 @@ import {Observable, of} from 'rxjs';
 import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
+import {Product} from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class ShoppingListService {
 
   addProduct(productName: string, productQuantity: string, shoppingList: ShoppingList) {
     const entry: Entry = new Entry();
-    entry.product = productName;
+    entry.product = new Product(productName);
     if (productQuantity) {
       entry.quantity = productQuantity;
     }
