@@ -22,6 +22,7 @@ export class ShoppingListService {
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
     const user = JSON.parse(localStorage.getItem('currentUser')).user.email;
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
     return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
