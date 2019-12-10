@@ -12,7 +12,7 @@
           <div *ngIf="submitted && email.invalid"
                class="text-danger">
             <div *ngIf="email.errors.required">Email address is required.</div>
-            <div *ngIf="email.errors.email">Please provide a valid email address.</div>
+            <div *ngIf="email.errors.pattern">Please provide a valid email address.</div>
           </div>
           <hr>
           <div class="form-submit">
