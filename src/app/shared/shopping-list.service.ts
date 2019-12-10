@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ShoppingList} from './shopping-list';
 import {Observable, of} from 'rxjs';
 import {AppConnect} from './AppConnect';
+import {Entry} from './entry';
+import {AuthenticationService} from './authenticationService';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,7 @@ export class ShoppingListService {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
+    const headers = AuthenticationService.getCredentials();
     return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
   }
 
@@ -32,5 +32,15 @@ export class ShoppingListService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
     return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
+  }
+
+  addProduct(productName: string, productQuantity: string, shoppingList: ShoppingList) {
+    const entry: Entry = new Entry();
+    entry.product = productName;
+    if (productQuantity) {
+      entry.quantity = productQuantity;
+    }
+    const headers = AuthenticationService.getCredentials();
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, {headers});
   }
 }
