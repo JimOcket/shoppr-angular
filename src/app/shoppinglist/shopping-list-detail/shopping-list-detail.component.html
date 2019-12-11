@@ -22,28 +22,7 @@
         </div>
         <hr>
         <button (click)="showAddProduct()">add product</button>
-        <fieldset name="addProduct" [ngStyle]="{'display':displayAddProduct}">
-          <h4> Add product to {{shoppingList.name}}</h4>
-          <hr class="hrline">
-          <form (ngSubmit)="addProduct()">
-            <div class="productInfo">
-              <h4>Product : </h4>
-              <h6> Field with * are required </h6>
-              <label>*Name :
-                <input name="productName" id="productName"
-                       [(ngModel)]="productName"
-                       placeholder="name"/>
-              </label>
-              <label> Quantity :
-                <input name="productQuantity" id="productQuantity"
-                       [(ngModel)]="productQuantity"
-                       placeholder="quantity"/>
-              </label>
-            </div>
-            <hr class="hrline">
-            <button type="submit">add</button>
-          </form>
-        </fieldset>
+        <app-add-product [ngStyle]="display:displayAddProduct"></app-add-product>
       </div>
     </div>
   </div>

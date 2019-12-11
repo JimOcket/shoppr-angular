@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
-import {AddProductComponent} from '../../add-product/add-product.component';
+import {AddProductComponent} from '../add-product/add-product.component';
 
 @Component({
   selector: 'app-shopping-list-detail',

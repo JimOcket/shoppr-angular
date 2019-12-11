@@ -1,18 +1,24 @@
+
+
 <fieldset name="addProduct">
-  <form>
+  <h4> Add product</h4>
+  <hr class="hrline">
+  <form (ngSubmit)="addProduct()">
     <div class="productInfo">
       <h4>Product : </h4>
       <h6> Field with * are required </h6>
       <label>*Name :
         <input name="productName" id="productName"
-               [(ngModel)]="product.productName"
+               [(ngModel)]="productName"
                placeholder="name"/>
       </label>
       <label> Quantity :
         <input name="productQuantity" id="productQuantity"
-               [(ngModel)]="product.productQuantity"
+               [(ngModel)]="productQuantity"
                placeholder="quantity"/>
       </label>
     </div>
+    <hr class="hrline">
+    <button type="submit">add</button>
   </form>
 </fieldset>

@@ -6,7 +6,7 @@ import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
 import {CreateShoppingList} from './CreateShoppingList';
-import {AddProductComponent} from '../add-product/add-product.component';
+import {AddProductComponent} from '../shoppinglist/add-product/add-product.component';
 import {Product} from './product';
 
 @Injectable({
