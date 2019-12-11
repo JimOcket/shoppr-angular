@@ -3,8 +3,8 @@ import {UserService} from '../../shared/user.service';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ListenerService} from "../../listener.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ListenerService} from '../../listener.service';
 
 @Component({
   selector: 'app-create-account',
@@ -17,10 +17,7 @@ export class CreateAccountComponent implements OnInit {
   submitted;
   duplicate: any;
 
-  constructor(private userService: UserService,
-              private authService: AuthenticationService,
-              private router: Router,
-              private listener: ListenerService) {
+  constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {
@@ -45,19 +42,10 @@ export class CreateAccountComponent implements OnInit {
     }
 
     this.userService.createAccount(this.accountForm.value).subscribe(
-      getAccount => {
-        this.authService.login(getAccount.email).subscribe(
-          () => {
-            if (sessionStorage.getItem('currentUser') !== undefined) {
-              const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
-              this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
-              this.listener.update(JSON.parse(sessionStorage.getItem('currentUser')).user.email);
-              this.router.navigateByUrl('create-shoppinglist').then(r => r);
-            }
-          });
-      },
-      error => this.duplicate = error
-    );
+      createdAccount => this.authService.login(createdAccount.email).subscribe(
+        () => this.router.navigateByUrl('create-shoppinglist').then(r => r)
+      ),
+      error => this.duplicate = error);
   }
 
   resetErrors() {
