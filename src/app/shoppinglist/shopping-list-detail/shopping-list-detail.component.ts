@@ -3,6 +3,8 @@ import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {ShoppingList} from '../../shared/shopping-list';
+import {Entry} from '../../shared/entry';
+import {Product} from '../../shared/product';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -28,7 +30,10 @@ export class ShoppingListDetailComponent implements OnInit {
 
   private setShoppingList() {
     this.shoppingListService.getShoppingListByID(this.id)
-      .subscribe(shoppingList => this.shoppingList = shoppingList);
+      .subscribe(shoppingList => {
+        this.shoppingList = shoppingList;
+        console.log(this.shoppingList);
+      });
   }
 
   showAddProduct() {
@@ -36,7 +41,12 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   addProduct() {
-    this.shoppingListService.addProduct(this.productName, this.productQuantity, this.shoppingList).subscribe(() => {
+    const entry: Entry = new Entry();
+    entry.product = new Product(this.productName);
+    if (this.productQuantity) {
+      entry.quantity = this.productQuantity;
+    }
+    this.shoppingListService.addProduct(entry, this.shoppingList).subscribe(() => {
       this.displayAddProduct = 'none';
       this.setShoppingList();
     });

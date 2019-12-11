@@ -5,7 +5,7 @@ import {Observable, of} from 'rxjs';
 import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
-import {Product} from './product';
+import {CreateShoppingList} from './CreateShoppingList';
 
 @Injectable({
   providedIn: 'root'
@@ -23,24 +23,19 @@ export class ShoppingListService {
   constructor(private http: HttpClient) {
   }
 
-  createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
+  createShoppingList(shoppingList: CreateShoppingList): Observable<ShoppingList> {
     const headers = AuthenticationService.getCredentials();
     return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
   }
 
-  getShoppingListByID(id: string) {
+  getShoppingListByID(id: string): Observable<ShoppingList> {
     const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
     return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
   }
 
-  addProduct(productName: string, productQuantity: string, shoppingList: ShoppingList) {
-    const entry: Entry = new Entry();
-    entry.product = new Product(productName);
-    if (productQuantity) {
-      entry.quantity = productQuantity;
-    }
+  addProduct(entry: Entry, shoppingList: ShoppingList) {
     const headers = AuthenticationService.getCredentials();
     return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, {headers});
   }
