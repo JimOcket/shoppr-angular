@@ -27,8 +27,7 @@ export class AuthenticationService {
   login(email: string) {
     return this.http.post<ShopprAuthentication>(
       `${AppConnect.getSiteUrl()}/users/connect`, email, AuthenticationService.createHeaders(email)
-    )
-      .pipe(map(user => {
+    ).pipe(map(user => {
         if (user) {
           sessionStorage.setItem('currentUser', JSON.stringify(user));
           this.listener.updateUser(user.user.email);
