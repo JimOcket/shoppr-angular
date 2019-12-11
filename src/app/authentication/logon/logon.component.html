@@ -1,16 +1,18 @@
 <h3>Please login:</h3>
 <div class="form-container">
   <h4>Email : </h4>
-  <div [formGroup]="loginForm">
-    <label>
-      <input id="email" formControlName="email" (click)="resetErrors()" (input)="validateEmailFormat()" size=40px/>
-    </label>
-  </div>
-  <div class="text-danger">
-    <span *ngIf="submitted && errorMessage">{{errorMessage}}</span>
-  </div>
-  <div class="form-submit">
-    <button type="submit" name="connectButton" id="connectButton" (click)="connect()">connect</button>
-  </div>
+  <form>
+    <div [formGroup]="loginForm" (ngSubmit)="connect()">
+      <label>
+        <input id="email" formControlName="email" (click)="resetErrors()" (input)="validateEmailFormat()" size=40px/>
+      </label>
+    </div>
+    <div class="text-danger">
+      <span *ngIf="submitted && errorMessage">{{errorMessage}}</span>
+    </div>
+    <div class="form-submit">
+      <button type="submit" name="connectButton" id="connectButton">connect</button>
+    </div>
+  </form>
 </div>
 
