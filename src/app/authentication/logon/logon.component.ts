@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
-import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
 import {ListenerService} from '../../listener.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -14,7 +13,6 @@ export class LogonComponent implements OnInit {
 
   loginForm: FormGroup;
   private errorMessage: string;
-  private unrecognizedUser: string;
   private submitted: boolean;
 
 
@@ -23,7 +21,7 @@ export class LogonComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('email@domain.com',
+      email: new FormControl('',
         [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')])
     });
   }
