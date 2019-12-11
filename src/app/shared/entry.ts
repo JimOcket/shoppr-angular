@@ -1,4 +1,6 @@
+import {Product} from './product';
+
 export class Entry {
-  product: string;
+  product: Product;
   quantity: string;
 }
