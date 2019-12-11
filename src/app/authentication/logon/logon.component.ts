@@ -28,12 +28,13 @@ export class LogonComponent implements OnInit {
 
   connect() {
     this.submitted = true;
-    if (!this.errorMessage) {
-      const email = this.loginForm.get('email').value;
-      this.authService.login(email).subscribe(
-        () => this.router.navigateByUrl('create-shoppinglist').then(r => r),
-        () => this.errorMessage = 'There is no user with this email address');
+    if (this.loginForm.invalid) {
+      return;
     }
+    const email = this.loginForm.get('email').value;
+    this.authService.login(email).subscribe(
+      () => this.router.navigateByUrl('create-shoppinglist').then(r => r),
+      () => this.errorMessage = 'There is no user with this email address');
   }
 
   resetErrors() {

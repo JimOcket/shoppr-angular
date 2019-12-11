@@ -1,17 +1,19 @@
 <h3>New to Shoppr? Create an account:</h3>
 <div class="form-container">
-  <h4>Email : </h4>
-  <div [formGroup]="accountForm" class="account-form">
-    <label>
-      <input id="email" formControlName="email" (click)="resetErrors()" size=40px placeholder="aaa@bbb.ccc"/>
-    </label>
-  </div>
-  <div class="text-danger">
-    <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
-    <span *ngIf="submitted && email.invalid && email.errors.required">Email address is required.</span>
-    <span *ngIf="submitted && email.invalid && email.errors.pattern">Please provide a valid email address.</span>
-  </div>
-  <div class="form-submit">
-    <button type="submit" id="connectButton" (click)="save()">create</button>
-  </div>
+  <form [formGroup]="accountForm" class="account-form" (ngSubmit)="save()">
+    <h4>Email : </h4>
+    <div >
+      <label>
+        <input id="email" formControlName="email" (click)="resetErrors()" size=40px placeholder="aaa@bbb.ccc"/>
+      </label>
+    </div>
+    <div class="text-danger">
+      <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
+      <span *ngIf="submitted && email.invalid && email.errors.required">Email address is required.</span>
+      <span *ngIf="submitted && email.invalid && email.errors.pattern">Please provide a valid email address.</span>
+    </div>
+    <div class="form-submit">
+      <button type="submit" id="createButton">create</button>
+    </div>
+  </form>
 </div>

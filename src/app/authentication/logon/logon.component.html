@@ -1,10 +1,10 @@
 <h3>Please login:</h3>
 <div class="form-container">
-  <h4>Email : </h4>
-  <form>
-    <div [formGroup]="loginForm" (ngSubmit)="connect()">
+  <form [formGroup]="loginForm" (ngSubmit)="connect()">
+    <h4>Email : </h4>
+    <div>
       <label>
-        <input id="email" formControlName="email" (click)="resetErrors()" (input)="validateEmailFormat()" size=40px placeholder="aaa@bbb.ccc"/>
+        <input id="emailLogon" formControlName="email" (click)="resetErrors()" (input)="validateEmailFormat()" size=40px placeholder="aaa@bbb.ccc"/>
       </label>
     </div>
     <div class="text-danger">
