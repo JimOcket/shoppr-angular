@@ -13,10 +13,7 @@ export class LogonComponent implements OnInit {
   personalEmail: string;
   domainEmail: string;
 
-  constructor(private listener: ListenerService,
-              private authService: AuthenticationService,
-              private router: Router,
-  ) {
+  constructor(private listener: ListenerService, private authService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {
@@ -25,11 +22,7 @@ export class LogonComponent implements OnInit {
   connect() {
     const email = this.personalEmail + '@' + this.domainEmail;
     this.authService.login(email).subscribe(() => {
-      if (sessionStorage.getItem('currentUser') !== undefined) {
-        const user: ShopprAuthentication = JSON.parse(sessionStorage.getItem('currentUser'));
-        this.listener.update(JSON.parse(sessionStorage.getItem('currentUser')).user.email);
-        this.router.navigateByUrl('create-shoppinglist').then(r => r);
-      }
+      this.router.navigateByUrl('create-shoppinglist').then(r => r);
     });
   }
 }

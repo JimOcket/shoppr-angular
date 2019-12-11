@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {ShoppingList} from '../../shared/shopping-list';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
+import {AddProductComponent} from '../../add-product/add-product.component';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -12,12 +13,11 @@ import {Product} from '../../shared/product';
   styleUrls: ['./shopping-list-detail.component.scss']
 })
 export class ShoppingListDetailComponent implements OnInit {
-  // add product
-  productName: string;
-  productQuantity: string;
+
   displayAddProduct = 'none';
-  // add product
-  private shoppingList: ShoppingList;
+  addProductComponent: AddProductComponent;
+
+  private shoppingList: ShoppingList = new ShoppingList('  ', 1);
   private id: string;
 
   constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute, private location: Location) {
@@ -37,7 +37,7 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   showAddProduct() {
-    this.displayAddProduct = 'block';
+    this.addProductComponent = new AddProductComponent();
   }
 
   addProduct() {
@@ -50,5 +50,7 @@ export class ShoppingListDetailComponent implements OnInit {
       this.displayAddProduct = 'none';
       this.setShoppingList();
     });
+    this.shoppingListService.addProduct(this.addProductComponent.product, this.shoppingList);
+    this.addProductComponent = undefined;
   }
 }

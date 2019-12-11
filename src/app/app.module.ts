@@ -10,6 +10,7 @@ import {FooterBarComponent} from './footer-bar/footer-bar.component';
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule} from '@angular/forms';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     MenuBarComponent,
     FooterBarComponent,
-    ShoppingListDetailComponent
+    ShoppingListDetailComponent,
+    AddProductComponent
   ],
   imports: [
     HttpClientModule,

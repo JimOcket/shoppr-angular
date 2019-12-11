@@ -6,6 +6,8 @@ import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
 import {CreateShoppingList} from './CreateShoppingList';
+import {AddProductComponent} from '../add-product/add-product.component';
+import {Product} from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -23,16 +25,12 @@ export class ShoppingListService {
   constructor(private http: HttpClient) {
   }
 
-  createShoppingList(shoppingList: CreateShoppingList): Observable<ShoppingList> {
-    const headers = AuthenticationService.getCredentials();
-    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
+  createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
+    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, AuthenticationService.createHeaders());
   }
 
-  getShoppingListByID(id: string): Observable<ShoppingList> {
-    const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
-    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
+  getShoppingListByID(id: string) {
+    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, AuthenticationService.createHeaders());
   }
 
   addProduct(entry: Entry, shoppingList: ShoppingList) {

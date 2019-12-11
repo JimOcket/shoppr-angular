@@ -1,0 +1,18 @@
+<fieldset name="addProduct">
+  <form>
+    <div class="productInfo">
+      <h4>Product : </h4>
+      <h6> Field with * are required </h6>
+      <label>*Name :
+        <input name="productName" id="productName"
+               [(ngModel)]="product.productName"
+               placeholder="name"/>
+      </label>
+      <label> Quantity :
+        <input name="productQuantity" id="productQuantity"
+               [(ngModel)]="product.productQuantity"
+               placeholder="quantity"/>
+      </label>
+    </div>
+  </form>
+</fieldset>

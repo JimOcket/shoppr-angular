@@ -31,8 +31,7 @@ export class CreateShoppinglistComponent implements OnInit {
       this.shoppingListService.createShoppingList(this.shoppingList).subscribe(shoppinglist => {
         const createdShoppingList = shoppinglist;
         if (createdShoppingList.id > 0) {
-          this.router.navigateByUrl('shopping-list-detail/' + createdShoppingList.id).then(r => {
-          });
+          this.router.navigateByUrl('shopping-list-detail/' + createdShoppingList.id).then(() => {});
         } else {
           this.shoppingList = new CreateShoppingList('', 1);
           this.errorMessage = 'This name already exists.';

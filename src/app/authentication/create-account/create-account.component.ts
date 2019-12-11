@@ -17,10 +17,7 @@ export class CreateAccountComponent implements OnInit {
   submitted;
   duplicate: any;
 
-  constructor(private userService: UserService,
-              private authService: AuthenticationService,
-              private router: Router,
-              private listener: ListenerService) {
+  constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {
@@ -45,19 +42,10 @@ export class CreateAccountComponent implements OnInit {
     }
 
     this.userService.createAccount(this.accountForm.value).subscribe(
-      getAccount => {
-        this.authService.login(getAccount.email).subscribe(
-          () => {
-            if (sessionStorage.getItem('currentUser') !== undefined) {
-              const user: ShopprAuthentication = JSON.parse(localStorage.getItem('currentUser'));
-              this.router.navigateByUrl(`create-shoppinglist`).then(r => r);
-              this.listener.update(JSON.parse(sessionStorage.getItem('currentUser')).user.email);
-              this.router.navigateByUrl('create-shoppinglist').then(r => r);
-            }
-          });
-      },
-      error => this.duplicate = error
-    );
+      createdAccount => this.authService.login(createdAccount.email).subscribe(
+        () => this.router.navigateByUrl('create-shoppinglist').then(r => r)
+      ),
+      error => this.duplicate = error);
   }
 
   resetErrors() {
