@@ -5,6 +5,8 @@ import {Observable, of} from 'rxjs';
 import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
+import {AddProductComponent} from '../add-product/add-product.component';
+import {Product} from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -12,35 +14,19 @@ import {AuthenticationService} from './authenticationService';
 export class ShoppingListService {
 
   shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppingLists`;
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    })
-  };
-
   constructor(private http: HttpClient) {
   }
 
   createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
-    const headers = AuthenticationService.getCredentials();
-    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, {headers});
+    return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, AuthenticationService.createHeaders());
   }
 
   getShoppingListByID(id: string) {
-    const user = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.set('Authorization', 'basic ' + btoa(user + ':'));
-    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, {headers});
+    return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, AuthenticationService.createHeaders());
   }
 
-  addProduct(productName: string, productQuantity: string, shoppingList: ShoppingList) {
-    const entry: Entry = new Entry();
-    entry.product = productName;
-    if (productQuantity) {
-      entry.quantity = productQuantity;
-    }
-    const headers = AuthenticationService.getCredentials();
-    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, {headers});
+  addProduct(productToAdd: Product, shoppingList: ShoppingList) {
+    const entry: Entry = {product: productToAdd.productName, quantity: productToAdd.productQuantity};
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, AuthenticationService.createHeaders());
   }
 }

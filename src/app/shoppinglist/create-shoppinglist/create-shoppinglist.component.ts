@@ -29,6 +29,10 @@ export class CreateShoppinglistComponent implements OnInit {
     if (this.isValid(this.shoppingList)) {
       this.shoppingListService.createShoppingList(this.shoppingList).subscribe(shoppinglist => {
         this.shoppingList = shoppinglist;
+
+        this.router.navigateByUrl('shopping-list-detail/' + this.shoppingList.id).then(() => {});
+      }
+      );
         if (this.shoppingList.id > 0) {
           this.router.navigateByUrl('shopping-list-detail/' + this.shoppingList.id).then(r => {
           });
