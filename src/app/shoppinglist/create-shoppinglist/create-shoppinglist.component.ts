@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from '../../shared/shopping-list.service';
+import {ShoppingList} from '../../shared/shopping-list';
 import {Router} from '@angular/router';
 import {CreateShoppingList} from '../../shared/CreateShoppingList';
 
@@ -25,9 +26,17 @@ export class CreateShoppinglistComponent implements OnInit {
 
 
   save() {
+    this.shoppingList.userId = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
     if (this.isValid(this.shoppingList)) {
       this.shoppingListService.createShoppingList(this.shoppingList).subscribe(shoppinglist => {
-        this.router.navigateByUrl('shopping-list-detail/' + shoppinglist.id).then(r => r);
+        this.shoppingList = shoppinglist;
+        if (this.shoppingList.id > 0) {
+          this.router.navigateByUrl('shopping-list-detail/' + this.shoppingList.id).then(r => {
+          });
+        } else {
+          this.shoppingList = new ShoppingList('', 1);
+          this.errorMessage = 'This name already exists.';
+        }
       });
     }
   }
