@@ -3,20 +3,17 @@
   <div class="create-account-input">
     <form [formGroup]="accountForm" (ngSubmit)="save()">
       <div class="form-body">
-        <div class="form-input">
+        <div>
           <h4>Email : </h4>
           <div class="input-container">
             <label>
               <input id="email" formControlName="email" (click)="resetErrors()" size=40px/>
             </label>
           </div>
-          <div *ngIf="duplicate" class="text-danger">
-            {{ duplicate.error.errors }}
-          </div>
-          <div *ngIf="submitted && email.invalid"
-               class="text-danger">
-            <div *ngIf="email.errors.required">Email address is required.</div>
-            <div *ngIf="email.errors.pattern">Please provide a valid email address.</div>
+          <div class="text-danger">
+            <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
+            <span *ngIf="submitted && email.invalid && email.errors.required">Email address is required.</span>
+            <span *ngIf="submitted && email.invalid && email.errors.pattern">Please provide a valid email address.</span>
           </div>
           <hr>
           <div class="form-submit">

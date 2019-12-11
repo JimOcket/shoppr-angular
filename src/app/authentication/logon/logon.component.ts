@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
-import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
-import {MenuBarComponent} from '../../menu-bar/menu-bar.component';
 import {ListenerService} from '../../listener.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-logon',
@@ -11,19 +10,43 @@ import {ListenerService} from '../../listener.service';
   styleUrls: ['./logon.component.scss']
 })
 export class LogonComponent implements OnInit {
-  personalEmail: string;
-  domainEmail: string;
+
+  loginForm: FormGroup;
+  private errorMessage: string;
+  private unrecognizedUser: string;
+  private submitted: boolean;
+
 
   constructor(private listener: ListenerService, private authService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('email@domain.com',
+        [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')])
+    });
   }
 
   connect() {
-    const email = this.personalEmail + '@' + this.domainEmail;
-    this.authService.login(email).subscribe(() => {
-      this.router.navigateByUrl('create-shoppinglist').then(r => r);
-    });
+    this.submitted = true;
+    if (!this.errorMessage) {
+      const email = this.loginForm.get('email').value;
+      this.authService.login(email).subscribe(
+        () => this.router.navigateByUrl('create-shoppinglist').then(r => r),
+        () => this.errorMessage = 'There is no user with this email address');
+    }
+  }
+
+  resetErrors() {
+    this.errorMessage = null;
+    this.submitted = false;
+  }
+
+  validateEmailFormat() {
+    if (this.loginForm.invalid) {
+      this.errorMessage = 'That is not a valid email format!';
+    } else {
+      this.errorMessage = null;
+    }
   }
 }

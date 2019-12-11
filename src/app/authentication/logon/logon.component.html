@@ -1,23 +1,19 @@
 <h3>Please login:</h3>
-<form (ngSubmit)="connect()">
-  <div class="form-body">
-    <div class="form-input">
-      <h4>Email : </h4>
+<div class="form-body">
+  <div class="form-input">
+    <h4>Email : </h4>
+    <div [formGroup]="loginForm">
       <label>
-        <input name="personalEmail" id="personalEmail"
-               [(ngModel)]="personalEmail"
-               placeholder="personal">
+        <input id="email" formControlName="email" (click)="resetErrors()" (input)="validateEmailFormat()" size=40px/>
       </label>
-      <label> <img class="arobase" src="../../../assets/arobase.png" alt="arobase">
-        <input name="domainEmail" id="domainEmail"
-               [(ngModel)]="domainEmail"
-               placeholder="domain">
-      </label>
-      <hr>
-      <div class="form-submit">
-        <button type="submit" name="connectButton" id="connectButton">connect</button>
-      </div>
+    </div>
+    <div class="text-danger">
+      <span *ngIf="submitted && errorMessage">{{errorMessage}}</span>
+    </div>
+    <hr>
+    <div class="form-submit">
+      <button type="submit" name="connectButton" id="connectButton" (click)="connect()">connect</button>
     </div>
   </div>
-</form>
+</div>
 
