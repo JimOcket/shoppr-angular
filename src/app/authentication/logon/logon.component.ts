@@ -44,7 +44,7 @@ export class LogonComponent implements OnInit {
 
   validateEmailFormat() {
     if (this.loginForm.invalid) {
-      this.errorMessage = 'That is not a valid email format!';
+      this.errorMessage = 'Please provide a valid email address.';
     } else {
       this.errorMessage = null;
     }
