@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import {ShoppingList} from './shared/shopping-list';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,22 @@ import {switchMap} from 'rxjs/operators';
 export class ListenerService {
 
   user = new Subject<string>();
-
+  displayAddProduct = new Subject<string>();
+  shoppingList = new Subject<ShoppingList>();
 
   constructor() {
   }
 
-  update(user: string) {
+  updateUser(user: string) {
     this.user.next(user);
+  }
+
+  updateAddProduct(display: string) {
+    this.displayAddProduct.next(display);
+  }
+
+  updateShoppingList(shoppingList: ShoppingList) {
+    this.shoppingList.next(shoppingList);
   }
 
 }

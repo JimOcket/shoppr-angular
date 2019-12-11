@@ -1,16 +1,8 @@
+import {Entry} from './entry';
+
 export class ShoppingList {
-
-
-  constructor(name: string, userId: number) {
-    this.name = name;
-    this.userId = userId;
-  }
-
-  name: string;
-  userId: number;
   id: number;
-
-  validate() {
-    return (this.name !== undefined && this.name !== ' ');
-  }
+  name: string;
+  entries: Entry[] = [];
+  userId: number;
 }

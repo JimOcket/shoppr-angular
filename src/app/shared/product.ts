@@ -1,4 +1,6 @@
 export class Product {
-  productName: string;
-  productQuantity: string;
+  name;
+  constructor(name: string) {
+    this.name = name;
+  }
 }
