@@ -31,7 +31,7 @@ export class AuthenticationService {
       .pipe(map(user => {
         if (user) {
           sessionStorage.setItem('currentUser', JSON.stringify(user));
-          this.listener.update(user.user.email);
+          this.listener.updateUser(user.user.email);
         }
         return user;
       }));

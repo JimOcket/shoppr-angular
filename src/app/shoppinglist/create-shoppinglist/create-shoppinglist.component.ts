@@ -9,9 +9,8 @@ import {CreateShoppingList} from '../../shared/CreateShoppingList';
   styleUrls: ['./create-shoppinglist.component.scss']
 })
 export class CreateShoppinglistComponent implements OnInit {
-
-  private shoppingList: CreateShoppingList = new CreateShoppingList(' ', 1);
   errorMessage: string;
+  shoppingListName: string;
 
   constructor(private shoppingListService: ShoppingListService, private router: Router) {
   }
@@ -25,15 +24,15 @@ export class CreateShoppinglistComponent implements OnInit {
 
 
   save() {
-    this.shoppingList.userId = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
-    if (this.isValid(this.shoppingList)) {
-      this.shoppingListService.createShoppingList(this.shoppingList).subscribe(shoppinglist => {
+    const userId = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
+    const shoppingList = new CreateShoppingList(this.shoppingListName, userId);
+    if (this.isValid(shoppingList)) {
+      this.shoppingListService.createShoppingList(shoppingList).subscribe(shoppinglist => {
         const createdShoppingList = shoppinglist;
         if (createdShoppingList.id > 0) {
           this.router.navigateByUrl('shopping-list-detail/' + createdShoppingList.id).then(() => {});
         } else {
-          this.shoppingList = new CreateShoppingList('', 1);
-          this.errorMessage = 'This name already exists.';
+          this.errorMessage = `Name : ${this.shoppingListName} already used.`;
         }
       });
     }
@@ -41,8 +40,8 @@ export class CreateShoppinglistComponent implements OnInit {
 
   private isValid(shoppingList: CreateShoppingList) {
     this.errorMessage = ' ';
-    if (!this.shoppingList.validate()) {
-      this.errorMessage = `'${shoppingList}'` + ' is not a valid name!';
+    if (!shoppingList.validate()) {
+      this.errorMessage = `${shoppingList.name} is not a valid name!`;
       return false;
     }
     return true;
