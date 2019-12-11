@@ -3,8 +3,8 @@ import {UserService} from '../../shared/user.service';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ListenerService} from "../../listener.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ListenerService} from '../../listener.service';
 
 @Component({
   selector: 'app-create-account',

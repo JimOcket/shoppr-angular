@@ -29,12 +29,12 @@ export class CreateShoppinglistComponent implements OnInit {
     this.shoppingList.userId = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
     if (this.isValid(this.shoppingList)) {
       this.shoppingListService.createShoppingList(this.shoppingList).subscribe(shoppinglist => {
-        this.shoppingList = shoppinglist;
-        if (this.shoppingList.id > 0) {
-          this.router.navigateByUrl('shopping-list-detail/' + this.shoppingList.id).then(r => {
+        const createdShoppingList = shoppinglist;
+        if (createdShoppingList.id > 0) {
+          this.router.navigateByUrl('shopping-list-detail/' + createdShoppingList.id).then(r => {
           });
         } else {
-          this.shoppingList = new ShoppingList('', 1);
+          this.shoppingList = new CreateShoppingList('', 1);
           this.errorMessage = 'This name already exists.';
         }
       });
@@ -44,7 +44,7 @@ export class CreateShoppinglistComponent implements OnInit {
   private isValid(shoppingList: CreateShoppingList) {
     this.errorMessage = ' ';
     if (!this.shoppingList.validate()) {
-      this.errorMessage = `'${this.shoppingList.name}'` + ' is not a valid name!';
+      this.errorMessage = `'${shoppingList}'` + ' is not a valid name!';
       return false;
     }
     return true;

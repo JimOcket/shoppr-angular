@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
 import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
-import {MenuBarComponent} from '../../menu-bar/menu-bar.component';
 import {ListenerService} from '../../listener.service';
 
 @Component({
