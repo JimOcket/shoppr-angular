@@ -12,7 +12,7 @@ import {CreateShoppingList} from './CreateShoppingList';
 })
 export class ShoppingListService {
 
-  shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppingLists`;
+  shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppinglists`;
 
   constructor(private http: HttpClient) {
   }
