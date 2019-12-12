@@ -5,6 +5,7 @@ import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/s
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {AppRedirect} from './shared/AppRedirect';
 import {ShoppingListOverviewComponent} from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
+import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.component";
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: `${AppRedirect.getDefaultPage()}`},
   {path: 'create-shoppinglist', component: CreateShoppinglistComponent},
   {path: 'shopping-list-detail/:id', component: ShoppingListDetailComponent},
+  {path: 'create-recipe', component: CreateRecipeComponent},
   {path: 'overview', component: ShoppingListOverviewComponent}
 ];
 

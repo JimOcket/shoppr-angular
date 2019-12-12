@@ -1,0 +1,29 @@
+<h3>New recipe</h3>
+<div class="form-container">
+  <form [formGroup]="recipeForm" class="recipe-form" (ngSubmit)="save()">
+    <h4>Recipe name</h4>
+    <input type="text" id="name" formControlName="name" (click)="resetErrors()"/>
+    <div class="text-danger">
+      <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
+      <span *ngIf="submitted && name.invalid && name.errors.required">Name is required.</span>
+    </div>
+    <h4>Servings</h4>
+    <input type="number" id="amountOfServings" formControlName="amountOfServings" (click)="resetErrors()">
+    <div class="text-danger">
+      <span *ngIf="submitted && amountOfServings.invalid && amountOfServings.errors.required">
+        Amount of servings is required.</span>
+      <span *ngIf="submitted && amountOfServings.invalid && amountOfServings.errors.min">
+        Amount of servings should not be less than 1.
+      </span>
+    </div>
+    <h4>Recipe instructions</h4>
+    <input type="textarea" id="description" formControlName="description" (click)="resetErrors()">
+    <div class="text-danger">
+      <span *ngIf="submitted && description.invalid && description.errors.required">Description is required.</span>
+    </div>
+    <hr/>
+    <div class="form-submit">
+      <button type="submit" id="createButton">create</button>
+    </div>
+  </form>
+</div>
