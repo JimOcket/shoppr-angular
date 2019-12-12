@@ -29,4 +29,9 @@ export class ShoppingListService {
     const headers = AuthenticationService.createHeaders();
     return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/add`, entry, headers);
   }
+
+  deleteProduct(entryId: number, shoppingListId: number) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/remove/${entryId}`, {}, headers);
+  }
 }

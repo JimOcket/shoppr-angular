@@ -43,4 +43,8 @@ export class ShoppingListDetailComponent implements OnInit {
     sessionStorage.setItem('listID', this.shoppingList.id + '');
   }
 
+  removeEntry(id: number) {
+    this.shoppingListService.deleteProduct(id, this.shoppingList.id)
+      .subscribe(shoppingList => this.listener.updateShoppingList(shoppingList));
+  }
 }
