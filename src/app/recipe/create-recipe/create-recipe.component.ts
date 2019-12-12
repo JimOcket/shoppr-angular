@@ -19,6 +19,10 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   ngOnInit() {
+    const currentUser: string = sessionStorage.getItem('currentUser');
+    if (currentUser === null) {
+      this.router.navigateByUrl('authentication').then(r => r);
+    }
     this.recipeForm = this.createRecipeForm();
   }
 
