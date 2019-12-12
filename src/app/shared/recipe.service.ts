@@ -23,4 +23,8 @@ export class RecipeService {
     return this.http.get<Recipe>(this.recipesUrl + `/${id}`, AuthenticationService.createHeaders());
   }
 
+  getAllRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.recipesUrl, AuthenticationService.createHeaders());
+  }
+
 }
