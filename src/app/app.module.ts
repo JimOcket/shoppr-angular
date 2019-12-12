@@ -9,7 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FooterBarComponent} from './footer-bar/footer-bar.component';
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationModule} from './authentication/authentication.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddProductComponent } from './shoppinglist/add-product/add-product.component';
 
 @NgModule({
@@ -27,7 +27,8 @@ import { AddProductComponent } from './shoppinglist/add-product/add-product.comp
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

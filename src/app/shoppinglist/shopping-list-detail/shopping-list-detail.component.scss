@@ -18,13 +18,6 @@
 
 }
 
-.product-list {
-  border: 1px solid black;
-  height: 2vw;
-  width: 50vw;
-}
-
-
 .create-button {
   margin-left: 2vw;
   height: 3vw;
@@ -43,7 +36,25 @@
 }
 [class="hrline"]{
   width: 100% !important;
-
+}
+fieldset{
+  border-color: transparent;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+th {
+  text-align: left;
+}
+table {
+  border-spacing: 5px;
+}
+[class*=desc]{
+  background-color: cyan;
 }
 
 
