@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ShoppingListOverviewComponent } from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
 import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.component";
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.compon
     FooterBarComponent,
     ShoppingListDetailComponent,
     AddProductComponent,
-    ShoppingListOverviewComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    RecipeDetailComponent,
+    ShoppingListOverviewComponent
   ],
   imports: [
     HttpClientModule,

@@ -53,7 +53,9 @@ export class CreateRecipeComponent implements OnInit {
     }
 
     this.recipeService.createRecipe(this.recipeForm.value).subscribe(
-      createdRecipe => { },
+      createdRecipe => {
+        this.router.navigateByUrl('recipe-detail/' + createdRecipe.id).then()
+      },
       error => this.duplicate = error
     )
   }
