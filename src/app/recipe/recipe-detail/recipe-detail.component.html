@@ -1,9 +1,11 @@
-<h1>{{ recipe.name }}</h1>
-<h3>Instructions</h3>
-<div class="recipe-description">
-  {{ recipe.description }}
-</div>
-<div class="recipe-servings">
-  <h3>Servings</h3>
-  {{ recipe.amountOfServings }}
+<div *ngIf="recipe">
+  <h1>{{ recipe.name }}</h1>
+  <h3>Instructions</h3>
+  <div class="recipe-description">
+    {{ recipe.description }}
+  </div>
+  <div class="recipe-servings">
+    <h3>Servings</h3>
+    {{ recipe.amountOfServings }}
+  </div>
 </div>
