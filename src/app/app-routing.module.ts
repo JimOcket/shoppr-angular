@@ -4,7 +4,7 @@ import {CreateShoppinglistComponent} from './shoppinglist/create-shoppinglist/cr
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {AppRedirect} from './shared/AppRedirect';
-import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.component";
+import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 
 
 const routes: Routes = [
