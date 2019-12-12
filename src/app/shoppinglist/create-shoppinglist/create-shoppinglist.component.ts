@@ -27,14 +27,9 @@ export class CreateShoppinglistComponent implements OnInit {
     const userId = JSON.parse(sessionStorage.getItem('currentUser')).user.id;
     const shoppingList = new CreateShoppingList(this.shoppingListName, userId);
     if (this.isValid(shoppingList)) {
-      this.shoppingListService.createShoppingList(shoppingList).subscribe(shoppinglist => {
-        const createdShoppingList = shoppinglist;
-        if (createdShoppingList.id > 0) {
-          this.router.navigateByUrl('shopping-list-detail/' + createdShoppingList.id).then(() => {});
-        } else {
-          this.errorMessage = `Name : ${this.shoppingListName} already used.`;
-        }
-      });
+      this.shoppingListService.createShoppingList(shoppingList).subscribe(
+        shoppinglist => this.router.navigateByUrl('shopping-list-detail/' + shoppinglist.id).then(() => {}),
+        () => this.errorMessage = `Name : ${this.shoppingListName} already used.`);
     }
   }
 
