@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RecipeService} from "../../shared/recipe.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Recipe} from "../../shared/recipe";
 
 @Component({
@@ -24,6 +24,7 @@ export class RecipeDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.recipeService.getRecipeById(id).subscribe(
       recipe => {
+        console.log(recipe);
         this.recipe = recipe;
       });
   }
