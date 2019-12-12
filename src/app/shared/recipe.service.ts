@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AppConnect} from "./AppConnect";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Recipe} from "./recipe";
 import {AuthenticationService} from "./authenticationService";

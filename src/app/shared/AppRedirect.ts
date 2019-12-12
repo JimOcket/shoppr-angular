@@ -4,7 +4,7 @@ export class AppRedirect {
     if (!sessionStorage.getItem('currentUser')) {
       return 'authentication';
     } else {
-      return 'overview';
+      return 'shoppinglist-overview';
     }
   }
 }
