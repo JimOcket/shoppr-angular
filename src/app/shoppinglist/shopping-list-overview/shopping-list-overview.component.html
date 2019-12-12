@@ -1,0 +1,19 @@
+<div *ngIf="shoppingLists">
+  <div class="overview-shoppinglist-container">
+    <div class="page-title logo">
+      Shopping lists of :<span style="color:#d22571;">{{getUser()}}</span>
+    </div>
+    <div class="overview-shoppinglist">
+      <table>
+        <tr>
+          <th class="desc">NAME</th>
+          <th class="desc"><button routerLink="/create-shoppinglist">add</button></th>
+        </tr>
+        <tr *ngFor="let shoppingList of shoppingLists">
+          <th>{{shoppingList.name}}</th>
+          <th><button routerLink="/shopping-list-detail/{{shoppingList.id}}">view</button></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

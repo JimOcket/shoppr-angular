@@ -10,6 +10,7 @@ import {FooterBarComponent} from './footer-bar/footer-bar.component';
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ShoppingListOverviewComponent } from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
 import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.component";
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
@@ -24,7 +25,8 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
     ShoppingListDetailComponent,
     AddProductComponent,
     CreateRecipeComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    ShoppingListOverviewComponent
   ],
   imports: [
     HttpClientModule,
@@ -37,5 +39,4 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
