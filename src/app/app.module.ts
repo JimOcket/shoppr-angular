@@ -10,6 +10,7 @@ import {FooterBarComponent} from './footer-bar/footer-bar.component';
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ShoppingListOverviewComponent } from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
 import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.component";
 
@@ -22,6 +23,7 @@ import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.compon
     FooterBarComponent,
     ShoppingListDetailComponent,
     AddProductComponent,
+    ShoppingListOverviewComponent,
     CreateRecipeComponent
   ],
   imports: [
@@ -35,5 +37,4 @@ import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.compon
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
