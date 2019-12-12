@@ -4,6 +4,7 @@ import {CreateShoppinglistComponent} from './shoppinglist/create-shoppinglist/cr
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {AppRedirect} from './shared/AppRedirect';
+import {ShoppingListOverviewComponent} from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: `${AppRedirect.getDefaultPage()}`},
   {path: 'create-shoppinglist', component: CreateShoppinglistComponent},
   {path: 'shopping-list-detail/:id', component: ShoppingListDetailComponent},
+  {path: 'overview', component: ShoppingListOverviewComponent}
 ];
 
 @NgModule({

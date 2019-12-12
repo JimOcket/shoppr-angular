@@ -1,0 +1,19 @@
+fieldset{
+  border-color: transparent;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+th {
+  text-align: left;
+}
+table {
+  border-spacing: 5px;
+}
+[class*=desc]{
+  background-color: cyan;
+}

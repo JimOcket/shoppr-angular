@@ -11,6 +11,7 @@ import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/s
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AddProductComponent } from './shoppinglist/add-product/add-product.component';
+import { ShoppingListOverviewComponent } from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddProductComponent } from './shoppinglist/add-product/add-product.comp
     MenuBarComponent,
     FooterBarComponent,
     ShoppingListDetailComponent,
-    AddProductComponent
+    AddProductComponent,
+    ShoppingListOverviewComponent
   ],
   imports: [
     HttpClientModule,

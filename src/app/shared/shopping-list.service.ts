@@ -34,4 +34,9 @@ export class ShoppingListService {
     const headers = AuthenticationService.createHeaders();
     return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/remove/${entryId}`, {}, headers);
   }
+
+  findAllOfUser(userId: string) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.get<ShoppingList[]>(`${AppConnect.getSiteUrl()}/users/${userId}/shoppinglists`, headers);
+  }
 }
