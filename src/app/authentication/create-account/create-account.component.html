@@ -1,29 +1,19 @@
-<div class="create-account-container">
-  <h3 class="create-account-title">New to Shoppr? Create an account:</h3>
-  <div class="create-account-input">
-    <form [formGroup]="accountForm" (ngSubmit)="save()">
-      <div class="form-body">
-        <div class="form-input">
-          <h4>Email : </h4>
-          <div class="input-container">
-            <label>
-              <input id="email" formControlName="email" (click)="resetErrors()" size=40px/>
-            </label>
-          </div>
-          <div *ngIf="duplicate" class="text-danger">
-            {{ duplicate.error.errors }}
-          </div>
-          <div *ngIf="submitted && email.invalid"
-               class="text-danger">
-            <div *ngIf="email.errors.required">Email address is required.</div>
-            <div *ngIf="email.errors.pattern">Please provide a valid email address.</div>
-          </div>
-          <hr>
-          <div class="form-submit">
-            <button type="submit" id="connectButton">create</button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+<h3>New to Shoppr? Create an account:</h3>
+<div class="form-container">
+  <form [formGroup]="accountForm" class="account-form" (ngSubmit)="save()">
+    <h4>Email : </h4>
+    <div >
+      <label>
+        <input id="email" formControlName="email" (click)="resetErrors()" size=40px placeholder="aaa@bbb.ccc"/>
+      </label>
+    </div>
+    <div class="text-danger">
+      <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
+      <span *ngIf="submitted && email.invalid && email.errors.required">Email address is required.</span>
+      <span *ngIf="submitted && email.invalid && email.errors.pattern">Please provide a valid email address.</span>
+    </div>
+    <div class="form-submit">
+      <button type="submit" id="createButton">create</button>
+    </div>
+  </form>
 </div>

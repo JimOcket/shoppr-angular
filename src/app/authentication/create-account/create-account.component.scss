@@ -1,18 +1,17 @@
-.form-submit {
-  float: right;
+
+
+.form-container{
   margin: auto;
-  right: 1px;
+
+  .form-submit {
+    float: right;
+    margin: auto;
+    margin-top: 1vw;
+  }
+  .text-danger {
+    color: red;
+    font-size: 1.0vw;
+    height: 1.0vw;
+  }
 }
 
-.form-body {
-  margin: auto;
-}
-
-.input-container {
-  width: 18vw;
-}
-
-.text-danger {
-  color: red;
-  font-size: 12px;
-}

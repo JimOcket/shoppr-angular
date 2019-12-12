@@ -26,7 +26,7 @@ export class CreateAccountComponent implements OnInit {
 
   createFormGroup(): FormGroup {
     return new FormGroup({
-      email: new FormControl('email@domain.com',
+      email: new FormControl('',
         [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')])
     });
   }
