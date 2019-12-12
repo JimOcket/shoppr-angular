@@ -41,7 +41,7 @@ export class CreateAccountComponent implements OnInit {
 
     this.userService.createAccount(this.accountForm.value).subscribe(
       createdAccount => this.authService.login(createdAccount.email).subscribe(
-        () => this.router.navigateByUrl('create-shoppinglist').then(r => r)
+        () => this.router.navigateByUrl('overview').then(r => r)
       ),
       error => this.duplicate = error);
   }
