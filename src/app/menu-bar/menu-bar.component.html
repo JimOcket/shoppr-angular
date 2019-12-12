@@ -1,17 +1,29 @@
 <div class="menu-container">
   <div>
-    <span class="logo">sh<span style="color:#d22571;">o</span>ppr
+    <span class="logo">sh<span style="color:var(--primary-accent-color);">o</span>ppr
     </span>
   </div>
 
   <div class="navigation-bar">
     <button class="navigation-button" routerLink="">home</button>
-    <button class="navigation-button" routerLink="overview">myShopprLists</button>
-    <button class="navigation-button" routerLink="create-recipe">Recipes</button>
+    <div class="dropdown">
+      <button class="navigation-button" routerLink="overview">Shoppinglists</button>
+      <div class="dropdown-content">
+        <a routerLink="overview">My shopping lists</a>
+        <a routerLink="create-shoppinglist">Create shoppinglist</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="navigation-button" routerLink="recipe-overview">Recipes</button>
+      <div class="dropdown-content">
+        <a routerLink="recipes-overview">Find recipes</a>
+        <a routerLink="create-recipe">Create recipe</a>
+      </div>
+    </div>
   </div>
   <div class="welcome-message">
     You are logged in as:
-    <span style="color:#d22571;">{{loginStatus}}</span>
+    <span style="color:var(--primary-color); font-weight: bold">{{loginStatus}}</span>
     <button class="logout-button" (click)="logout()">
       <span *ngIf="loginStatus != 'Guest'">Log out</span>
       <span *ngIf="loginStatus == 'Guest'">Log in</span>
