@@ -16,7 +16,7 @@
               <tr *ngFor="let entry of shoppingList.entries">
                 <th>{{entry.product.name}}</th>
                 <th>{{entry.quantity}}</th>
-                <th><button>remove</button></th>
+                <th><button (click)="removeEntry(entry.id)">remove</button></th>
               </tr>
             </table>
           </fieldset>
