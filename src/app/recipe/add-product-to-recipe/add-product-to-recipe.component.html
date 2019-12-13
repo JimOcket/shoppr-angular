@@ -1,4 +1,5 @@
 <fieldset name="addProduct">
+  <button (click)="close()">close</button>
   <h4> Add product</h4>
   <hr class="hrline">
   <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">

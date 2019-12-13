@@ -16,12 +16,13 @@ export class AddProductToRecipeComponent implements OnInit {
   constructor(private recipeService: RecipeService, private listener: ListenerService) {
   }
 
+  entries;
   submitted;
   addProductForm: FormGroup;
 
   private static createFormGroup() {
     return new FormGroup({
-      productName: new FormControl('', [Validators.required]),
+      productName: new FormControl('', []/*[Validators.required]*/),
       productQuantity: new FormControl('', [])
     });
   }
@@ -30,7 +31,15 @@ export class AddProductToRecipeComponent implements OnInit {
     this.addProductForm = AddProductToRecipeComponent.createFormGroup();
   }
 
+  private findEntries() {
+    this.listener.entries.subscribe(entries => this.entries = entries);
+    if (this.entries === undefined) {
+      this.entries = [];
+    }
+  }
+
   addProduct() {
+    this.findEntries();
     this.submitted = true;
     if (this.addProductForm.invalid) {
       return;
@@ -39,13 +48,11 @@ export class AddProductToRecipeComponent implements OnInit {
   }
 
   private sendEntry(entry: Entry) {
-    const recipeId: string = sessionStorage.getItem('recipeID');
-    this.recipeService.addProduct(entry, recipeId).subscribe(() => {
-      this.listener.updateAddProduct('none');
-      this.updateRecipe(recipeId);
-      this.addProductForm = AddProductToRecipeComponent.createFormGroup();
-      this.submitted = false;
-    });
+    const entries: Entry[] = this.entries;
+    entries.push(entry);
+    this.addProductForm = AddProductToRecipeComponent.createFormGroup();
+    this.submitted = false;
+    this.listener.updateEntries(entries);
   }
 
   private createEntry() {
@@ -57,18 +64,15 @@ export class AddProductToRecipeComponent implements OnInit {
     return entry;
   }
 
-  private updateRecipe(id: string) {
-    this.recipeService.getRecipeById(id).subscribe(recipe => {
-      this.listener.updateRecipe(recipe);
-    });
-    sessionStorage.removeItem('recipeID');
-  }
-
   resetErrors() {
     this.submitted = null;
   }
 
   get nameOfProduct() {
     return this.addProductForm.get('productName');
+  }
+
+  close() {
+    this.listener.updateAddProductRecipe('none');
   }
 }

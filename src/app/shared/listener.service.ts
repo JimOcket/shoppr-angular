@@ -1,7 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {ShoppingList} from './shopping-list';
-import {Recipe} from './recipe';
+import {Entry} from './entry';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ListenerService {
   displayAddProduct = new Subject<string>();
   displayAddProductRecipe = new Subject<string>();
   shoppingList = new Subject<ShoppingList>();
-  recipe = new Subject<Recipe>();
+  entries = new Subject<Entry[]>();
 
   constructor() {
   }
@@ -33,7 +33,7 @@ export class ListenerService {
     this.shoppingList.next(shoppingList);
   }
 
-  updateRecipe(recipe: Recipe) {
-    this.recipe.next(recipe);
+  updateEntries(entries: Entry[]) {
+    this.entries.next(entries);
   }
 }
