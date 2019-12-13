@@ -19,4 +19,8 @@ export class RecipeService {
     return this.http.post<Recipe>(this.recipesUrl, recipe, AuthenticationService.createHeaders());
   }
 
+  getRecipeById(id): Observable<Recipe> {
+    return this.http.get<Recipe>(this.recipesUrl + `/${id}`, AuthenticationService.createHeaders());
+  }
+
 }

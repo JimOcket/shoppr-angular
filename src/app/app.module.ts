@@ -14,6 +14,7 @@ import {ShoppingListOverviewComponent} from './shoppinglist/shopping-list-overvi
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 import {ClickOutsideModule} from 'ng-click-outside';
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import {ClickOutsideModule} from 'ng-click-outside';
     FooterBarComponent,
     ShoppingListDetailComponent,
     AddProductComponent,
-    ShoppingListOverviewComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    RecipeDetailComponent,
+    ShoppingListOverviewComponent
   ],
   imports: [
     HttpClientModule,
@@ -39,5 +41,4 @@ import {ClickOutsideModule} from 'ng-click-outside';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
