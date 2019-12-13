@@ -10,7 +10,7 @@
         <input class="input-field" name="shoppingListName" id="shoppingListName" size="50"
                [(ngModel)]="shoppingListName"
                placeholder="Super awesome shopping list name ..."
-        />
+               (click)="resetErrors()"/>
       </label>
       <button class="create-button" type="submit">CONFIRM</button>
     </form>

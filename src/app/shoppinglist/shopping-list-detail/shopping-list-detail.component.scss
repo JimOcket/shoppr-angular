@@ -1,5 +1,4 @@
 
-
 .shoppinglist-detail-container {
   color: var(--primary-font);
   font-size: 16px;
@@ -26,6 +25,7 @@
   button, button:hover {
     font-size: 1.25vw;
     font-weight: bold;
+    padding: 1vw;
   }
 }
 
@@ -41,8 +41,25 @@ button, button:focus {
   padding: 3px;
 }
 
-button:hover  {
+button:hover {
   background-color: var(--primary-color);
   color: white;
   border: none;
+}
+
+.back {
+  position: fixed;
+  bottom: 5vw;
+  margin-bottom: 2vw;
+  color: var(--primary-color);
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 1vw;
+
+}
+
+.back:hover {
+  border: 0.5px solid var(--primary-color);
+  box-shadow: 0 2px 4px 0 lightgrey;
+
 }

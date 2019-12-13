@@ -1,5 +1,6 @@
 
 .menu-bar-container {
+  margin: 0 1rem;
   position: sticky;
   top: 0;
   height: 4vw;
@@ -9,6 +10,7 @@
 }
 
 .content-container {
+  margin: 0 1rem;
   height: auto;
   margin-bottom: 50vw;
 }
@@ -17,7 +19,6 @@
   position: sticky;
   margin-top: 2vw;
   bottom: 0;
-  background: white;
-  border-top: 0.5px solid gray;
+  background: var(--primary-color);
   height: 5vw;
 }

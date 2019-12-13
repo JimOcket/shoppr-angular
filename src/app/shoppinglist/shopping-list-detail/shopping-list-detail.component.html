@@ -1,31 +1,32 @@
+<div *ngIf="shoppingList">
+  <div class="page-title">
+    Details for shopping list: <span style="color:var(--primary-color);">{{shoppingList.name}}</span>
+  </div>
+  <div class="shoppinglist-detail-container">
+    <div class="shoppinglist-detail">
+      <div class="row">
+        <div class="table-title"> Products in shopping list: {{shoppingList.entries.length}}</div>
+      </div>
+      <div class="table-legend row">
+        <div class="table-element">Name</div>
+        <div class="table-element">Qty</div>
+        <div class="table-element">Actions</div>
+      </div>
+      <div *ngFor="let entry of shoppingList.entries" class="table-row row">
+        <div class="product-name table-element">{{entry.product.name}}</div>
+        <div class="product-name table-element">{{entry.quantity}}</div>
+        <div class="table-button">
+          <button (click)="removeEntry(entry.id)">remove</button>
+        </div>
+      </div>
+      <div class="add-button-row row">
+        <button (click)="showAddProduct()">add products</button>
+      </div>
+      <div class="back"><span routerLink="" style="user-select: none">< Back to shopping lists</span></div>
 
-  <div *ngIf="shoppingList">
-    <div class="page-title">
-      Details for shopping list: <span style="color:var(--primary-color);">{{shoppingList.name}}</span>
     </div>
-          <div class="shoppinglist-detail-container">
-            <div class="shoppinglist-detail">
-              <div class="row">
-                <div class="table-title"> Products in shopping list: {{shoppingList.entries.length}}</div>
-              </div>
-              <div class="table-legend row">
-                <div class="table-element">Name</div>
-                <div class="table-element">Qty</div>
-                <div class="table-element">Actions</div>
-              </div>
-              <div *ngFor="let entry of shoppingList.entries" class="table-row row">
-                <div class="product-name table-element">{{entry.product.name}}</div>
-                <div class="product-name table-element">{{entry.quantity}}</div>
-                <div class="table-button">
-                  <button (click)="removeEntry(entry.id)">remove</button>
-                </div>
-              </div>
-              <div class="add-button-row row">
-                <button (click)="showAddProduct()">add product</button>
-              </div>
-            </div>
 
-          </div>
-          <app-add-product [ngStyle]="{'display':displayAddProduct}"></app-add-product>
+  </div>
+  <app-add-product [ngStyle]="{'display':displayAddProduct}"></app-add-product>
 </div>
 
