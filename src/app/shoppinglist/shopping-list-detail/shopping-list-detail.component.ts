@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ListenerService} from '../../shared/listener.service';
+import {AppRedirect} from '../../shared/AppRedirect';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -16,11 +17,16 @@ export class ShoppingListDetailComponent implements OnInit {
   private id: string;
 
   constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute,
-              private listener: ListenerService) {
+              private listener: ListenerService,
+              private router: Router) {
     this.id = route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+    console.log(sessionStorage.getItem('currentUser'));
+    if (!sessionStorage.getItem('currentUser')) {
+      this.router.navigateByUrl(AppRedirect.getDefaultPage());
+    }
     this.listener.shoppingList.subscribe(shoppingList => {
       this.shoppingList = shoppingList;
     });
@@ -39,7 +45,11 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   showAddProduct() {
-    this.listener.updateAddProduct('block');
+    if (this.displayAddProduct === 'none') {
+      this.listener.updateAddProduct('block');
+    } else {
+      this.listener.updateAddProduct('none');
+    }
     sessionStorage.setItem('listID', this.shoppingList.id + '');
   }
 

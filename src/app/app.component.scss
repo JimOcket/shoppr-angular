@@ -1,22 +1,28 @@
+
 .menu-bar-container {
+  margin: 0 1rem;
   position: sticky;
   top: 0;
+  left: 0;
   height: 4vw;
   background: white;
   padding-bottom: 1vw;
-  border-bottom: 5px ridge var(--primary-color);
 }
 
 .content-container {
+  margin: 0 1rem;
   height: auto;
-  margin-bottom: 50vw;
+  margin-bottom: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
 }
 
 .footer-bar-container {
   position: sticky;
   margin-top: 2vw;
   bottom: 0;
-  background: white;
-  border-top: 0.5px solid gray;
+  background: var(--primary-color);
+  min-height: 5vw;
   height: 5vw;
 }

@@ -1,24 +1,39 @@
-<fieldset name="addProduct">
-  <h4> Add product</h4>
-  <hr class="hrline">
-  <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
-    <div class="productInfo">
-      <h4>Product : </h4>
-      <h6> Field with * are required </h6>
-      <label>*Name :
-        <input name="productName" id="productName" formControlName="productName" (click)="resetErrors()"
-               placeholder="name"/>
-      </label>
-      <label> Quantity :
-        <input name="productQuantity" id="productQuantity" formControlName="productQuantity"
-               placeholder="quantity"/>
-      </label>
+<div style="position: fixed; bottom: 10vw; width: 100%;">
+  <div class="add-product-container" (clickOutside)="onClickedOutside($event)">
+    <div class="cancel">
+      <button (click)="close()">X</button>
     </div>
-    <div *ngIf="submitted && nameOfProduct.invalid"
-         class="text-danger">
-      <div *ngIf="nameOfProduct.errors.required">Product name is required.</div>
-    </div>
-    <hr class="hrline">
-    <button type="submit">add</button>
-  </form>
-</fieldset>
+    <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+      <div class=" property">
+        <div class="property-element">
+          *Name :
+        </div>
+        <div class="property-element">
+          <label>
+            <input class="input-field" name="productName" id="productName" formControlName="productName"
+                   (click)="resetErrors()"
+                   placeholder="name"/>
+          </label>
+        </div>
+      </div>
+      <div class="property">
+        <div class="property-element">
+          Quantity :
+        </div>
+        <div class="property-element">
+          <label>
+            <input class="input-field" name="productQuantity" id="productQuantity" formControlName="productQuantity"
+                   placeholder="quantity"/>
+          </label>
+        </div>
+      </div>
+      <div class="error-message" *ngIf="submitted==true && nameOfProduct.invalid && nameOfProduct.errors.required">
+        Fields with '*' are required
+      </div>
+      <div class="confirm">
+
+        <button type="submit">confirm</button>
+      </div>
+    </form>
+  </div>
+</div>

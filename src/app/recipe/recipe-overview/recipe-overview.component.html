@@ -1,15 +1,15 @@
-<h4>Recipes</h4>
+<div class="page-title">Recipes</div>
 <div *ngIf="recipes">
   <div class="recipe-overview-container">
-    <div class="recipe-overview">
-      <table>
-        <tr *ngFor="let recipe of recipes">
-          <th (click)="toRecipeDetail(recipe.id)">{{ recipe.name }}</th>
-        </tr>
-      </table>
+    <div *ngFor="let recipe of recipes">
+      <div class="recipe-item" (click)="toRecipeDetail(recipe.id)">
+        <div class="recipe-name">{{ recipe.name }}</div>
+        <div class="recipe-description">{{ recipe.description.substring(0, 140)}}...</div>
+        <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
+      </div>
     </div>
   </div>
 </div>
 <div class="form-submit">
-  <button type="submit" (click)="toCreateRecipe()">create</button>
+  <button class="create-button" routerLink="/create-recipe">+ Create your own recipe</button>
 </div>

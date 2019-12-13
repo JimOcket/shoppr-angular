@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
 import {ShoppingListService} from '../../shared/shopping-list.service';
@@ -12,6 +12,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
+  private displayAddProduct: string;
 
 
   constructor(private shoppingListService: ShoppingListService, private listener: ListenerService) {
@@ -29,6 +30,9 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
     this.addProductForm = AddProductComponent.createFormGroup();
+    this.listener.displayAddProduct.subscribe(display => {
+      setTimeout(() => this.displayAddProduct = display, 1);
+    });
   }
 
   addProduct() {
@@ -42,12 +46,11 @@ export class AddProductComponent implements OnInit {
   private sendEntry(entry: Entry) {
     const shoppingListId: string = sessionStorage.getItem('listID');
     this.shoppingListService.addProduct(entry, shoppingListId).subscribe(() => {
-      this.listener.updateAddProduct('none');
       this.updateShoppingList(shoppingListId);
-      this.addProductForm = AddProductComponent.createFormGroup();
-      this.submitted = false;
+      this.resetForm();
     });
   }
+
 
   private createEntry() {
     const entry: Entry = new Entry();
@@ -62,7 +65,11 @@ export class AddProductComponent implements OnInit {
     this.shoppingListService.getShoppingListByID(id).subscribe(shoppingList => {
       this.listener.updateShoppingList(shoppingList);
     });
-    sessionStorage.removeItem('listID');
+  }
+
+  private resetForm() {
+    this.addProductForm = AddProductComponent.createFormGroup();
+    this.resetErrors();
   }
 
   resetErrors() {
@@ -71,5 +78,18 @@ export class AddProductComponent implements OnInit {
 
   get nameOfProduct() {
     return this.addProductForm.get('productName');
+  }
+
+  close() {
+    this.addProductForm = AddProductComponent.createFormGroup();
+    this.resetErrors();
+    sessionStorage.removeItem('listID');
+    this.listener.updateAddProduct('none');
+  }
+
+  onClickedOutside(e: Event) {
+    if (this.displayAddProduct === 'block') {
+      this.close();
+    }
   }
 }

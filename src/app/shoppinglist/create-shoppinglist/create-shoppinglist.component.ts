@@ -28,7 +28,8 @@ export class CreateShoppinglistComponent implements OnInit {
     const shoppingList = new CreateShoppingList(this.shoppingListName, userId);
     if (this.isValid(shoppingList)) {
       this.shoppingListService.createShoppingList(shoppingList).subscribe(
-        shoppinglist => this.router.navigateByUrl('shopping-list-detail/' + shoppinglist.id).then(() => {}),
+        shoppinglist => this.router.navigateByUrl('shopping-list-detail/' + shoppinglist.id).then(() => {
+        }),
         () => this.errorMessage = `Name : ${this.shoppingListName} already used.`);
     }
   }
@@ -40,5 +41,9 @@ export class CreateShoppinglistComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  resetErrors() {
+    this.errorMessage = '';
   }
 }

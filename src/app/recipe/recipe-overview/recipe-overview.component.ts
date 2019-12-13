@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Recipe} from "../../shared/recipe";
-import {RecipeService} from "../../shared/recipe.service";
-import {Router} from "@angular/router";
+import {Recipe} from '../../shared/recipe';
+import {RecipeService} from '../../shared/recipe.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-recipe-overview',
@@ -30,7 +30,4 @@ export class RecipeOverviewComponent implements OnInit {
     this.router.navigateByUrl('recipe-detail/' + id).then();
   }
 
-  toCreateRecipe() {
-    this.router.navigateByUrl('create-recipe').then();
-  }
 }
