@@ -15,6 +15,7 @@ import {AddProductComponent} from './shoppinglist/add-product/add-product.compon
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overview.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
     AddProductComponent,
     CreateRecipeComponent,
     RecipeDetailComponent,
-    ShoppingListOverviewComponent
+    ShoppingListOverviewComponent,
+    RecipeOverviewComponent
   ],
   imports: [
     HttpClientModule,
