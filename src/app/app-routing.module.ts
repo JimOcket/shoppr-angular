@@ -6,6 +6,7 @@ import {AuthenticationComponent} from './authentication/authentication.component
 import {AppRedirect} from './shared/AppRedirect';
 import {ShoppingListOverviewComponent} from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
+import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.component';
 
 
 const routes: Routes = [
