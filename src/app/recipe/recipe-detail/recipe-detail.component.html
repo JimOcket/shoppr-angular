@@ -4,8 +4,22 @@
   <div class="recipe-description">
     {{ recipe.description }}
   </div>
+  <table *ngIf="recipe.entries">
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let entry of recipe.entries">
+      <th>{{entry.product.name}}</th>
+      <th>{{entry.quantity}}</th>
+      <th></th>
+    </tr>
+  </table>
   <div class="recipe-servings">
     <h3>Servings</h3>
     {{ recipe.amountOfServings }}
   </div>
+  <button (click)="showAddProduct()">add product</button>
+  <app-add-product [ngStyle]="{'display':displayAddProduct}"></app-add-product>
 </div>

@@ -12,8 +12,9 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ShoppingListOverviewComponent } from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
-import {CreateRecipeComponent} from "./recipe/create-recipe/create-recipe.component";
+import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-product-to-recipe.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
     AddProductComponent,
     CreateRecipeComponent,
     RecipeDetailComponent,
-    ShoppingListOverviewComponent
+    ShoppingListOverviewComponent,
+    AddProductToRecipeComponent
   ],
   imports: [
     HttpClientModule,

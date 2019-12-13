@@ -1,20 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {Entry} from '../../shared/entry';
-import {Product} from '../../shared/product';
-import {ShoppingListService} from '../../shared/shopping-list.service';
+import { Component, OnInit } from '@angular/core';
 import {ListenerService} from '../../shared/listener.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-
+import {Entry} from '../../shared/entry';
+import {Product} from '../../shared/product';
+import {RecipeService} from '../../shared/recipe.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: 'app-add-product-to-recipe',
+  templateUrl: './add-product-to-recipe.component.html',
+  styleUrls: ['./add-product-to-recipe.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class AddProductToRecipeComponent implements OnInit {
 
 
-  constructor(private shoppingListService: ShoppingListService, private listener: ListenerService) {
+  constructor(private recipeService: RecipeService, private listener: ListenerService) {
   }
 
   submitted;
@@ -28,7 +27,7 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.addProductForm = AddProductComponent.createFormGroup();
+    this.addProductForm = AddProductToRecipeComponent.createFormGroup();
   }
 
   addProduct() {
@@ -40,11 +39,11 @@ export class AddProductComponent implements OnInit {
   }
 
   private sendEntry(entry: Entry) {
-    const shoppingListId: string = sessionStorage.getItem('listID');
-    this.shoppingListService.addProduct(entry, shoppingListId).subscribe(() => {
+    const recipeId: string = sessionStorage.getItem('recipeID');
+    this.recipeService.addProduct(entry, recipeId).subscribe(() => {
       this.listener.updateAddProduct('none');
-      this.updateShoppingList(shoppingListId);
-      this.addProductForm = AddProductComponent.createFormGroup();
+      this.updateRecipe(recipeId);
+      this.addProductForm = AddProductToRecipeComponent.createFormGroup();
       this.submitted = false;
     });
   }
@@ -58,11 +57,11 @@ export class AddProductComponent implements OnInit {
     return entry;
   }
 
-  private updateShoppingList(id: string) {
-    this.shoppingListService.getShoppingListByID(id).subscribe(shoppingList => {
-      this.listener.updateShoppingList(shoppingList);
+  private updateRecipe(id: string) {
+    this.recipeService.getRecipeById(id).subscribe(recipe => {
+      this.listener.updateRecipe(recipe);
     });
-    sessionStorage.removeItem('listID');
+    sessionStorage.removeItem('recipeID');
   }
 
   resetErrors() {

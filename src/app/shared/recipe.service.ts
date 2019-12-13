@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {AppConnect} from "./AppConnect";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Recipe} from "./recipe";
-import {AuthenticationService} from "./authenticationService";
+import {AppConnect} from './AppConnect';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Recipe} from './recipe';
+import {AuthenticationService} from './authenticationService';
+import {Entry} from './entry';
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +24,8 @@ export class RecipeService {
     return this.http.get<Recipe>(this.recipesUrl + `/${id}`, AuthenticationService.createHeaders());
   }
 
+  addProduct(entry: Entry, recipeId: string) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<Recipe>(`${this.recipesUrl}/${recipeId}/add`, entry, headers);
+  }
 }

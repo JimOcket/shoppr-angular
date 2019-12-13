@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ListenerService} from '../listener.service';
+import {ListenerService} from '../shared/listener.service';
 import {AuthenticationService} from '../shared/authenticationService';
 
 @Component({

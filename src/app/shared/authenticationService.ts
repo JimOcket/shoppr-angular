@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AppConnect} from './AppConnect';
 import {ShopprAuthentication} from './ShopprAuthentication';
-import {ListenerService} from '../listener.service';
+import {ListenerService} from './listener.service';
 
 @Injectable({
   providedIn: 'root'
