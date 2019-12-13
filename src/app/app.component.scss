@@ -8,6 +8,7 @@
   background: white;
   padding-bottom: 1vw;
 }
+
 .content-container {
   margin: 0 1rem;
   height: auto;
@@ -16,10 +17,12 @@
   margin-right: auto;
   width: 90vw;
 }
+
 .footer-bar-container {
   position: sticky;
   margin-top: 2vw;
   bottom: 0;
   background: var(--primary-color);
+  min-height: 5vw;
   height: 5vw;
 }
