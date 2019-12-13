@@ -2,7 +2,7 @@ import {Component, OnChanges, OnInit} from '@angular/core';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
 import {ShoppingListService} from '../../shared/shopping-list.service';
-import {ListenerService} from '../../listener.service';
+import {ListenerService} from '../../shared/listener.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 

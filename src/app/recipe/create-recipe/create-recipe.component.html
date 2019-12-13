@@ -17,10 +17,32 @@
       </span>
     </div>
     <h4>Recipe instructions</h4>
-    <input type="textarea" id="description" formControlName="description" (click)="resetErrors()">
+    <label>
+      <textarea rows = "5" cols = "60" name = "description" id="description"
+                formControlName="description" (click)="resetErrors()">
+        </textarea>
+    </label>
     <div class="text-danger">
       <span *ngIf="submitted && description.invalid && description.errors.required">Description is required.</span>
     </div>
+
+    <h4>Products</h4>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let entry of entries">
+        <th>{{entry.product.name}}</th>
+        <th>{{entry.quantity}}</th>
+        <th></th>
+      </tr>
+    </table>
+
+    <button (click)="showAddProduct()">add product</button>
+    <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
+
     <hr/>
     <div class="form-submit">
       <button type="submit" id="createButton">create</button>

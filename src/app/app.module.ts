@@ -15,6 +15,7 @@ import {AddProductComponent} from './shoppinglist/add-product/add-product.compon
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-product-to-recipe.component';
 import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overview.component';
 
 @NgModule({
@@ -28,6 +29,8 @@ import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overvie
     AddProductComponent,
     CreateRecipeComponent,
     RecipeDetailComponent,
+    ShoppingListOverviewComponent,
+    AddProductToRecipeComponent,
     ShoppingListOverviewComponent,
     RecipeOverviewComponent
   ],
