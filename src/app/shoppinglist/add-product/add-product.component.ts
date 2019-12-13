@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
 import {ShoppingListService} from '../../shared/shopping-list.service';
-import {ListenerService} from '../../listener.service';
+import {ListenerService} from '../../shared/listener.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
@@ -16,6 +16,7 @@ export class AddProductComponent implements OnInit {
 
   constructor(private shoppingListService: ShoppingListService, private listener: ListenerService) {
   }
+
   submitted;
   addProductForm: FormGroup;
 
@@ -43,6 +44,8 @@ export class AddProductComponent implements OnInit {
     this.shoppingListService.addProduct(entry, shoppingListId).subscribe(() => {
       this.listener.updateAddProduct('none');
       this.updateShoppingList(shoppingListId);
+      this.addProductForm = AddProductComponent.createFormGroup();
+      this.submitted = false;
     });
   }
 
@@ -58,7 +61,7 @@ export class AddProductComponent implements OnInit {
   private updateShoppingList(id: string) {
     this.shoppingListService.getShoppingListByID(id).subscribe(shoppingList => {
       this.listener.updateShoppingList(shoppingList);
-      });
+    });
     sessionStorage.removeItem('listID');
   }
 

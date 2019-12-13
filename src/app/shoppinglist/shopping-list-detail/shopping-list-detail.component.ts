@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ActivatedRoute} from '@angular/router';
-import {ListenerService} from '../../listener.service';
+import {ListenerService} from '../../shared/listener.service';
 
 @Component({
   selector: 'app-shopping-list-detail',

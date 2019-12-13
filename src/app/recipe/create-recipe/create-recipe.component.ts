@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {RecipeService} from "../../shared/recipe.service";
-import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {RecipeService} from '../../shared/recipe.service';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Entry} from '../../shared/entry';
+import {ListenerService} from '../../shared/listener.service';
+import {Recipe} from '../../shared/recipe';
 
 @Component({
   selector: 'app-create-recipe',
@@ -13,17 +16,27 @@ export class CreateRecipeComponent implements OnInit {
   recipeForm: FormGroup;
   submitted;
   duplicate;
+  entries: Entry[];
+  displayAddProduct;
 
   constructor(private recipeService: RecipeService,
-              private router: Router) {
+              private router: Router, private listener: ListenerService) {
   }
 
   ngOnInit() {
+    this.isConnected();
+    this.recipeForm = this.createRecipeForm();
+    this.listener.displayAddProductRecipe.subscribe(display => this.displayAddProduct = display);
+    this.listener.updateAddProductRecipe('none');
+    this.listener.entries.subscribe(entries => this.entries = entries);
+    this.listener.updateEntries([]);
+  }
+
+  private isConnected() {
     const currentUser: string = sessionStorage.getItem('currentUser');
     if (currentUser === null) {
       this.router.navigateByUrl('authentication').then(r => r);
     }
-    this.recipeForm = this.createRecipeForm();
   }
 
   createRecipeForm(): FormGroup {
@@ -52,12 +65,12 @@ export class CreateRecipeComponent implements OnInit {
       return;
     }
 
-    this.recipeService.createRecipe(this.recipeForm.value).subscribe(
+    this.recipeService.createRecipe(this.createRecipe()).subscribe(
       createdRecipe => {
-        this.router.navigateByUrl('recipe-detail/' + createdRecipe.id).then()
+        this.router.navigateByUrl('recipe-detail/' + createdRecipe.id).then();
       },
       error => this.duplicate = error
-    )
+    );
   }
 
   resetErrors() {
@@ -65,4 +78,13 @@ export class CreateRecipeComponent implements OnInit {
     this.submitted = null;
   }
 
+  showAddProduct() {
+    this.listener.updateAddProductRecipe('block');
+  }
+
+  private createRecipe() {
+    const recipe: Recipe = this.recipeForm.value;
+    recipe.entries = this.entries;
+    return recipe;
+  }
 }
