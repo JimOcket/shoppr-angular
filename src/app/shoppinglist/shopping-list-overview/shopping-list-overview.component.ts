@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
+import {AppRedirect} from '../../shared/AppRedirect';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shopping-list-overview',
@@ -10,9 +12,13 @@ import {ShoppingListService} from '../../shared/shopping-list.service';
 export class ShoppingListOverviewComponent implements OnInit {
   shoppingLists: ShoppingList[];
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private shoppingListService: ShoppingListService, private router: Router) { }
 
   ngOnInit() {
+    console.log(sessionStorage.getItem('currentUser'));
+    if (!sessionStorage.getItem('currentUser')) {
+      this.router.navigateByUrl(AppRedirect.getDefaultPage());
+    }
     this.setShoppingLists();
   }
 

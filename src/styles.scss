@@ -1,4 +1,6 @@
-
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 p {
   line-height: 180%;
@@ -10,13 +12,18 @@ hr {
   width: 0;
 }
 
+.page-title {
+  max-height: 3vw;
+  font-size: 2vw;
+  font-weight: bold;
+  margin-bottom: 4.5vw;
+}
 
 button{
   height: 3vw;
   width: 10vw;
   background-color: white;
   border: 0.3px solid lightgrey;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.25vw;
 }
 
@@ -35,7 +42,6 @@ button:active, button:visited, button:focus, button:active:focus{
 .logo {
   font-size: 3vw;
   font-weight: bold;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {
@@ -46,7 +52,6 @@ body {
 .error-message {
   margin-left: 2vw;
   color: red;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 :root {
@@ -56,4 +61,62 @@ body {
   --backgroud-color: white;
   --primary-font: #140F2D;
   --table-backgrond: #004ba824;
+}
+
+.table-title {
+  width: 100%;
+  background: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5vw;
+  text-align: center;
+  padding: 1vw 0;
+}
+
+.table-legend {
+  font-size: 1.5vw;
+  font-weight: bold;
+  padding-left: 1.5vw;
+}
+
+.table-row {
+
+  margin-top: 0.5vw;
+
+  .table-name {
+    margin-right: 1vw;
+  }
+
+  .table-element {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-left: 1.5vw;
+  }
+
+  .table-element:hover {
+    background: var(--table-backgrond);
+    color: white;
+  }
+
+  .table-button {
+    display: flex;
+    justify-items: center;
+    max-width: 7vw;
+  }
+
+  button:hover, button:focus{
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+  }
+}
+
+.input-field {
+  height: 2vw;
+  width: 15vw;
+  padding-left: 1%;
+  font-size: 1.25vw;
+  display: inline;
 }
