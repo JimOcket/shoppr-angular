@@ -47,9 +47,10 @@ export class AddProductComponent implements OnInit {
     const shoppingListId: string = sessionStorage.getItem('listID');
     this.shoppingListService.addProduct(entry, shoppingListId).subscribe(() => {
       this.updateShoppingList(shoppingListId);
-      this.close();
+      this.resetForm();
     });
   }
+
 
   private createEntry() {
     const entry: Entry = new Entry();
@@ -64,7 +65,11 @@ export class AddProductComponent implements OnInit {
     this.shoppingListService.getShoppingListByID(id).subscribe(shoppingList => {
       this.listener.updateShoppingList(shoppingList);
     });
-    sessionStorage.removeItem('listID');
+  }
+
+  private resetForm() {
+    this.addProductForm = AddProductComponent.createFormGroup();
+    this.resetErrors();
   }
 
   resetErrors() {
@@ -78,6 +83,7 @@ export class AddProductComponent implements OnInit {
   close() {
     this.addProductForm = AddProductComponent.createFormGroup();
     this.resetErrors();
+    sessionStorage.removeItem('listID');
     this.listener.updateAddProduct('none');
   }
 
