@@ -20,7 +20,7 @@ hr {
   margin-bottom: 4.5vw;
 }
 
-button{
+button {
   height: 3vw;
   width: 10vw;
   background-color: white;
@@ -28,13 +28,13 @@ button{
   font-size: 1.25vw;
 }
 
-button:hover{
+button:hover {
   background-color: var(--primary-color);
   color: white;
   border: none;
 }
 
-button:active, button:visited, button:focus, button:active:focus{
+button:active, button:visited, button:focus, button:active:focus {
   background-color: var(--primary-color);
   color: white;
   border: none;
@@ -104,7 +104,7 @@ button:active, button:visited, button:focus, button:active:focus{
     max-width: 7vw;
   }
 
-  button:hover, button:focus{
+  button:hover, button:focus {
     background-color: var(--secondary-color);
     color: white;
     border: none;
@@ -120,5 +120,5 @@ button:active, button:visited, button:focus, button:active:focus{
 }
 
 .text-accent {
-  color:var(--primary-accent-color);
+  color: var(--primary-accent-color);
 }
