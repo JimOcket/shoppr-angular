@@ -15,6 +15,7 @@ import {AddProductComponent} from './shoppinglist/add-product/add-product.compon
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-product-to-recipe.component';
+import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-
     CreateRecipeComponent,
     RecipeDetailComponent,
     ShoppingListOverviewComponent,
-    AddProductToRecipeComponent
+    AddProductToRecipeComponent,
+    ShoppingListOverviewComponent,
+    RecipeOverviewComponent
   ],
   imports: [
     HttpClientModule,

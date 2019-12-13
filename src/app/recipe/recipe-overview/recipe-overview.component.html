@@ -1,0 +1,15 @@
+<h4>Recipes</h4>
+<div *ngIf="recipes">
+  <div class="recipe-overview-container">
+    <div class="recipe-overview">
+      <table>
+        <tr *ngFor="let recipe of recipes">
+          <th (click)="toRecipeDetail(recipe.id)">{{ recipe.name }}</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="form-submit">
+  <button type="submit" (click)="toCreateRecipe()">create</button>
+</div>

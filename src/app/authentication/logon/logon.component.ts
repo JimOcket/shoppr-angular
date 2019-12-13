@@ -33,7 +33,7 @@ export class LogonComponent implements OnInit {
     }
     const email = this.loginForm.get('email').value;
     this.authService.login(email).subscribe(
-      () => this.router.navigateByUrl('overview').then(r => r),
+      () => this.router.navigateByUrl('shoppinglist-overview').then(r => r),
       () => this.errorMessage = 'There is no user with this email address');
   }
 
