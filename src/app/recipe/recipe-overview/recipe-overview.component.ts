@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class RecipeOverviewComponent implements OnInit {
 
   recipes: Recipe[];
+  recipesForSearch: Recipe[];
 
   constructor(private recipeService: RecipeService,
               private router: Router) {
@@ -22,7 +23,10 @@ export class RecipeOverviewComponent implements OnInit {
 
   getRecipes() {
     this.recipeService.getAllRecipes().subscribe(
-      recipes => this.recipes = recipes
+      recipes => {
+        this.recipes = recipes;
+        this.recipesForSearch = recipes;
+      }
     );
   }
 
@@ -30,4 +34,11 @@ export class RecipeOverviewComponent implements OnInit {
     this.router.navigateByUrl('recipe-detail/' + id).then();
   }
 
+  search(term: string) {
+    if (term.length === 0) {
+      this.recipes = this.recipesForSearch;
+    } else {
+      this.recipes = this.recipeService.searchItems(this.recipesForSearch, term);
+    }
+  }
 }
