@@ -28,6 +28,7 @@ export class LogonComponent implements OnInit {
 
   connect() {
     this.submitted = true;
+    this.validateEmailFormat();
     if (this.loginForm.invalid) {
       return;
     }

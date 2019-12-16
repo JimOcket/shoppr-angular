@@ -36,6 +36,7 @@ export class RecipeOverviewComponent implements OnInit {
   }
 
   search(term: string) {
+    this.page = 1;
     if (term.length === 0) {
       this.recipes = this.recipesForSearch;
     } else {
