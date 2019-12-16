@@ -42,11 +42,12 @@
         </tr>
       </table>
 
-      <button (click)="showAddProduct()">add product</button>
-      <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
-    </div>
+      </div>
     <div class="form-submit">
       <button type="submit" id="createButton">create</button>
     </div>
   </form>
+  <button (click)="showAddProduct()">add product</button>
+  <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
+
 </div>
