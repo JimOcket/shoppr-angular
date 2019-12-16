@@ -14,10 +14,11 @@ import {ShoppingListOverviewComponent} from './shoppinglist/shopping-list-overvi
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
 import {ClickOutsideModule} from 'ng-click-outside';
-import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
-import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-product-to-recipe.component';
-import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overview.component';
+import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.component';
+import {AddProductToRecipeComponent} from './recipe/add-product-to-recipe/add-product-to-recipe.component';
+import {RecipeOverviewComponent} from './recipe/recipe-overview/recipe-overview.component';
 import {OrderByPipe} from './shared/orderBy.pipe';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -43,9 +44,11 @@ import {OrderByPipe} from './shared/orderBy.pipe';
     AuthenticationModule,
     FormsModule,
     ReactiveFormsModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,15 +1,16 @@
 <div class="page-title">Recipes</div>
-<div>Search Recipe : </div>
-<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<div>Search Recipe :</div>
+<input #searchBox id="search-box" (input)="search(searchBox.value)"/>
 <div *ngIf="recipes">
   <div class="recipe-overview-container">
-    <div *ngFor="let recipe of recipes | orderBy:'asc':'name'">
+    <div *ngFor="let recipe of (recipes | orderBy:'asc':'name' | paginate: { itemsPerPage: 9, currentPage: page })">
       <div class="recipe-item" (click)="toRecipeDetail(recipe.id)">
         <div class="recipe-name">{{ recipe.name }}</div>
         <div class="recipe-description">{{ recipe.description.substring(0, 140)}}...</div>
         <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
       </div>
     </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>
 <div class="form-submit">
