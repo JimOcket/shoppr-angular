@@ -1,4 +1,4 @@
-<div class="recipe-detail-container">
+<div *ngIf="recipe" class="recipe-detail-container">
   <div class="recipe-information section">
     <div class="recipe-name page-title">
       Recipe for
@@ -18,12 +18,13 @@
   <div class="separation"></div>
   <div class="recipe-products section">
     <div class="table-title">Products</div>
-    <div *ngIf="recipe.entries.length!=0" class="table-row row">
+    <div *ngIf="recipe!=undefined && recipe.entries!=undefined" class="table-row row">
       <div class="table-element table-legend">Product</div>
       <div class="table-element table-legend">Quantity</div>
     </div>
-    <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;" *ngIf="recipe.entries.length==0">
-No products are listed for this recipe.
+    <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;"
+         *ngIf="recipe.entries==null">
+      No products are listed for this recipe.
     </div>
     <div class="table-row row" *ngFor="let entry of recipe.entries">
       <div class="table-element">{{entry.product.name}}</div>
@@ -31,5 +32,5 @@ No products are listed for this recipe.
     </div>
   </div>
 </div>
-<div class="back"><span routerLink="/recipe-overview"  style="user-select: none">< Back to recipe overview</span></div>
+<div class="back"><span routerLink="/recipe-overview" style="user-select: none">< Back to recipe overview</span></div>
 

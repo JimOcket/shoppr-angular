@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="form-submit">
-  <button class="create-button" routerLink="/create-recipe">+ Create your own recipe</button>
+  <button class="create-button" (click)="toCreateRecipe()">+ Create your own recipe</button>
 </div>
 <div *ngIf=" recipes">
   <div class="recipe-overview-container">
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-</div>
-<div class="pagination-bar">
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <div class="pagination-bar">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
 </div>

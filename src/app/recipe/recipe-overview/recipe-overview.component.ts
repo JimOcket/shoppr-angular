@@ -42,4 +42,12 @@ export class RecipeOverviewComponent implements OnInit {
       this.recipes = this.recipeService.searchItems(this.recipesForSearch, term);
     }
   }
+
+  toCreateRecipe() {
+    if (JSON.parse(sessionStorage.getItem('currentUser')) === null) {
+      this.router.navigateByUrl('/authentication').then();
+    } else {
+      this.router.navigateByUrl('create-recipe').then();
+    }
+  }
 }
