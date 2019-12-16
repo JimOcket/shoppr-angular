@@ -23,7 +23,6 @@ export class ShoppingListDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(sessionStorage.getItem('currentUser'));
     if (!sessionStorage.getItem('currentUser')) {
       this.router.navigateByUrl(AppRedirect.getDefaultPage());
     }
