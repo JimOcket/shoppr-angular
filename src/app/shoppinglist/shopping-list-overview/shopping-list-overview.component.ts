@@ -25,7 +25,7 @@ export class ShoppingListOverviewComponent implements OnInit {
     if (sessionStorage.getItem('currentUser')) {
       const user = JSON.parse(sessionStorage.getItem('currentUser'));
       this.shoppingListService.findAllOfUser(user.user.id)
-        .subscribe(shoppingLists => this.shoppingLists = shoppingLists);
+        .subscribe(shoppingLists => this.shoppingLists = shoppingLists.sort());
     }
   }
 

@@ -4,6 +4,7 @@
       <div class="row">
         <div class="table-title">My shopping lists</div>
       </div>
+      <div *ngFor="let shoppingList of shoppingLists | orderBy:'asc':'name'" class="table-row row">
       <div class="table-element" style="font-style: italic; margin-left: 1.5vw;" *ngIf="shoppingLists.length==0">
         You don't have any shoppinglists yet! Click the '+' button to create one.
       </div>
