@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
 import {RecipeService} from '../../shared/recipe.service';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 @Component({
   selector: 'app-add-product-to-recipe',
@@ -11,6 +12,7 @@ import {RecipeService} from '../../shared/recipe.service';
   styleUrls: ['./add-product-to-recipe.component.scss']
 })
 export class AddProductToRecipeComponent implements OnInit {
+  private displayAddProductRecipe: string;
 
 
   constructor(private recipeService: RecipeService, private listener: ListenerService) {
@@ -29,6 +31,9 @@ export class AddProductToRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.addProductForm = AddProductToRecipeComponent.createFormGroup();
+    this.listener.displayAddProductRecipe.subscribe(display => {
+      setTimeout(() => this.displayAddProductRecipe = display, 1);
+    });
   }
 
   private findEntries() {
@@ -73,6 +78,13 @@ export class AddProductToRecipeComponent implements OnInit {
   }
 
   close() {
-    this.listener.updateAddProductRecipe('none');
+    this.addProductForm = AddProductToRecipeComponent.createFormGroup();
+    this.resetErrors();
+    this.listener.updateAddProductRecipe('none');  }
+
+  onClickedOutside(e: Event) {
+    if (this.displayAddProductRecipe === 'block') {
+      this.close();
+    }
   }
 }

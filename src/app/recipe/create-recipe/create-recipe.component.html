@@ -1,6 +1,6 @@
 <h3>New recipe</h3>
 <div class="form-container">
-  <form [formGroup]="recipeForm" class="recipe-form" (ngSubmit)="save()">
+  <form [formGroup]="recipeForm" class="recipe-form">
     <div class="recipe-information form-section">
       <h4>Recipe name</h4>
       <input type="text" id="name" formControlName="name" (click)="resetErrors()"/>
@@ -28,25 +28,22 @@
       </div>
     </div>
     <div class="recipe-products form-section">
-      <h4>Products</h4>
-      <table>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let entry of entries">
-          <th>{{entry.product.name}}</th>
-          <th>{{entry.quantity}}</th>
-          <th></th>
-        </tr>
-      </table>
-
+      <div class="table-title">Products</div>
+      <div class="table-row row">
+        <div class="table-element table-legend">Product</div>
+        <div class="table-element table-legend">Quantity</div>
+      </div>
+      <div class="table-row row" *ngFor="let entry of entries">
+        <div class="table-element table-element">{{entry.product.name}}</div>
+        <div class="table-element table-element">{{entry.quantity}}</div>
+      </div>
       <button (click)="showAddProduct()">add product</button>
-      <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
-    </div>
-    <div class="form-submit">
-      <button type="submit" id="createButton">create</button>
     </div>
   </form>
 </div>
+<div class="form-submit">
+  <button type="submit" id="createButton" (click)="save()">create</button>
+</div>
+<app-add-product-to-recipe class="add-products" [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
+
+
