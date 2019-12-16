@@ -1,0 +1,76 @@
+
+
+.recipe-detail-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .recipe-information {
+    width: 40%;
+
+  }
+  .section {
+  }
+
+  .input-title {
+    font-size: 1.5vw;
+    font-weight: bold;
+  }
+
+  .input-field {
+    margin-bottom: 4vw;
+  }
+}
+
+.text-danger {
+  color: red;
+  font-size: 1.0vw;
+  height: 1.0vw;
+}
+
+textarea {
+  width: 300px;
+  height: 150px;
+}
+
+.add-products {
+
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  height: 5vw;
+  align-items: center;
+}
+
+.recipe-products {
+  width: 50%;
+
+  margin-top: 7vw;
+  overflow: auto;
+  max-height: 75vh;
+}
+
+.separation {
+  max-width: 1px;
+  margin-top: 7vw;
+  border-left: 1px solid var(--primary-accent-color);
+}
+
+.back {
+  position: fixed;
+  bottom: 5vw;
+  margin-bottom: 2vw;
+  color: var(--primary-color);
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 1vw;
+
+}
+
+.back:hover {
+  border: 0.5px solid var(--primary-color);
+  box-shadow: 0 2px 4px 0 lightgrey;
+
+}

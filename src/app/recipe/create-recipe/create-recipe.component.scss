@@ -1,6 +1,11 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-information {
+  width: 50%;
 }
 
 .recipe-form {
@@ -9,16 +14,16 @@
   flex-wrap: wrap;
 
   .form-section {
-    width: 50%;
   }
 
   .input-title {
+    margin-top: 2vw;
     font-size: 1.5vw;
     font-weight: bold;
   }
 
   .input-field {
-    margin-bottom: 4vw;
+    width: 30vw;
   }
 }
 
@@ -29,13 +34,14 @@
 }
 
 textarea {
-  width: 300px;
-  height: 150px;
+  width: 30vw;
+  height: 5vw;
 }
 
 .add-products {
 
 }
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -44,6 +50,10 @@ textarea {
 }
 
 .recipe-products {
+  width: 50%;
+margin-left: auto;
   overflow: auto;
   max-height: 75vh;
 }
+
+

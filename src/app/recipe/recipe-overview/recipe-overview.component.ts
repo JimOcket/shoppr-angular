@@ -12,7 +12,7 @@ export class RecipeOverviewComponent implements OnInit {
 
   recipes: Recipe[];
   recipesForSearch: Recipe[];
-  page: number = 1;
+  page = 1;
 
   constructor(private recipeService: RecipeService,
               private router: Router) {

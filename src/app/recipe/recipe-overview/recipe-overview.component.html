@@ -7,6 +7,9 @@
            (focusout)="searchBox.placeholder='search for recipes..'"/>
   </div>
 </div>
+<div class="form-submit">
+  <button class="create-button" routerLink="/create-recipe">+ Create your own recipe</button>
+</div>
 <div *ngIf=" recipes">
   <div class="recipe-overview-container">
     <div *ngFor="let recipe of (recipes | orderBy:'asc':'name' | paginate: { itemsPerPage: 9, currentPage: page })">
@@ -16,9 +19,8 @@
         <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
       </div>
     </div>
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>
-<div class="form-submit">
-  <button class="create-button" routerLink="/create-recipe">+ Create your own recipe</button>
+<div class="pagination-bar">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
