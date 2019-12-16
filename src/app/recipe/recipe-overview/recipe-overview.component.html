@@ -1,7 +1,13 @@
-<div class="page-title">Recipes</div>
-<div>Search Recipe : </div>
-<input #searchBox id="search-box" (input)="search(searchBox.value)" />
-<div *ngIf="recipes">
+<div class="title-search-bar">
+  <div class="page-title">Browse recipes</div>
+  <div class="search-bar-container">
+    <input #searchBox id="search-box" class="input-field" (input)="search(searchBox.value)"
+           placeholder="search for recipes.."
+           (click)="searchBox.placeholder=''"
+           (focusout)="searchBox.placeholder='search for recipes..'"/>
+  </div>
+</div>
+<div *ngIf=" recipes">
   <div class="recipe-overview-container">
     <div *ngFor="let recipe of recipes">
       <div class="recipe-item" (click)="toRecipeDetail(recipe.id)">

@@ -9,6 +9,22 @@
   justify-content: space-between;
 }
 
+.title-search-bar {
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .search-bar-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .input-field {
+      padding: 3px;
+    }
+  }
+}
+
 
 .recipe-item {
   cursor: pointer;
