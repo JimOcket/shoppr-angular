@@ -1,32 +1,44 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {ShoppingList} from './shopping-list';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
-import {AddProductComponent} from '../add-product/add-product.component';
-import {Product} from './product';
+import {CreateShoppingList} from './CreateShoppingList';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingListService {
 
-  shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppingLists`;
+  shoppingListUrl = `${AppConnect.getSiteUrl()}/shoppinglists`;
+
   constructor(private http: HttpClient) {
   }
 
-  createShoppingList(shoppingList: ShoppingList): Observable<ShoppingList> {
+  createShoppingList(shoppingList: CreateShoppingList): Observable<ShoppingList> {
     return this.http.post<ShoppingList>(this.shoppingListUrl, shoppingList, AuthenticationService.createHeaders());
   }
 
-  getShoppingListByID(id: string) {
+  getShoppingListByID(id) {
     return this.http.get<ShoppingList>(this.shoppingListUrl + `/${id}`, AuthenticationService.createHeaders());
   }
 
-  addProduct(productToAdd: Product, shoppingList: ShoppingList) {
-    const entry: Entry = {product: productToAdd.productName, quantity: productToAdd.productQuantity};
-    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingList.id}/add`, entry, AuthenticationService.createHeaders());
+  addProduct(entry: Entry, shoppingListId: string) {
+    console.log(shoppingListId);
+    console.log(`${this.shoppingListUrl}/${shoppingListId}/add`);
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/add`, entry, headers);
+  }
+
+  deleteProduct(entryId: number, shoppingListId: number) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/remove/${entryId}`, {}, headers);
+  }
+
+  findAllOfUser(userId: string) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.get<ShoppingList[]>(`${AppConnect.getSiteUrl()}/users/${userId}/shoppinglists`, headers);
   }
 }

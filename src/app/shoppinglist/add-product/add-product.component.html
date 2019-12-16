@@ -1,0 +1,39 @@
+<div style="position: fixed; bottom: 10vw; width: 100%;">
+  <div class="add-product-container" (clickOutside)="onClickedOutside($event)">
+    <div class="cancel">
+      <button (click)="close()">X</button>
+    </div>
+    <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+      <div class=" property">
+        <div class="property-element">
+          *Name :
+        </div>
+        <div class="property-element">
+          <label>
+            <input class="input-field" name="productName" id="productName" formControlName="productName"
+                   (click)="resetErrors()"
+                   placeholder="name"/>
+          </label>
+        </div>
+      </div>
+      <div class="property">
+        <div class="property-element">
+          Quantity :
+        </div>
+        <div class="property-element">
+          <label>
+            <input class="input-field" name="productQuantity" id="productQuantity" formControlName="productQuantity"
+                   placeholder="quantity"/>
+          </label>
+        </div>
+      </div>
+      <div class="error-message" *ngIf="submitted==true && nameOfProduct.invalid && nameOfProduct.errors.required">
+        Fields with '*' are required
+      </div>
+      <div class="confirm">
+
+        <button type="submit">confirm</button>
+      </div>
+    </form>
+  </div>
+</div>

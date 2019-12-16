@@ -1,4 +1,7 @@
+import {Product} from './product';
+
 export class Entry {
-  product: string;
+  id: number;
+  product: Product;
   quantity: string;
 }

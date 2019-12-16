@@ -1,0 +1,88 @@
+
+
+.title-search-bar {
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .search-bar-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .input-field {
+      padding: 3px;
+    }
+  }
+}
+
+.recipe-overview-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 5vw;
+}
+
+.recipe-item {
+  cursor: pointer;
+  align-content: space-between;
+  text-align: justify;
+  text-justify: inter-word;
+  width: 22vw;
+  margin: 1.5vw 1.75vw;
+  padding: 2vw 2vw;
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+
+  .recipe-item:first-of-type {
+  }
+
+  .recipe-item:last-of-type {
+    justify-self: flex-start;
+    float: left;
+  }
+
+  .recipe-name {
+    font-weight: bold;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+  }
+
+  .recipe-description {
+    font-style: italic;
+    font-size: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .recipe-servings {
+    text-align: right;
+  }
+}
+
+.recipe-item:hover {
+  background-color: lightgrey;
+}
+
+.create-button {
+
+  margin-bottom: 2vw;
+  color: var(--primary-color);
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 1vw;
+  width: auto;
+}
+
+.create-button:hover {
+  border: 0.5px solid var(--primary-color);
+  box-shadow: 0 2px 4px 0 lightgrey;
+  background: white;
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: center;
+}

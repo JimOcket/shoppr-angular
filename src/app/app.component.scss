@@ -1,20 +1,30 @@
+
 .menu-bar-container {
+  margin: 0 1rem;
   position: sticky;
   top: 0;
+  left: 0;
   height: 4vw;
   background: white;
   padding-bottom: 1vw;
-  border-bottom: 5px ridge #d22571;
 }
 
 .content-container {
-  height: 58vw;
+  margin: 0 1rem;
+  height: auto;
+  margin-bottom: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+  min-height: 100vh;
 }
 
 .footer-bar-container {
   position: sticky;
+  margin-top: 2vw;
   bottom: 0;
-  background: white;
-  border-top: 0.5px solid gray;
-  height: 3vw;
+  background: var(--primary-color);
+  min-height: 5vw;
+  max-height: 5vw;
+  height: 5vw;
 }

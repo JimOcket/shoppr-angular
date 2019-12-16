@@ -4,20 +4,17 @@
   </div>
 
   <div class="create-shoppinglist-form-container">
-    <div class="input-field-container"> Please provide a name for your shoppinglist:
-
+    <form (ngSubmit)="save()">
+      <h4> Please provide a name for your shopping list: </h4>
       <label>
-        <input class="input-field" #nameInput placeholder="super awesome shopping list name..." size="50"
-               (focusin)="nameInput.placeholder=''"
-               (focusout)="nameInput.placeholder='super awesome shopping list name...'"
-               (input)="shoppingList.name=nameInput.value">
+        <input class="input-field" name="shoppingListName" id="shoppingListName" size="50"
+               [(ngModel)]="shoppingListName"
+               placeholder="Super awesome shopping list name ..."
+               (click)="resetErrors()"/>
       </label>
-
-    </div>
-
+      <button class="create-button" type="submit">CONFIRM</button>
+    </form>
   </div>
-  <button class="create-button" (click)="save()">CONFIRM</button>
-
   <div *ngIf="errorMessage" class="error-message">
     {{errorMessage}}
   </div>

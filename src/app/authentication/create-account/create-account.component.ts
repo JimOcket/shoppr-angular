@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../shared/user.service';
 import {AuthenticationService} from '../../shared/authenticationService';
 import {Router} from '@angular/router';
-import {ShopprAuthentication} from '../../shared/ShopprAuthentication';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ListenerService} from '../../listener.service';
 
 @Component({
   selector: 'app-create-account',
@@ -26,7 +24,7 @@ export class CreateAccountComponent implements OnInit {
 
   createFormGroup(): FormGroup {
     return new FormGroup({
-      email: new FormControl('email@domain.com',
+      email: new FormControl('',
         [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')])
     });
   }
@@ -43,7 +41,7 @@ export class CreateAccountComponent implements OnInit {
 
     this.userService.createAccount(this.accountForm.value).subscribe(
       createdAccount => this.authService.login(createdAccount.email).subscribe(
-        () => this.router.navigateByUrl('create-shoppinglist').then(r => r)
+        () => this.router.navigateByUrl('shoppinglist-overview').then(r => r)
       ),
       error => this.duplicate = error);
   }

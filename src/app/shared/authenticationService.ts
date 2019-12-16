@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AppConnect} from './AppConnect';
 import {ShopprAuthentication} from './ShopprAuthentication';
-import {ListenerService} from '../listener.service';
+import {ListenerService} from './listener.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +27,10 @@ export class AuthenticationService {
   login(email: string) {
     return this.http.post<ShopprAuthentication>(
       `${AppConnect.getSiteUrl()}/users/connect`, email, AuthenticationService.createHeaders(email)
-    )
-      .pipe(map(user => {
+    ).pipe(map(user => {
         if (user) {
           sessionStorage.setItem('currentUser', JSON.stringify(user));
-          this.listener.update(user.user.email);
+          this.listener.updateUser(user.user.email);
         }
         return user;
       }));

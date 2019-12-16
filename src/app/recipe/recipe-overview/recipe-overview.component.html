@@ -1,0 +1,26 @@
+<div class="title-search-bar">
+  <div class="page-title">Browse recipes</div>
+  <div class="search-bar-container">
+    <input #searchBox id="search-box" class="input-field" (input)="search(searchBox.value)"
+           placeholder="search for recipes.."
+           (click)="searchBox.placeholder=''"
+           (focusout)="searchBox.placeholder='search for recipes..'"/>
+  </div>
+</div>
+<div class="form-submit">
+  <button class="create-button" routerLink="/create-recipe">+ Create your own recipe</button>
+</div>
+<div *ngIf=" recipes">
+  <div class="recipe-overview-container">
+    <div *ngFor="let recipe of (recipes | orderBy:'asc':'name' | paginate: { itemsPerPage: 9, currentPage: page })">
+      <div class="recipe-item" (click)="toRecipeDetail(recipe.id)">
+        <div class="recipe-name">{{ recipe.name }}</div>
+        <div class="recipe-description">{{ recipe.description.substring(0, 140)}}...</div>
+        <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pagination-bar">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

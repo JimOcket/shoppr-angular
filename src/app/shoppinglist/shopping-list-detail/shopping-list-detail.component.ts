@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ShoppingList} from '../../shared/shopping-list';
 import {ShoppingListService} from '../../shared/shopping-list.service';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
-import {AddProductComponent} from '../../add-product/add-product.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ListenerService} from '../../shared/listener.service';
+import {AppRedirect} from '../../shared/AppRedirect';
 
 @Component({
   selector: 'app-shopping-list-detail',
@@ -12,27 +12,49 @@ import {AddProductComponent} from '../../add-product/add-product.component';
 })
 export class ShoppingListDetailComponent implements OnInit {
 
-  displayAddProduct = 'none';
-  addProductComponent: AddProductComponent;
-
-  private shoppingList: ShoppingList = new ShoppingList('  ', 1);
+  shoppingList: ShoppingList;
+  displayAddProduct;
   private id: string;
 
-  constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute, private location: Location) {
+  constructor(private shoppingListService: ShoppingListService, private route: ActivatedRoute,
+              private listener: ListenerService,
+              private router: Router) {
     this.id = route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
+    console.log(sessionStorage.getItem('currentUser'));
+    if (!sessionStorage.getItem('currentUser')) {
+      this.router.navigateByUrl(AppRedirect.getDefaultPage());
+    }
+    this.listener.shoppingList.subscribe(shoppingList => {
+      this.shoppingList = shoppingList;
+    });
+    this.setShoppingList();
+    this.listener.displayAddProduct.subscribe(display => {
+      this.displayAddProduct = display;
+    });
+    this.listener.updateAddProduct('none');
+  }
+
+  private setShoppingList() {
     this.shoppingListService.getShoppingListByID(this.id)
-      .subscribe(shoppingList => this.shoppingList = shoppingList);
+      .subscribe(shoppingList => {
+        this.listener.updateShoppingList(shoppingList);
+      });
   }
 
   showAddProduct() {
-    this.addProductComponent = new AddProductComponent();
+    if (this.displayAddProduct === 'none') {
+      this.listener.updateAddProduct('block');
+    } else {
+      this.listener.updateAddProduct('none');
+    }
+    sessionStorage.setItem('listID', this.shoppingList.id + '');
   }
 
-  addProduct() {
-    this.shoppingListService.addProduct(this.addProductComponent.product, this.shoppingList);
-    this.addProductComponent = undefined;
+  removeEntry(id: number) {
+    this.shoppingListService.deleteProduct(id, this.shoppingList.id)
+      .subscribe(shoppingList => this.listener.updateShoppingList(shoppingList));
   }
 }

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ListenerService} from '../listener.service';
-import {switchMap} from 'rxjs/operators';
+import {ListenerService} from '../shared/listener.service';
 import {AuthenticationService} from '../shared/authenticationService';
 
 @Component({
@@ -17,7 +16,6 @@ export class MenuBarComponent implements OnInit {
 
   private static getUser() {
     const currentUser: string = sessionStorage.getItem('currentUser');
-    console.log(currentUser);
     if (currentUser) {
       const email = JSON.parse(currentUser).user.email;
       if (email !== undefined && email !== null) {

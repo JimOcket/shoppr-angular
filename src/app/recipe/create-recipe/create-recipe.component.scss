@@ -1,0 +1,59 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-information {
+  width: 50%;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .form-section {
+  }
+
+  .input-title {
+    margin-top: 2vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+  }
+
+  .input-field {
+    width: 30vw;
+  }
+}
+
+.text-danger {
+  color: red;
+  font-size: 1.0vw;
+  height: 1.0vw;
+}
+
+textarea {
+  width: 30vw;
+  height: 5vw;
+}
+
+.add-products {
+
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  height: 5vw;
+  align-items: center;
+}
+
+.recipe-products {
+  width: 50%;
+margin-left: auto;
+  overflow: auto;
+  max-height: 75vh;
+}
+
+

@@ -1,12 +1,11 @@
-
-.shoppinglist-detail-container {
+.overview-shoppinglist-container {
   color: var(--primary-font);
   font-size: 16px;
 }
 
 
-.shoppinglist-detail {
-  margin-top: 4.5vw;
+.overview-shoppinglist {
+  margin-top: 7.5vw;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -18,48 +17,28 @@
     align-items: center;
   }
 
-
 }
 
 .add-button-row {
+  margin-top: 2vw;
   button, button:hover {
-    font-size: 1.25vw;
+    font-size: 2vw;
     font-weight: bold;
-    padding: 1vw;
   }
 }
 
-button, button:focus {
+button {
   color: var(--primary-color);
-  background: white;
   font-size: 1.25vw;
   width: auto;
   border: 0.25px solid var(--primary-color);
-  box-shadow: none;
   margin: auto;
   min-width: 5vw;
-  padding: 3px;
+  padding: 0;
 }
 
 button:hover {
   background-color: var(--primary-color);
   color: white;
   border: none;
-}
-
-.back {
-  position: fixed;
-  bottom: 5vw;
-  margin-bottom: 2vw;
-  color: var(--primary-color);
-  border: 0.5px solid lightgrey;
-  border-radius: 5px;
-  padding: 1vw;
-
-}
-
-.back:hover {
-  border: 0.5px solid var(--primary-color);
-  box-shadow: 0 2px 4px 0 lightgrey;
-
 }
