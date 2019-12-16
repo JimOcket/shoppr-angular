@@ -17,6 +17,7 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-product-to-recipe.component';
 import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overview.component';
+import {OrderByPipe} from './shared/orderBy.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overvie
     ShoppingListOverviewComponent,
     AddProductToRecipeComponent,
     ShoppingListOverviewComponent,
-    RecipeOverviewComponent
+    RecipeOverviewComponent,
+    OrderByPipe
   ],
   imports: [
     HttpClientModule,

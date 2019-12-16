@@ -4,7 +4,7 @@
       <div class="row">
         <div class="table-title">My shopping lists</div>
       </div>
-      <div *ngFor="let shoppingList of shoppingLists" class="table-row row">
+      <div *ngFor="let shoppingList of shoppingLists | orderBy:'asc':'name'" class="table-row row">
         <div class="shoppinglist-name table-element">{{shoppingList.name}}</div>
         <div class="table-button">
           <button routerLink="/shopping-list-detail/{{shoppingList.id}}">view</button>
