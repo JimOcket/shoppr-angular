@@ -26,6 +26,8 @@ export class ShoppingListService {
   }
 
   addProduct(entry: Entry, shoppingListId: string) {
+    console.log(shoppingListId);
+    console.log(`${this.shoppingListUrl}/${shoppingListId}/add`);
     const headers = AuthenticationService.createHeaders();
     return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/add`, entry, headers);
   }

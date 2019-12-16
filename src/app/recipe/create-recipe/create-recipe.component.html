@@ -1,15 +1,16 @@
-<h3>New recipe</h3>
+<div class="page-title">New recipe</div>
 <div class="form-container">
-  <form [formGroup]="recipeForm" class="recipe-form" (ngSubmit)="save()">
+  <form [formGroup]="recipeForm" class="recipe-form">
     <div class="recipe-information form-section">
-      <h4>Recipe name</h4>
-      <input type="text" id="name" formControlName="name" (click)="resetErrors()"/>
+      <div class="input-title">Recipe name</div>
+      <input class="input-field" type="text" id="name" formControlName="name" (click)="resetErrors()"/>
       <div class="text-danger">
         <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
         <span *ngIf="submitted && name.invalid && name.errors.required">Name is required.</span>
       </div>
-      <h4>Servings</h4>
-      <input type="number" id="amountOfServings" formControlName="amountOfServings" (click)="resetErrors()">
+      <div class="input-title">Servings</div>
+      <input class="input-field" type="number" id="amountOfServings" formControlName="amountOfServings"
+             (click)="resetErrors()">
       <div class="text-danger">
       <span *ngIf="submitted && amountOfServings.invalid && amountOfServings.errors.required">
         Amount of servings is required.</span>
@@ -17,9 +18,9 @@
         Amount of servings should not be less than 1.
       </span>
       </div>
-      <h4>Recipe instructions</h4>
+      <div class="input-title">Recipe instructions</div>
       <label>
-      <textarea rows="5" cols="60" name="description" id="description"
+      <textarea name="description" id="description"
                 formControlName="description" (click)="resetErrors()">
         </textarea>
       </label>
@@ -28,26 +29,25 @@
       </div>
     </div>
     <div class="recipe-products form-section">
-      <h4>Products</h4>
-      <table>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let entry of entries">
-          <th>{{entry.product.name}}</th>
-          <th>{{entry.quantity}}</th>
-          <th></th>
-        </tr>
-      </table>
-
+      <div class="table-title">Products</div>
+      <div *ngIf="entries.length!=0" class="table-row row">
+        <div class="table-element table-legend">Product</div>
+        <div class="table-element table-legend">Quantity</div>
       </div>
-    <div class="form-submit">
-      <button type="submit" id="createButton">create</button>
+      <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;" *ngIf="entries.length==0">No products
+        yet. Click the 'add products' button to start adding them to your recipe!
+      </div>
+      <div class="table-row row" *ngFor="let entry of entries">
+        <div class="table-element">{{entry.product.name}}</div>
+        <div class="table-element">{{entry.quantity}}</div>
+      </div>
+      <button style="margin-top: 2vw;" (click)="showAddProduct()">add product</button>
     </div>
   </form>
-  <button (click)="showAddProduct()">add product</button>
-  <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
-
 </div>
+<div style="margin-top: 3vw;" class="form-submit">
+  <button type="submit" id="createButton" (click)="save()">create</button>
+</div>
+<app-add-product-to-recipe class="add-products" [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
+
+
