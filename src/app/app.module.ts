@@ -10,9 +10,10 @@ import {FooterBarComponent} from './footer-bar/footer-bar.component';
 import {ShoppingListDetailComponent} from './shoppinglist/shopping-list-detail/shopping-list-detail.component';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ShoppingListOverviewComponent } from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
+import {ShoppingListOverviewComponent} from './shoppinglist/shopping-list-overview/shopping-list-overview.component';
 import {AddProductComponent} from './shoppinglist/add-product/add-product.component';
 import {CreateRecipeComponent} from './recipe/create-recipe/create-recipe.component';
+import {ClickOutsideModule} from 'ng-click-outside';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { AddProductToRecipeComponent } from './recipe/add-product-to-recipe/add-product-to-recipe.component';
 import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overview.component';
@@ -39,7 +40,8 @@ import { RecipeOverviewComponent } from './recipe/recipe-overview/recipe-overvie
     AppRoutingModule,
     AuthenticationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]

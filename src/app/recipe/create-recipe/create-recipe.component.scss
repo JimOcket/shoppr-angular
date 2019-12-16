@@ -1,3 +1,14 @@
+.recipe-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .form-section {
+    width: 50%;
+  }
+}
+
 .text-danger {
   color: red;
   font-size: 1.0vw;

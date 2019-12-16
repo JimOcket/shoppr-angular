@@ -1,49 +1,50 @@
 <h3>New recipe</h3>
 <div class="form-container">
   <form [formGroup]="recipeForm" class="recipe-form" (ngSubmit)="save()">
-    <h4>Recipe name</h4>
-    <input type="text" id="name" formControlName="name" (click)="resetErrors()"/>
-    <div class="text-danger">
-      <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
-      <span *ngIf="submitted && name.invalid && name.errors.required">Name is required.</span>
-    </div>
-    <h4>Servings</h4>
-    <input type="number" id="amountOfServings" formControlName="amountOfServings" (click)="resetErrors()">
-    <div class="text-danger">
+    <div class="recipe-information form-section">
+      <h4>Recipe name</h4>
+      <input type="text" id="name" formControlName="name" (click)="resetErrors()"/>
+      <div class="text-danger">
+        <span *ngIf="duplicate">{{ duplicate.error.errors }}</span>
+        <span *ngIf="submitted && name.invalid && name.errors.required">Name is required.</span>
+      </div>
+      <h4>Servings</h4>
+      <input type="number" id="amountOfServings" formControlName="amountOfServings" (click)="resetErrors()">
+      <div class="text-danger">
       <span *ngIf="submitted && amountOfServings.invalid && amountOfServings.errors.required">
         Amount of servings is required.</span>
-      <span *ngIf="submitted && amountOfServings.invalid && amountOfServings.errors.min">
+        <span *ngIf="submitted && amountOfServings.invalid && amountOfServings.errors.min">
         Amount of servings should not be less than 1.
       </span>
-    </div>
-    <h4>Recipe instructions</h4>
-    <label>
-      <textarea rows = "5" cols = "60" name = "description" id="description"
+      </div>
+      <h4>Recipe instructions</h4>
+      <label>
+      <textarea rows="5" cols="60" name="description" id="description"
                 formControlName="description" (click)="resetErrors()">
         </textarea>
-    </label>
-    <div class="text-danger">
-      <span *ngIf="submitted && description.invalid && description.errors.required">Description is required.</span>
+      </label>
+      <div class="text-danger">
+        <span *ngIf="submitted && description.invalid && description.errors.required">Description is required.</span>
+      </div>
     </div>
+    <div class="recipe-products form-section">
+      <h4>Products</h4>
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let entry of entries">
+          <th>{{entry.product.name}}</th>
+          <th>{{entry.quantity}}</th>
+          <th></th>
+        </tr>
+      </table>
 
-    <h4>Products</h4>
-    <table>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let entry of entries">
-        <th>{{entry.product.name}}</th>
-        <th>{{entry.quantity}}</th>
-        <th></th>
-      </tr>
-    </table>
-
-    <button (click)="showAddProduct()">add product</button>
-    <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
-
-    <hr/>
+      <button (click)="showAddProduct()">add product</button>
+      <app-add-product-to-recipe [ngStyle]="{'display':displayAddProduct}"></app-add-product-to-recipe>
+    </div>
     <div class="form-submit">
       <button type="submit" id="createButton">create</button>
     </div>

@@ -4,7 +4,7 @@
     <h4>Email : </h4>
     <div >
       <label>
-        <input id="email" formControlName="email" (click)="resetErrors()" size=40px placeholder="aaa@bbb.ccc"/>
+        <input class="input-field" id="email" formControlName="email" (click)="resetErrors()" size=40px placeholder="aaa@bbb.ccc"/>
       </label>
     </div>
     <div class="text-danger">
@@ -13,7 +13,7 @@
       <span *ngIf="submitted && email.invalid && email.errors.pattern">Please provide a valid email address.</span>
     </div>
     <div class="form-submit">
-      <button type="submit" id="createButton">create</button>
+      <button type="submit" id="createButton">create account</button>
     </div>
   </form>
 </div>
