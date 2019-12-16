@@ -1,7 +1,7 @@
 <div class="page-title">Recipes</div>
 <div *ngIf="recipes">
   <div class="recipe-overview-container">
-    <div *ngFor="let recipe of recipes">
+    <div *ngFor="let recipe of recipes | orderBy:'asc':'name'">
       <div class="recipe-item" (click)="toRecipeDetail(recipe.id)">
         <div class="recipe-name">{{ recipe.name }}</div>
         <div class="recipe-description">{{ recipe.description.substring(0, 140)}}...</div>
