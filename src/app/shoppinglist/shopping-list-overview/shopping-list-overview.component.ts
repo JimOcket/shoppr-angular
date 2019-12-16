@@ -15,7 +15,6 @@ export class ShoppingListOverviewComponent implements OnInit {
   constructor(private shoppingListService: ShoppingListService, private router: Router) { }
 
   ngOnInit() {
-    console.log(sessionStorage.getItem('currentUser'));
     if (!sessionStorage.getItem('currentUser')) {
       this.router.navigateByUrl(AppRedirect.getDefaultPage());
     }

@@ -1,4 +1,6 @@
 <div class="page-title">Recipes</div>
+<div>Search Recipe : </div>
+<input #searchBox id="search-box" (input)="search(searchBox.value)" />
 <div *ngIf="recipes">
   <div class="recipe-overview-container">
     <div *ngFor="let recipe of recipes">
