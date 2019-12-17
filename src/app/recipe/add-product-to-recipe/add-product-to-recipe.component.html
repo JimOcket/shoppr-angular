@@ -10,10 +10,17 @@
         </div>
         <div class="property-element">
           <label>
-            <input class="input-field" name="productName" id="productName" formControlName="productName"
+            <input #searchBox class="input-field" name="productName" id="productName" formControlName="productName"
                    (click)="resetErrors()"
+                   (keyup)="searchProduct(searchBox.value)"
                    placeholder="name"/>
           </label>
+          <div>
+            <div *ngFor="let product of FoundProducts | async"
+                 (click)="searchBox.value = product.name" class="search-result" >
+              {{product.name}}
+            </div>
+          </div>
         </div>
       </div>
       <div class="property">
