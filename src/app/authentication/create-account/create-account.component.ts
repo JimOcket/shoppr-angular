@@ -34,6 +34,10 @@ export class CreateAccountComponent implements OnInit {
     return this.accountForm.get('email');
   }
 
+  get password() {
+    return this.accountForm.get('password');
+  }
+
   save() {
     this.submitted = true;
     if (this.accountForm.invalid) {

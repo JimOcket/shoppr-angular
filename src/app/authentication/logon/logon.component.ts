@@ -20,9 +20,10 @@ export class LogonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm = new FormGroup({
+    return new FormGroup({
       email: new FormControl('',
-        [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')])
+        [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]),
+      password: new FormControl('', Validators.required)
     });
   }
 
@@ -35,7 +36,7 @@ export class LogonComponent implements OnInit {
     const email = this.loginForm.get('email').value;
     this.authService.login(email).subscribe(
       () => this.router.navigateByUrl('shoppinglist-overview').then(r => r),
-      () => this.errorMessage = 'There is no user with this email address');
+      () => this.errorMessage = 'There is no user with those credentials');
   }
 
   resetErrors() {
@@ -45,7 +46,7 @@ export class LogonComponent implements OnInit {
 
   validateEmailFormat() {
     if (this.loginForm.invalid) {
-      this.errorMessage = 'Please provide a valid email address.';
+      this.errorMessage = 'Please provide valid credentials';
     } else {
       this.errorMessage = null;
     }
