@@ -1,5 +1,4 @@
 
-
 .title-search-bar {
   margin-top: 2vw;
   display: flex;
@@ -31,6 +30,7 @@
   align-content: space-between;
   text-align: justify;
   text-justify: inter-word;
+  height: 35vh;
   width: 22vw;
   margin: 1.5vw 1.75vw;
   padding: 2vw 2vw;
@@ -51,14 +51,23 @@
     margin-bottom: 1vw;
   }
 
+  .recipe-image {
+    display: flex;
+    justify-content: center;
+    margin: 3vw 0;
+  }
+
   .recipe-description {
     font-style: italic;
     font-size: 1vw;
     margin-bottom: 1vw;
+    max-height: 4vw;
+    min-height: 4vw;
   }
 
   .recipe-servings {
     text-align: right;
+    font-size: 1vw;
   }
 }
 

@@ -12,7 +12,7 @@
 .content-container {
   margin: 0 1rem;
   height: auto;
-  margin-bottom: 30vw;
+  margin-bottom: 26vw;
   margin-left: auto;
   margin-right: auto;
   width: 90vw;
@@ -20,11 +20,9 @@
 }
 
 .footer-bar-container {
-  position: sticky;
-  margin-top: 2vw;
+  width: 100vw;
+  position: fixed;
   bottom: 0;
   background: var(--primary-color);
-  min-height: 5vw;
-  max-height: 5vw;
-  height: 5vw;
+  height: 3vw;
 }
