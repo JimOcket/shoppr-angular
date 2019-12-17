@@ -21,11 +21,11 @@ export class RecipeService {
   }
 
   getRecipeById(id): Observable<Recipe> {
-    return this.http.get<Recipe>(this.recipesUrl + `/${id}`, AuthenticationService.createHeaders());
+    return this.http.get<Recipe>(this.recipesUrl + `/${id}`);
   }
 
   getAllRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipesUrl, AuthenticationService.createHeaders());
+    return this.http.get<Recipe[]>(this.recipesUrl);
   }
 
   searchItems(recipes: Recipe[], term: string) {

@@ -3,10 +3,9 @@ import * as _ from 'lodash';
 
 @Pipe({name: 'orderBy'})
 export class OrderByPipe implements  PipeTransform {
-  transform(value: any[], order = '', column: string = ''): any[] {
-    if (!value || order === '' || !order) { return value; } // no array
-    if (!column || column === '') { return _.sortBy(value); } // sort 1d array
-    if (value.length <= 1) { return value; } // array with only one item
-    return _.orderBy(value, [column], [order]);
+  transform(value: any[], propertyName: string): any[] {
+    if(propertyName)
+      return value.sort((a: any, b: any) => a[propertyName].localeCompare(b[propertyName]));
+    return value;
   }
 }

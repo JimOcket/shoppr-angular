@@ -7,7 +7,7 @@
       <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;" *ngIf="shoppingLists.length==0">
         You don't have any shoppinglists yet. Click the '+' button to create one!
       </div>
-      <div *ngFor="let shoppingList of shoppingLists | orderBy:'asc':'name'" class="table-row row">
+      <div *ngFor="let shoppingList of shoppingLists | orderBy:'name'" class="table-row row">
 
 
 
