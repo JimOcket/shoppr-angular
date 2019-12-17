@@ -36,4 +36,9 @@ export class RecipeService {
     const headers = AuthenticationService.createHeaders();
     return this.http.delete<Recipe[]>(`${this.recipesUrl}/${id}/delete`, headers);
   }
+
+  removeProduct(recipeId: number, entryId: number) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<Recipe>(`${this.recipesUrl}/${recipeId}/remove/${entryId}`, {}, headers);
+  }
 }
