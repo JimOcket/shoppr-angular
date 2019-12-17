@@ -14,6 +14,7 @@
         <div class="shoppinglist-name table-element">{{shoppingList.name}}</div>
         <div class="table-button">
           <button routerLink="/shopping-list-detail/{{shoppingList.id}}">view</button>
+          <button (click)="delete(shoppingList.id)">remove</button>
         </div>
       </div>
       <div class="add-button-row row">
