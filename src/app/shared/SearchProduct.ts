@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Product} from './product';
 import {AppConnect} from './AppConnect';
 import {map} from 'rxjs/operators';
+import {AuthenticationService} from './authenticationService';
 
 @Injectable()
 export class SearchProduct {
@@ -12,7 +13,7 @@ export class SearchProduct {
 
   search(name): Observable<Product[]> {
     return this.http
-      .get(`${AppConnect.getSiteUrl()}/products?name=${name}`)
+      .get(`${AppConnect.getSiteUrl()}/products?name=${name}`, AuthenticationService.createHeaders())
       .pipe(map(response => response as Product[]));
   }
 }

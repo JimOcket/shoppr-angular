@@ -8,10 +8,6 @@ import {SearchProduct} from '../../shared/SearchProduct';
 import {Observable, Subject, of} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap, catchError} from 'rxjs/operators';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-
-
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
