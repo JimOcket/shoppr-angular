@@ -24,7 +24,7 @@ export class AddProductToRecipeComponent implements OnInit {
 
   private static createFormGroup() {
     return new FormGroup({
-      productName: new FormControl('', []/*[Validators.required]*/),
+      productName: new FormControl('', [Validators.required]),
       productQuantity: new FormControl('', [])
     });
   }

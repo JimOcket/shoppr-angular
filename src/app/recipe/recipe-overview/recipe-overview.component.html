@@ -10,7 +10,7 @@
 <div class="form-submit">
   <button class="create-button" (click)="toCreateRecipe()">+ Create your own recipe</button>
 </div>
-<div *ngIf=" recipes">
+<div *ngIf="recipes">
   <div class="recipe-overview-container">
     <div *ngFor="let recipe of (recipes | orderBy:'asc':'name' | paginate: { itemsPerPage: 9, currentPage: page })">
       <div class="recipe-item" (click)="toRecipeDetail(recipe.id)">
@@ -19,7 +19,7 @@
         <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
       </div>
       <div class="button">
-        <button (click)="delete(recipe.id)">remove</button>
+        <button (click)="delete(recipe.id)" *ngIf="canRemove(recipe)">remove</button>
       </div>
     </div>
   </div>
