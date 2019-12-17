@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Recipe} from './recipe';
 import {AuthenticationService} from './authenticationService';
-import {Entry} from './entry';
 
 @Injectable({
   providedIn: 'root'

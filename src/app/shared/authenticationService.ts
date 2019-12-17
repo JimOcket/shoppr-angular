@@ -24,6 +24,10 @@ export class AuthenticationService {
     return {headers};
   }
 
+  static getUserId() {
+    return JSON.parse(sessionStorage.getItem('currentUser')).user.id;
+  }
+
   login(email: string) {
     return this.http.post<ShopprAuthentication>(
       `${AppConnect.getSiteUrl()}/users/connect`, email, AuthenticationService.createHeaders(email)
