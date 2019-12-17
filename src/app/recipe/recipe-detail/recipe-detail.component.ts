@@ -28,4 +28,8 @@ export class RecipeDetailComponent implements OnInit {
         this.recipe = recipe;
       });
   }
+
+  removeEntry(recipeId: number, entryId: number) {
+    this.recipeService.removeProduct(recipeId, entryId).subscribe(recipe => this.recipe = recipe);
+  }
 }

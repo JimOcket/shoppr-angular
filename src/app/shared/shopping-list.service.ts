@@ -39,4 +39,9 @@ export class ShoppingListService {
     const headers = AuthenticationService.createHeaders();
     return this.http.get<ShoppingList[]>(`${AppConnect.getSiteUrl()}/users/${userId}/shoppinglists`, headers);
   }
+
+  deleteShoppingList(id: number): Observable<ShoppingList[]> {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.delete<ShoppingList[]>(`${this.shoppingListUrl}/${id}/delete`, headers);
+  }
 }
