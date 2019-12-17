@@ -58,6 +58,11 @@ textarea {
   border-left: 1px solid var(--primary-accent-color);
 }
 
+.bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 .back {
   position: fixed;
   bottom: 5vw;
