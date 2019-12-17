@@ -51,4 +51,11 @@ export class RecipeOverviewComponent implements OnInit {
       this.router.navigateByUrl('create-recipe').then();
     }
   }
+
+  delete(id: any) {
+    this.recipeService.deleteRecipe(id).subscribe(recipes => {
+      this.recipes = recipes;
+      this.recipesForSearch = recipes;
+    });
+  }
 }

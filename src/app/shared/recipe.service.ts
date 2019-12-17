@@ -31,4 +31,14 @@ export class RecipeService {
   searchItems(recipes: Recipe[], term: string) {
     return recipes.filter(item => item.name.toLowerCase().includes(term.toLowerCase()));
   }
+
+  deleteRecipe(id: number) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.delete<Recipe[]>(`${this.recipesUrl}/${id}/delete`, headers);
+  }
+
+  removeProduct(recipeId: number, entryId: number) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<Recipe>(`${this.recipesUrl}/${recipeId}/remove/${entryId}`, {}, headers);
+  }
 }

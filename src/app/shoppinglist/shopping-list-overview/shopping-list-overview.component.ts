@@ -35,7 +35,7 @@ export class ShoppingListOverviewComponent implements OnInit {
     }
   }
 
-  removeShoppingList(shoppingListId: number) {
-    // todo to be added later
+  delete(id: any) {
+    this.shoppingListService.deleteShoppingList(id).subscribe(shoppingLists => this.shoppingLists = shoppingLists);
   }
 }

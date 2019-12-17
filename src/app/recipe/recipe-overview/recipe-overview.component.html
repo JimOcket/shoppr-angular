@@ -18,6 +18,9 @@
         <div class="recipe-description">{{ recipe.description.substring(0, 140)}}...</div>
         <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
       </div>
+      <div class="button">
+        <button (click)="delete(recipe.id)">remove</button>
+      </div>
     </div>
   </div>
   <div class="pagination-bar">
