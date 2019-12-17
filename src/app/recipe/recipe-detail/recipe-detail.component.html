@@ -1,37 +1,48 @@
-<div *ngIf="recipe" class="recipe-detail-container">
-  <div class="recipe-information section">
-    <div class="recipe-name page-title">
-      Recipe for
-      <span style="color: var(--primary-color)">
+<div [ngClass]="{fade: displayShoppingLists}">
+  <div *ngIf="recipe" class="recipe-detail-container">
+    <div class="recipe-information section">
+      <div class="recipe-name page-title">
+        Recipe for
+        <span style="color: var(--primary-color)">
       {{ recipe.name }}
     </span>
+      </div>
+      <h2>Instructions</h2>
+      <div class="recipe-description">
+        {{ recipe.description }}
+      </div>
+      <div class="recipe-servings">
+        <h2>Servings</h2>
+        {{ recipe.amountOfServings }}
+      </div>
     </div>
-    <h2>Instructions</h2>
-    <div class="recipe-description">
-      {{ recipe.description }}
+    <div class="separation"></div>
+    <div class="recipe-products section">
+      <div class="table-title">Products</div>
+      <div *ngIf="recipe!=undefined && recipe.entries!=undefined" class="table-row row">
+        <div class="table-element table-legend">Product</div>
+        <div class="table-element table-legend">Quantity</div>
+      </div>
+      <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;"
+           *ngIf="recipe.entries==null">
+        No products are listed for this recipe.
+      </div>
+      <div class="table-row row" *ngFor="let entry of recipe.entries">
+        <div class="table-element">{{entry.product.name}}</div>
+        <div class="table-element">{{entry.quantity}}</div>
+        <div class="table-element">
+          <button (click)="removeEntry(recipe.id, entry.id)">remove</button>
+        </div>
+      </div>
     </div>
-    <div class="recipe-servings">
-      <h2>Servings</h2>
-      {{ recipe.amountOfServings }}
-    </div>
-  </div>
-  <div class="separation"></div>
-  <div class="recipe-products section">
-    <div class="table-title">Products</div>
-    <div *ngIf="recipe!=undefined && recipe.entries!=undefined" class="table-row row">
-      <div class="table-element table-legend">Product</div>
-      <div class="table-element table-legend">Quantity</div>
-    </div>
-    <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;"
-         *ngIf="recipe.entries==null">
-      No products are listed for this recipe.
-    </div>
-    <div class="table-row row" *ngFor="let entry of recipe.entries">
-      <div class="table-element">{{entry.product.name}}</div>
-      <div class="table-element">{{entry.quantity}}</div>
-      <div class="table-element"><button (click)="removeEntry(recipe.id, entry.id)">remove</button></div>
+    <div class="bottom-buttons">
+      <div class="back"><span routerLink="/recipe-overview" style="user-select: none">< Back to recipe overview</span>
+      </div>
+      <div class="back"><span style="user-select: none"
+                              (click)="toggleShoppingListSelection()">+ Add to shoppinglist</span></div>
     </div>
   </div>
 </div>
-<div class="back"><span routerLink="/recipe-overview" style="user-select: none">< Back to recipe overview</span></div>
-
+<div class="shoppinglist-selection" >
+  <app-select-shoppinglist></app-select-shoppinglist>
+</div>
