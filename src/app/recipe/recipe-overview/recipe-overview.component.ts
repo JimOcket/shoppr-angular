@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../../shared/recipe';
 import {RecipeService} from '../../shared/recipe.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../shared/authenticationService';
 
 @Component({
   selector: 'app-recipe-overview',
@@ -57,5 +58,9 @@ export class RecipeOverviewComponent implements OnInit {
       this.recipes = recipes;
       this.recipesForSearch = recipes;
     });
+  }
+
+  canRemove(recipe: Recipe) {
+    return recipe.ownerId === AuthenticationService.getUserId();
   }
 }
