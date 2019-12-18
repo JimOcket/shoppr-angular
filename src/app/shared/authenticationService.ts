@@ -16,7 +16,7 @@ export class AuthenticationService {
   static createHeaders(email?: string, password?: string) {
     const emailCredential = this.getEmail(email);
     const passwordCredential = this.getPassword(password);
-    const headers = new HttpHeaders('Authorization:basic ' + btoa(emailCredential + ':'));
+    const headers = new HttpHeaders('Authorization:basic ' + btoa(emailCredential + ':' + passwordCredential));
     return {headers};
   }
 
