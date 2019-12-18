@@ -26,6 +26,7 @@ export class AddProductComponent implements OnInit {
   addProductForm: FormGroup;
   FoundProducts: Observable<Product[]>;
   private searchTerms = new Subject<string>();
+  showFoundProducts = false;
 
   private static createFormGroup() {
     return new FormGroup({
@@ -87,6 +88,10 @@ export class AddProductComponent implements OnInit {
     return this.addProductForm.get('productName');
   }
 
+  closeFoundList() {
+    setTimeout(() => this.showFoundProducts = false, 1);
+  }
+
   close() {
     this.addProductForm = AddProductComponent.createFormGroup();
     this.resetErrors();
@@ -101,6 +106,7 @@ export class AddProductComponent implements OnInit {
   }
 
   searchProduct(value: string) {
+    this.showFoundProducts = true;
     this.searchTerms.next(value);
   }
 
@@ -114,5 +120,9 @@ export class AddProductComponent implements OnInit {
         // todo show error to user
         return of<Product[]>([]);
       }));
+  }
+
+  setFieldValue(name) {
+    this.addProductForm.controls.productName.setValue(name);
   }
 }
