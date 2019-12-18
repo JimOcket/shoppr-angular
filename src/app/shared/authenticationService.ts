@@ -13,15 +13,31 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private listener: ListenerService) {
   }
 
-  static createHeaders(email?: string) {
+  static createHeaders(email?: string, password?: string) {
+    const emailCredential = this.getEmail(email);
+    const passwordCredential = this.getPassword(password);
+    const headers = new HttpHeaders('Authorization:basic ' + btoa(emailCredential + ':'));
+    return {headers};
+  }
+
+  private static getEmail(email?: string) {
     let emailCredential: string;
     if (email) {
       emailCredential = email;
     } else {
       emailCredential = JSON.parse(sessionStorage.getItem('currentUser')).user.email;
     }
-    const headers = new HttpHeaders('Authorization:basic ' + btoa(emailCredential + ':'));
-    return {headers};
+    return emailCredential;
+  }
+
+  private static getPassword(password?: string) {
+    let passwordCredential: string;
+    if (password) {
+      passwordCredential = password;
+    } else {
+      passwordCredential = JSON.parse(sessionStorage.getItem('currentUser')).user.password;
+    }
+    return passwordCredential;
   }
 
   static getUserId() {
@@ -43,4 +59,5 @@ export class AuthenticationService {
   logout() {
     sessionStorage.removeItem('currentUser');
   }
+
 }
