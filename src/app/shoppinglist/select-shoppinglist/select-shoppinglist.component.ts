@@ -44,11 +44,11 @@ export class SelectShoppinglistComponent implements OnInit {
   private addToShoppingList(shoppingListId) {
     this.shoppingListService.addRecipeToShoppingList(this.recipe, shoppingListId).subscribe(
       () => {
-        this.successMessage = 'Recipe successfully to shoppinglist!';
+        this.successMessage = `Recipe for ${this.recipe.name} was added successfully to your shoppinglist!`;
         setTimeout(() => {
           this.listener.updateSelectShoppingList(false);
           this.successMessage = null;
-        }, 1000);
+        }, 1250);
       });
   }
 

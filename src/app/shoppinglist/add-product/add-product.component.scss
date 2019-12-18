@@ -1,5 +1,6 @@
 .add-product-container {
   width: 50vw;
+  max-height: 20vw;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.5vw;
@@ -9,9 +10,6 @@
   padding: 1vw;
   background: var(--primary-color);
   border-radius: 25px;
-
-
-
 
   .property {
     font-weight: bold;
@@ -28,7 +26,6 @@
 
 
   }
-
 
   .confirm {
     display: flex;
@@ -83,5 +80,13 @@
 #search-box{
   width: 200px;
   height: 20px;
+}
+
+.found-products {
+  position: fixed;
+  left: 60%;
+  top: 57%;
+  width: 10vw;
+  transform: translateX(-50%);
 }
 

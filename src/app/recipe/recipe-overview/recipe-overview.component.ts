@@ -13,6 +13,7 @@ export class RecipeOverviewComponent implements OnInit {
 
   recipes: Recipe[];
   recipesForSearch: Recipe[];
+  userId = AuthenticationService.getUserId();
   page = 1;
 
   constructor(private recipeService: RecipeService,
@@ -28,6 +29,7 @@ export class RecipeOverviewComponent implements OnInit {
       recipes => {
         this.recipes = recipes;
         this.recipesForSearch = recipes;
+        console.log(recipes);
       }
     );
   }
@@ -61,6 +63,9 @@ export class RecipeOverviewComponent implements OnInit {
   }
 
   canRemove(recipe: Recipe) {
+    if (!sessionStorage.getItem('currentUser')) {
+      return false;
+    }
     return recipe.ownerId === AuthenticationService.getUserId();
   }
 }

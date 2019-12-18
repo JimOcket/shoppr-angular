@@ -69,3 +69,13 @@
   min-height: 0.5vw;
   background: linear-gradient(to right, white, var(--primary-color), white);
 }
+
+button {
+  border: none;
+}
+
+.logout-button {
+  background-color: yellowgreen;
+  border-radius: 7px;
+  color: white;
+}

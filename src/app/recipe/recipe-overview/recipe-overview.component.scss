@@ -1,5 +1,4 @@
 
-
 .title-search-bar {
   margin-top: 2vw;
   display: flex;
@@ -11,7 +10,7 @@
     justify-content: flex-end;
 
     .input-field {
-      padding: 3px;
+      padding: 3px 7px;
     }
   }
 }
@@ -32,7 +31,7 @@
   text-align: justify;
   text-justify: inter-word;
   width: 22vw;
-  margin: 1.5vw 1.75vw;
+  margin: 1.25vw 1.75vw;
   padding: 2vw 2vw;
   border: 0.5px solid lightgrey;
   border-radius: 5px;
@@ -45,25 +44,50 @@
     float: left;
   }
 
+  .item-top-bar {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+  }
+
   .recipe-name {
     font-weight: bold;
     font-size: 1.5vw;
-    margin-bottom: 1vw;
+    padding: 0.25vw;
+  }
+
+  .recipe-image {
+    display: flex;
+    justify-content: center;
+    width: 22vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5vw 0;
+    margin-top: 2vw;
+
+
+    .image {
+      object-fit: contain;
+    }
   }
 
   .recipe-description {
     font-style: italic;
     font-size: 1vw;
-    margin-bottom: 1vw;
+    padding-bottom: 2.25vw;
+    max-height: 4vw;
+    min-height: 4vw;
   }
 
   .recipe-servings {
     text-align: right;
+    font-size: 1vw;
+    font-weight: bold;
   }
 }
 
 .recipe-item:hover {
-  background-color: lightgrey;
+  border: 0.5px solid var(--primary-color);
 }
 
 .create-button {
@@ -86,3 +110,15 @@
   display: flex;
   justify-content: center;
 }
+
+.delete-button {
+  display: inline;
+  color: red;
+  font-weight: bolder;
+  max-width: 2.8vw;
+}
+
+.delete-button:hover {
+  max-width: 3.1vw;
+}
+
