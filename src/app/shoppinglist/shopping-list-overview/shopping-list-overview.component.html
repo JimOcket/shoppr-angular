@@ -8,13 +8,13 @@
            *ngIf="shoppingLists.length==0">
         You don't have any shoppinglists yet. Click the '+' button to create one!
       </div>
-      <div *ngFor="let shoppingList of shoppingLists | orderBy:'name'" class="table-row row">
+      <div *ngFor="let shoppingList of shoppingLists | orderBy:'name'" class="table-row row bordered">
 
 
         <div class="shoppinglist-name table-element"
              routerLink="/shopping-list-detail/{{shoppingList.id}}">{{shoppingList.name}}</div>
-        <div class="table-button">
-          <button (click)="delete(shoppingList.id)">remove</button>
+        <div class="table-button table-element">
+          <div class="delete-button" (click)="delete(shoppingList.id)"><img src="/assets/remove.png" width="100%"/></div>
         </div>
       </div>
       <div class="add-button-row row">

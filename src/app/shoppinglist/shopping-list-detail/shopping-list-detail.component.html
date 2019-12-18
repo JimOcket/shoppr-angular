@@ -7,14 +7,14 @@
       <div class="row">
         <div class="table-title"> Products in shopping list: {{shoppingList.entries.length}}</div>
       </div>
-      <div class="table-legend row">
+      <div class="table-legend row bordered">
         <div class="table-element">Name</div>
         <div class="table-element">Qty</div>
         <div class="table-element">Actions</div>
       </div>
       <div *ngFor="let entry of shoppingList.entries" class="table-row row">
-        <div class="product-name table-element">{{entry.product.name}}</div>
-        <div class="product-name table-element">{{entry.quantity}}</div>
+        <div class="product-name table-element bordered">{{entry.product.name}}</div>
+        <div class="product-name table-element bordered">{{entry.quantity}}</div>
         <div class="table-button">
           <button (click)="removeEntry(entry.id)">remove</button>
         </div>

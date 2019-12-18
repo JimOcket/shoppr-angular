@@ -1,7 +1,7 @@
 
 .shoppinglist-detail-container {
   color: var(--primary-font);
-  font-size: 16px;
+  font-size: 1.25vw;
 }
 
 
@@ -18,7 +18,11 @@
     align-items: center;
   }
 
-
+  .table-element:hover {
+    background: white;
+    color: black;
+    font-size: 1.25vw;
+  }
 }
 
 .add-button-row {
