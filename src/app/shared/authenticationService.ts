@@ -44,9 +44,9 @@ export class AuthenticationService {
     return JSON.parse(sessionStorage.getItem('currentUser')).user.id;
   }
 
-  login(email: string) {
+  login(email: string, password: any) {
     return this.http.post<ShopprAuthentication>(
-      `${AppConnect.getSiteUrl()}/users/connect`, email, AuthenticationService.createHeaders(email)
+      `${AppConnect.getSiteUrl()}/users/connect`, email, AuthenticationService.createHeaders(email, password)
     ).pipe(map(user => {
         if (user) {
           sessionStorage.setItem('currentUser', JSON.stringify(user));

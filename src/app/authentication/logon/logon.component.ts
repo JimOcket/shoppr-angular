@@ -38,7 +38,8 @@ export class LogonComponent implements OnInit {
       return;
     }
     const email = this.loginForm.get('email').value;
-    this.authService.login(email).subscribe(
+    const password = this.loginForm.get('password').value;
+    this.authService.login(email, password).subscribe(
       () => this.router.navigateByUrl('shoppinglist-overview').then(r => r),
       () => this.errorMessage = 'There is no user with those credentials');
   }
