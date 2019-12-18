@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Entry} from '../../shared/entry';
 import {ListenerService} from '../../shared/listener.service';
 import {Recipe} from '../../shared/recipe';
+import {AuthenticationService} from '../../shared/authenticationService';
 
 @Component({
   selector: 'app-create-recipe',
@@ -85,6 +86,7 @@ export class CreateRecipeComponent implements OnInit {
   private createRecipe() {
     const recipe: Recipe = this.recipeForm.value;
     recipe.entries = this.entries;
+    recipe.ownerId = AuthenticationService.getUserId();
     return recipe;
   }
 }

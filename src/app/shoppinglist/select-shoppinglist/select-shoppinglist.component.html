@@ -1,0 +1,11 @@
+<div class="shoppinglist-selection-container" *ngIf="displaySelectShoppingList" (clickOutside)="onClickedOutside($event)">
+  <div class="shoppinglists" *ngIf="shoppingLists && successMessage==null">
+    <div class="table-title row">Choose a shoppinglist to add recipe to</div>
+    <div *ngFor="let shoppingList of shoppingLists | orderBy:'name'"
+         class="table-row row"
+         (click)="addToShoppingList(shoppingList.id)">
+      <div class="shoppinglist-name table-element">{{shoppingList.name}}</div>
+    </div>
+  </div>
+  <div class="succes-message" *ngIf="successMessage">{{successMessage}}</div>
+</div>
