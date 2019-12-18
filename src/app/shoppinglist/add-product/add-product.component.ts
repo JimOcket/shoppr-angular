@@ -4,22 +4,28 @@ import {Product} from '../../shared/product';
 import {ShoppingListService} from '../../shared/shopping-list.service';
 import {ListenerService} from '../../shared/listener.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-
+import {SearchProduct} from '../../shared/SearchProduct';
+import {Observable, Subject, of} from 'rxjs';
+import {debounceTime, distinctUntilChanged, switchMap, catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  styleUrls: ['./add-product.component.scss'],
+  providers: [SearchProduct]
 })
 export class AddProductComponent implements OnInit {
   private displayAddProduct: string;
 
 
-  constructor(private shoppingListService: ShoppingListService, private listener: ListenerService) {
+  constructor(private shoppingListService: ShoppingListService,
+              private listener: ListenerService, private search: SearchProduct) {
   }
 
   submitted;
   addProductForm: FormGroup;
+  FoundProducts: Observable<Product[]>;
+  private searchTerms = new Subject<string>();
 
   private static createFormGroup() {
     return new FormGroup({
@@ -29,6 +35,7 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setSearchBox();
     this.addProductForm = AddProductComponent.createFormGroup();
     this.listener.displayAddProduct.subscribe(display => {
       setTimeout(() => this.displayAddProduct = display, 1);
@@ -87,9 +94,25 @@ export class AddProductComponent implements OnInit {
     this.listener.updateAddProduct('none');
   }
 
-  onClickedOutside(e: Event) {
+  onClickedOutside(ignore: Event) {
     if (this.displayAddProduct === 'block') {
       this.close();
     }
+  }
+
+  searchProduct(value: string) {
+    this.searchTerms.next(value);
+  }
+
+  private setSearchBox() {
+    this.FoundProducts = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(term => term ? this.search.search(term) : of<Product[]>([])),
+      catchError(error => {
+        console.log(error);
+        // todo show error to user
+        return of<Product[]>([]);
+      }));
   }
 }

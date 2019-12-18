@@ -4,23 +4,28 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
 import {RecipeService} from '../../shared/recipe.service';
-import {ClickOutsideModule} from 'ng-click-outside';
+import {Observable, of, Subject} from 'rxjs';
+import {catchError, debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {SearchProduct} from '../../shared/SearchProduct';
 
 @Component({
   selector: 'app-add-product-to-recipe',
   templateUrl: './add-product-to-recipe.component.html',
-  styleUrls: ['./add-product-to-recipe.component.scss']
+  styleUrls: ['./add-product-to-recipe.component.scss'],
+  providers: [SearchProduct]
 })
 export class AddProductToRecipeComponent implements OnInit {
   private displayAddProductRecipe: string;
 
 
-  constructor(private recipeService: RecipeService, private listener: ListenerService) {
+  constructor(private recipeService: RecipeService, private listener: ListenerService, private search: SearchProduct) {
   }
 
   entries;
   submitted;
   addProductForm: FormGroup;
+  FoundProducts: Observable<Product[]>;
+  private searchTerms = new Subject<string>();
 
   private static createFormGroup() {
     return new FormGroup({
@@ -30,6 +35,7 @@ export class AddProductToRecipeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setSearchBox();
     this.addProductForm = AddProductToRecipeComponent.createFormGroup();
     this.listener.displayAddProductRecipe.subscribe(display => {
       setTimeout(() => this.displayAddProductRecipe = display, 1);
@@ -86,5 +92,21 @@ export class AddProductToRecipeComponent implements OnInit {
     if (this.displayAddProductRecipe === 'block') {
       this.close();
     }
+  }
+
+  searchProduct(value: string) {
+    this.searchTerms.next(value);
+  }
+
+  private setSearchBox() {
+    this.FoundProducts = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(term => term ? this.search.search(term) : of<Product[]>([])),
+      catchError(error => {
+        console.log(error);
+        // todo show error to user
+        return of<Product[]>([]);
+      }));
   }
 }
