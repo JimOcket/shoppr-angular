@@ -68,4 +68,10 @@ export class RecipeOverviewComponent implements OnInit {
     }
     return recipe.ownerId === AuthenticationService.getUserId();
   }
+
+  randomImage() {
+    const url = '/assets/food-' + Math.floor(Math.random() * (8) + 1) + '.jpg';
+    console.log(url);
+    return url;
+  }
 }

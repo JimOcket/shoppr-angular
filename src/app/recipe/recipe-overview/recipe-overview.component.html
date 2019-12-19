@@ -19,10 +19,11 @@
             <img src="/assets/remove.png" width="100%"/>
           </div>
         </div>
+
         <div class="item-body" (click)="toRecipeDetail(recipe.id)">
-          <div class="recipe-name" (click)="toRecipeDetail(recipe.id)">{{ recipe.name }}</div>
-          <div class="recipe-image"><img class="image" src="/assets/recipe-placeholder.jpg"
+          <div class="recipe-image"><img class="image" src="{{randomImage()}}"
                                          style="margin-left:auto; margin-right: auto; width: 100%;" /></div>
+          <div class="recipe-name" (click)="toRecipeDetail(recipe.id)">{{ recipe.name }}</div>
           <div class="recipe-description">{{ recipe.description.substring(0, 140)}}...</div>
           <div class="recipe-servings">Serving size: {{recipe.amountOfServings}}</div>
         </div>

@@ -73,7 +73,7 @@ button:active, button:visited, button:focus, button:active:focus {
 .table-legend {
   font-size: 1.5vw;
   font-weight: bold;
-  padding-left: 1.5vw;
+  padding: 0 1.5vw;
 }
 
 .table-row {
@@ -93,11 +93,7 @@ button:active, button:visited, button:focus, button:active:focus {
     margin-right: 1vw;
   }
 
-  .table-element:hover {
-    background: var(--table-backgrond);
-    font-size: 1.5vw;
-    color: white;
-  }
+
 
   .table-button {
     display: flex;

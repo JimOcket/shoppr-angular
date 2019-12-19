@@ -31,13 +31,34 @@
   .succes-message {
     display: flex;
     justify-content: center;
-    width: 40vw;
+    width: 30vw;
     color: white;
     font-size: 1.5vw;
     margin-top: 3vw;
     margin-bottom: 3vw;
     margin-left: 3vw;
     margin-right: 3vw;
+    max-width: 30vw;
   }
 
+}
+
+.add-shoppinglist-container {
+  display: flex;
+  justify-content: center;
+
+  .add-shoppinglist {
+    background: white;
+    color: var(--primary-color);
+    border: 1px solid white;
+    border-radius: 9px;
+    width: auto;
+    font-weight: bold;
+    margin-top: 2.5vw;
+  }
+
+  .add-shoppinglist:hover {
+    background: var(--primary-color);
+    color: white;
+  }
 }

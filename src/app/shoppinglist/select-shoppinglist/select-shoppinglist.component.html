@@ -1,6 +1,14 @@
-<div class="shoppinglist-selection-container" *ngIf="displaySelectShoppingList" (clickOutside)="onClickedOutside($event)">
+<div class="shoppinglist-selection-container" *ngIf="displaySelectShoppingList"
+     (clickOutside)="onClickedOutside($event)">
   <div class="shoppinglists" *ngIf="shoppingLists && successMessage==null">
-    <div class="table-title row">Choose a shoppinglist to add recipe to</div>
+    <div *ngIf="shoppingLists.length>0" class="table-title row">Choose a shoppinglist to add recipe to</div>
+    <div *ngIf="shoppingLists.length==0" class="table-title row">
+      You don't have any shoppinglists yet.
+      <div class="add-shoppinglist-container">
+        <button routerLink="/create-shoppinglist" class="add-shoppinglist">create new shoppinglist</button>
+      </div>
+    </div>
+
     <div *ngFor="let shoppingList of shoppingLists | orderBy:'name'"
          class="table-row row"
          (click)="addToShoppingList(shoppingList.id)">

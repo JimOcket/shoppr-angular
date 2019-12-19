@@ -18,11 +18,6 @@
     align-items: center;
   }
 
-  .table-element:hover {
-    background: white;
-    color: black;
-    font-size: 1.25vw;
-  }
 }
 
 .add-button-row {
@@ -67,4 +62,17 @@ button:hover {
   border: 0.5px solid var(--primary-color);
   box-shadow: 0 2px 4px 0 lightgrey;
 
+}
+.delete-button {
+  width: 2.25vw;
+}
+
+.delete-button:hover {
+  width: 2.5vw;
+}
+
+
+.table-button {
+  max-width: 3vw;
+  margin-right: 1vw;
 }
