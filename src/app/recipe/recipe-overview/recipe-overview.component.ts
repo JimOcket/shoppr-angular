@@ -43,7 +43,7 @@ export class RecipeOverviewComponent implements OnInit {
   search(term: string) {
     this.page = 1;
     if (term.length === 0) {
-      return;
+      this.recipes = this.recipesForSearch;
     } else {
       this.recipes = this.recipeService.searchItems(this.recipesForSearch, term);
     }
