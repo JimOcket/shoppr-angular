@@ -2,10 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {RecipeService} from '../../shared/recipe.service';
 import {ActivatedRoute} from '@angular/router';
 import {Recipe} from '../../shared/recipe';
-import {Entry} from '../../shared/entry';
-import {ShoppingList} from '../../shared/shopping-list';
 import {ListenerService} from '../../shared/listener.service';
-import {log} from 'util';
+import {AuthenticationService} from '../../shared/authenticationService';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,6 +14,7 @@ export class RecipeDetailComponent implements OnInit {
 
   recipe: Recipe;
   displayShoppingLists: boolean;
+  userId: number;
 
   constructor(private recipeService: RecipeService,
               private route: ActivatedRoute,
@@ -24,6 +23,9 @@ export class RecipeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getRecipe();
+    if (sessionStorage.getItem('currentUser')) {
+      this.userId = AuthenticationService.getUserId();
+    }
     this.listener.displaySelectShoppingList.subscribe(value => this.displayShoppingLists = value);
   }
 
@@ -37,7 +39,9 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   removeEntry(recipeId: number, entryId: number) {
-    this.recipeService.removeProduct(recipeId, entryId).subscribe(recipe => this.recipe = recipe);
+    if (AuthenticationService.getUserId() === this.recipe.ownerId){
+      this.recipeService.removeProduct(recipeId, entryId).subscribe(recipe => this.recipe = recipe);
+    }
   }
 
   toggleShoppingListSelection() {

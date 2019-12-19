@@ -30,7 +30,7 @@
       <div class="table-row row" *ngFor="let entry of recipe.entries">
         <div class="table-element">{{entry.product.name}}</div>
         <div class="table-element">{{entry.quantity}}</div>
-        <div class="table-element">
+        <div class="table-element" *ngIf="userId==recipe.ownerId">
           <button (click)="removeEntry(recipe.id, entry.id)">remove</button>
         </div>
       </div>
