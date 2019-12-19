@@ -1,10 +1,11 @@
+<div class="page-title">Shoppinglists</div>
 <div *ngIf="shoppingLists">
   <div class="overview-shoppinglist-container">
     <div class="overview-shoppinglist">
       <div class="row">
         <div class="table-title">My shopping lists</div>
       </div>
-      <div class="table-element" style="font-style: italic; margin-left: 1.5vw; margin-top: 1vw;"
+      <div class="empty-overview" style="font-style: italic;"
            *ngIf="shoppingLists.length==0">
         You don't have any shoppinglists yet. Click the '+' button to create one!
       </div>
@@ -13,7 +14,7 @@
 
         <div class="shoppinglist-name table-element"
              routerLink="/shopping-list-detail/{{shoppingList.id}}">{{shoppingList.name}}</div>
-        <div class="table-button table-element">
+        <div class="table-button">
           <div class="delete-button" (click)="delete(shoppingList.id)"><img src="/assets/remove.png" width="100%"/></div>
         </div>
       </div>

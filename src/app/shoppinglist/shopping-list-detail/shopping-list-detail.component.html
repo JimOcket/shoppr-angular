@@ -16,7 +16,7 @@
         <div class="product-name table-element bordered">{{entry.product.name}}</div>
         <div class="product-name table-element bordered">{{entry.quantity}}</div>
         <div class="table-button">
-          <button (click)="removeEntry(entry.id)">remove</button>
+          <div class="delete-button" (click)="removeEntry(entry.id)"><img src="/assets/remove.png" width="100%"/></div>
         </div>
       </div>
       <div class="add-button-row row">

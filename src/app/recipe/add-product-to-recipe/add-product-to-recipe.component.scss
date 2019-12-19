@@ -67,26 +67,23 @@
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
-  width:195px;
-  height: 16px;
-  padding: 5px;
   background-color: white;
   cursor: pointer;
   color: black;
+  font-size: 2vh;
 }
 .search-result:hover {
   color: white;
   background-color: var(--primary-color);
 }
 #search-box{
-  width: 200px;
-  height: 20px;
+
 }
 
 .found-products {
   position: fixed;
-  left: 51.75%;
-  top: 57%;
+  left: 51.6%;
+  top: 60vh;
   width: 14vw;
 }
 

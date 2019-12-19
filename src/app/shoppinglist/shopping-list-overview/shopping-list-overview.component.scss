@@ -9,7 +9,11 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-
+  .table-element:hover {
+    background: var(--table-backgrond);
+    font-size: 1.5vw;
+    color: white;
+  }
 
   .row {
     display: flex;
@@ -27,6 +31,8 @@
     font-size: 2vw;
     font-weight: bold;
   }
+
+
 }
 
 button {
@@ -47,18 +53,24 @@ button:hover {
 
 .delete-button {
   width: 2.25vw;
-  margin-right: 1vw;
 }
 
 .delete-button:hover {
   width: 2.5vw;
-
 }
+
+
 .table-button {
   max-width: 3vw;
-
-}
-.table-button:hover {
-  background: var(--table-backgrond);
+margin-right: 1vw;
 }
 
+
+.empty-overview {
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+}

@@ -8,9 +8,14 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+
   .recipe-information {
     width: 40%;
 
+  }
+
+  .recipe-description {
+    word-break: break-word;
   }
 
   .section {
