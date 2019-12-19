@@ -17,7 +17,8 @@
           </label>
           <div class="found-products" *ngIf="showFoundProducts">
             <div *ngFor="let product of FoundProducts | async"
-                 (click)="setFieldValue(product.name); closeFoundList();" class="search-result">
+                 (click)="setFieldValue(product.name); closeFoundList();" class="search-result"
+                 (clickOutside)="closeFoundList()">
               {{product.name}}
             </div>
           </div>

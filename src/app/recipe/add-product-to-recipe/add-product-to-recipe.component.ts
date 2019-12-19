@@ -16,6 +16,7 @@ import {SearchProduct} from '../../shared/SearchProduct';
 })
 export class AddProductToRecipeComponent implements OnInit {
   private displayAddProductRecipe: string;
+  private showFoundProducts = false;
 
 
   constructor(private recipeService: RecipeService, private listener: ListenerService, private search: SearchProduct) {
@@ -96,6 +97,7 @@ export class AddProductToRecipeComponent implements OnInit {
 
   searchProduct(value: string) {
     this.searchTerms.next(value);
+    this.showFoundProducts = true;
   }
 
   private setSearchBox() {
@@ -108,5 +110,13 @@ export class AddProductToRecipeComponent implements OnInit {
         // todo show error to user
         return of<Product[]>([]);
       }));
+  }
+
+  setFieldValue(name) {
+    this.addProductForm.controls.productName.setValue(name);
+  }
+
+  closeFoundList() {
+    setTimeout(() => this.showFoundProducts = false, 1);
   }
 }

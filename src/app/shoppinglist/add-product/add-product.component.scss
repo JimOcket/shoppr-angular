@@ -72,10 +72,11 @@
   padding: 5px;
   background-color: white;
   cursor: pointer;
+  color: black;
 }
 .search-result:hover {
-  color: black;
-  background-color: #607D8B;
+  color: white;
+  background-color: var(--primary-color);
 }
 #search-box{
   width: 200px;
@@ -84,9 +85,8 @@
 
 .found-products {
   position: fixed;
-  left: 60%;
+  left: 51.75%;
   top: 57%;
-  width: 10vw;
-  transform: translateX(-50%);
+  width: 14vw;
 }
 

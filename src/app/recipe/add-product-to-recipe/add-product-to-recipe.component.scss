@@ -1,5 +1,6 @@
 .add-product-container {
   width: 50vw;
+  max-height: 20vw;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.5vw;
@@ -9,8 +10,6 @@
   padding: 1vw;
   background: var(--primary-color);
   border-radius: 25px;
-
-
 
   .property {
     font-weight: bold;
@@ -27,7 +26,6 @@
 
 
   }
-
 
   .confirm {
     display: flex;
@@ -74,13 +72,21 @@
   padding: 5px;
   background-color: white;
   cursor: pointer;
+  color: black;
 }
 .search-result:hover {
-  color: black;
-  background-color: #607D8B;
+  color: white;
+  background-color: var(--primary-color);
 }
 #search-box{
   width: 200px;
   height: 20px;
+}
+
+.found-products {
+  position: fixed;
+  left: 51.75%;
+  top: 57%;
+  width: 14vw;
 }
 
