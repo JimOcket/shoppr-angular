@@ -22,6 +22,7 @@
 
     .property-element {
       min-width: 10vw;
+      max-height: 5vw;
     }
 
 
@@ -90,5 +91,6 @@
   position: relative;
   top: 57%;
   width: 14vw;
+  overflow: visible;
 }
 
