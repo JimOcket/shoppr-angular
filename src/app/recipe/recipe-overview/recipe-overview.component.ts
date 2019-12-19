@@ -29,7 +29,6 @@ export class RecipeOverviewComponent implements OnInit {
       recipes => {
         this.recipes = recipes;
         this.recipesForSearch = recipes;
-        console.log(recipes);
       }
     );
   }
