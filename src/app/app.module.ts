@@ -20,6 +20,7 @@ import {RecipeOverviewComponent} from './recipe/recipe-overview/recipe-overview.
 import {OrderByPipe} from './shared/orderBy.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SelectShoppinglistComponent} from './shoppinglist/select-shoppinglist/select-shoppinglist.component';
+import {NgxTypeaheadModule} from 'ngx-typeahead';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import {SelectShoppinglistComponent} from './shoppinglist/select-shoppinglist/se
     ShoppingListOverviewComponent,
     RecipeOverviewComponent,
     OrderByPipe,
-    SelectShoppinglistComponent
+    SelectShoppinglistComponent,
   ],
   imports: [
     HttpClientModule,
@@ -47,7 +48,8 @@ import {SelectShoppinglistComponent} from './shoppinglist/select-shoppinglist/se
     FormsModule,
     ReactiveFormsModule,
     ClickOutsideModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxTypeaheadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
