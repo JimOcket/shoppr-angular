@@ -56,8 +56,17 @@ export class AddProductToRecipeComponent implements OnInit {
     if (this.addProductForm.invalid) {
       return;
     }
-    this.recipeService.addProduct(this.addProductForm.get('productName').value);
+    this.verifyProduct();
     this.sendEntry(this.createEntry());
+  }
+
+  private verifyProduct() {
+    const name = this.addProductForm.get('productName').value;
+    this.FoundProducts.subscribe(foundProducts => {
+      if (foundProducts.filter(product => product.name === name).length === 0) {
+        this.recipeService.addProduct(name);
+      }
+    });
   }
 
   private sendEntry(entry: Entry) {
@@ -105,12 +114,7 @@ export class AddProductToRecipeComponent implements OnInit {
     this.FoundProducts = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(term => term ? this.search.search(term) : of<Product[]>([])),
-      catchError(error => {
-        console.log(error);
-        // todo show error to user
-        return of<Product[]>([]);
-      }));
+      switchMap(term => term ? this.search.search(term) : of<Product[]>([])));
   }
 
   setFieldValue(name) {
