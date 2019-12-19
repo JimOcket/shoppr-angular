@@ -43,10 +43,11 @@ export class CreateAccountComponent implements OnInit {
     if (this.accountForm.invalid) {
       return;
     }
-
     this.userService.createAccount(this.accountForm.value).subscribe(
       createdAccount => this.authService.login(createdAccount.email, createdAccount.password).subscribe(
-        () => this.router.navigateByUrl('shoppinglist-overview').then(r => r)
+        () => {
+          this.router.navigateByUrl('shoppinglist-overview').then(r => r);
+        }
       ),
       error => this.duplicate = error);
   }

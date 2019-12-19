@@ -73,7 +73,6 @@ export class RecipeOverviewComponent implements OnInit {
 
   randomImage() {
     const url = '/assets/food-' + Math.floor(Math.random() * (8) + 1) + '.jpg';
-    console.log(url);
     return url;
   }
 }
