@@ -44,11 +44,16 @@ export class CreateAccountComponent implements OnInit {
       return;
     }
     this.userService.createAccount(this.accountForm.value).subscribe(
-      createdAccount => this.authService.login(createdAccount.email, createdAccount.password).subscribe(
-        () => {
-          this.router.navigateByUrl('shoppinglist-overview').then(r => r);
+      createdAccount => {
+        while (!createdAccount) {
         }
-      ),
+        console.log(createdAccount.email + ' | ' + createdAccount.password);
+        this.authService.login(createdAccount.email, createdAccount.password).subscribe(
+          () => {
+            this.router.navigateByUrl('shoppinglist-overview').then(r => r);
+          }
+        );
+      },
       error => this.duplicate = error);
   }
 
