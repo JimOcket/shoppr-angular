@@ -1,4 +1,6 @@
-
+.fade {
+  opacity: 0.1;
+}
 
 .recipe-detail-container {
   display: flex;
@@ -6,10 +8,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+
   .recipe-information {
     width: 40%;
 
   }
+
+  .recipe-description {
+    word-break: break-word;
+  }
+
   .section {
   }
 
@@ -37,6 +45,7 @@ textarea {
 .add-products {
 
 }
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -58,9 +67,15 @@ textarea {
   border-left: 1px solid var(--primary-accent-color);
 }
 
-.back {
+.bottom-buttons {
   position: fixed;
   bottom: 5vw;
+  display: flex;
+  justify-content: space-between;
+  width: 86vw;
+}
+
+.back {
   margin-bottom: 2vw;
   color: var(--primary-color);
   border: 0.5px solid lightgrey;
@@ -74,3 +89,4 @@ textarea {
   box-shadow: 0 2px 4px 0 lightgrey;
 
 }
+

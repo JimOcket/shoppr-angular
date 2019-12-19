@@ -1,19 +1,27 @@
-<div style="position: fixed; bottom: 10vw; width: 100%;">
+<div style="position: fixed; bottom: 20vw; width: 100%;">
   <div class="add-product-container" (clickOutside)="onClickedOutside($event)">
     <div class="cancel">
       <button (click)="close()">X</button>
     </div>
-    <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+    <form [formGroup]="addProductForm" (ngSubmit)="addProduct()" autocomplete="off">
       <div class=" property">
         <div class="property-element">
           *Name :
         </div>
         <div class="property-element">
           <label>
-            <input class="input-field" name="productName" id="productName" formControlName="productName"
+            <input #searchBox class="input-field" name="productName" id="productName" formControlName="productName"
                    (click)="resetErrors()"
+                   (keyup)="searchProduct(searchBox.value)"
                    placeholder="name"/>
           </label>
+          <div class="found-products" *ngIf="showFoundProducts">
+            <div *ngFor="let product of FoundProducts | async"
+                 (click)="setFieldValue(product.name); closeFoundList();" class="search-result"
+                 (clickOutside)="closeFoundList()">
+              {{product.name}}
+            </div>
+          </div>
         </div>
       </div>
       <div class="property">

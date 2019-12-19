@@ -1,0 +1,64 @@
+.shoppinglist-selection-container {
+  position: fixed;
+  width: 40vw;
+  top: 27.5vh;
+  max-height: 45vh;
+  left: 30vw;
+  background: var(--primary-color);
+  border-radius: 7px;
+  opacity: 0.8;
+
+  .shoppinglists {
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+
+    .table-element {
+      height: 2vw;
+      font-size: 1.5vw;
+      width: auto;
+      margin: 0.75vw 2vw;
+      padding: 0;
+      color: white;
+      font-weight: bold;
+    }
+
+    .table-element:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+  }
+
+  .succes-message {
+    display: flex;
+    justify-content: center;
+    width: 30vw;
+    color: white;
+    font-size: 1.5vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    max-width: 30vw;
+  }
+
+}
+
+.add-shoppinglist-container {
+  display: flex;
+  justify-content: center;
+
+  .add-shoppinglist {
+    background: white;
+    color: var(--primary-color);
+    border: 1px solid white;
+    border-radius: 9px;
+    width: auto;
+    font-weight: bold;
+    margin-top: 2.5vw;
+  }
+
+  .add-shoppinglist:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+}

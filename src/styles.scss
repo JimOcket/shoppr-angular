@@ -66,14 +66,14 @@ button:active, button:visited, button:focus, button:active:focus {
   font-weight: bold;
   font-size: 1.5vw;
   text-align: center;
-  padding: 1vw 0;
-  border-radius: 5px;
+  padding: 1.5vw 0;
+  border-radius: 3px;
 }
 
 .table-legend {
   font-size: 1.5vw;
   font-weight: bold;
-  padding-left: 1.5vw;
+  padding: 0 1.5vw;
 }
 
 .table-row {
@@ -93,10 +93,7 @@ button:active, button:visited, button:focus, button:active:focus {
     margin-right: 1vw;
   }
 
-  .table-element:hover {
-    background: var(--table-backgrond);
-    color: white;
-  }
+
 
   .table-button {
     display: flex;
@@ -121,4 +118,8 @@ button:active, button:visited, button:focus, button:active:focus {
 
 .text-accent {
   color: var(--primary-accent-color);
+}
+.bordered {
+  border: 0.5px solid rgba(190, 234, 248, 0.2);
+  border-radius: 9px;
 }

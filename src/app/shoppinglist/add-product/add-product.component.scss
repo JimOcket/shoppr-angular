@@ -1,5 +1,6 @@
 .add-product-container {
   width: 50vw;
+  max-height: 20vw;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1.5vw;
@@ -9,9 +10,6 @@
   padding: 1vw;
   background: var(--primary-color);
   border-radius: 25px;
-
-
-
 
   .property {
     font-weight: bold;
@@ -28,7 +26,6 @@
 
 
   }
-
 
   .confirm {
     display: flex;
@@ -65,5 +62,31 @@
     justify-self: center;
   }
 
+}
+.search-result{
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  width:195px;
+  height: 16px;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
+  color: #303030;
+}
+.search-result:hover {
+  color: white;
+  background-color: var(--primary-color);
+}
+#search-box{
+  width: 200px;
+  height: 20px;
+}
+
+.found-products {
+  position: fixed;
+  left: 51.75%;
+  top: 57%;
+  width: 14vw;
 }
 

@@ -4,32 +4,39 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Entry} from '../../shared/entry';
 import {Product} from '../../shared/product';
 import {RecipeService} from '../../shared/recipe.service';
-import {ClickOutsideModule} from 'ng-click-outside';
+import {Observable, of, Subject} from 'rxjs';
+import {catchError, debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {SearchProduct} from '../../shared/SearchProduct';
 
 @Component({
   selector: 'app-add-product-to-recipe',
   templateUrl: './add-product-to-recipe.component.html',
-  styleUrls: ['./add-product-to-recipe.component.scss']
+  styleUrls: ['./add-product-to-recipe.component.scss'],
+  providers: [SearchProduct]
 })
 export class AddProductToRecipeComponent implements OnInit {
   private displayAddProductRecipe: string;
+  private showFoundProducts = false;
 
 
-  constructor(private recipeService: RecipeService, private listener: ListenerService) {
+  constructor(private recipeService: RecipeService, private listener: ListenerService, private search: SearchProduct) {
   }
 
   entries;
   submitted;
   addProductForm: FormGroup;
+  FoundProducts: Observable<Product[]>;
+  private searchTerms = new Subject<string>();
 
   private static createFormGroup() {
     return new FormGroup({
-      productName: new FormControl('', []/*[Validators.required]*/),
+      productName: new FormControl('', [Validators.required]),
       productQuantity: new FormControl('', [])
     });
   }
 
   ngOnInit() {
+    this.setSearchBox();
     this.addProductForm = AddProductToRecipeComponent.createFormGroup();
     this.listener.displayAddProductRecipe.subscribe(display => {
       setTimeout(() => this.displayAddProductRecipe = display, 1);
@@ -49,7 +56,17 @@ export class AddProductToRecipeComponent implements OnInit {
     if (this.addProductForm.invalid) {
       return;
     }
+    this.verifyProduct();
     this.sendEntry(this.createEntry());
+  }
+
+  private verifyProduct() {
+    const name = this.addProductForm.get('productName').value;
+    this.FoundProducts.subscribe(foundProducts => {
+      if (foundProducts.filter(product => product.name === name).length === 0) {
+        this.recipeService.addProduct(name);
+      }
+    });
   }
 
   private sendEntry(entry: Entry) {
@@ -86,5 +103,25 @@ export class AddProductToRecipeComponent implements OnInit {
     if (this.displayAddProductRecipe === 'block') {
       this.close();
     }
+  }
+
+  searchProduct(value: string) {
+    this.searchTerms.next(value);
+    this.showFoundProducts = true;
+  }
+
+  private setSearchBox() {
+    this.FoundProducts = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(term => term ? this.search.search(term) : of<Product[]>([])));
+  }
+
+  setFieldValue(name) {
+    this.addProductForm.controls.productName.setValue(name);
+  }
+
+  closeFoundList() {
+    setTimeout(() => this.showFoundProducts = false, 1);
   }
 }

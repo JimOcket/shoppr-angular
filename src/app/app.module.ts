@@ -18,7 +18,9 @@ import {RecipeDetailComponent} from './recipe/recipe-detail/recipe-detail.compon
 import {AddProductToRecipeComponent} from './recipe/add-product-to-recipe/add-product-to-recipe.component';
 import {RecipeOverviewComponent} from './recipe/recipe-overview/recipe-overview.component';
 import {OrderByPipe} from './shared/orderBy.pipe';
-import {NgxPaginationModule} from "ngx-pagination";
+import {NgxPaginationModule} from 'ngx-pagination';
+import {SelectShoppinglistComponent} from './shoppinglist/select-shoppinglist/select-shoppinglist.component';
+import {NgxTypeaheadModule} from 'ngx-typeahead';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     AddProductToRecipeComponent,
     ShoppingListOverviewComponent,
     RecipeOverviewComponent,
-    OrderByPipe
+    OrderByPipe,
+    SelectShoppinglistComponent,
   ],
   imports: [
     HttpClientModule,
@@ -45,7 +48,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     FormsModule,
     ReactiveFormsModule,
     ClickOutsideModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxTypeaheadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

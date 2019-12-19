@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../../shared/recipe';
 import {RecipeService} from '../../shared/recipe.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../shared/authenticationService';
 
 @Component({
   selector: 'app-recipe-overview',
@@ -12,6 +13,7 @@ export class RecipeOverviewComponent implements OnInit {
 
   recipes: Recipe[];
   recipesForSearch: Recipe[];
+  userId = AuthenticationService.getUserId();
   page = 1;
 
   constructor(private recipeService: RecipeService,
@@ -50,5 +52,25 @@ export class RecipeOverviewComponent implements OnInit {
     } else {
       this.router.navigateByUrl('create-recipe').then();
     }
+  }
+
+  delete(id: any) {
+    this.recipeService.deleteRecipe(id).subscribe(recipes => {
+      this.recipes = recipes;
+      this.recipesForSearch = recipes;
+    });
+  }
+
+  canRemove(recipe: Recipe) {
+    if (!sessionStorage.getItem('currentUser')) {
+      return false;
+    }
+    return recipe.ownerId === AuthenticationService.getUserId();
+  }
+
+  randomImage() {
+    const url = '/assets/food-' + Math.floor(Math.random() * (8) + 1) + '.jpg';
+    console.log(url);
+    return url;
   }
 }

@@ -1,7 +1,7 @@
 
 .shoppinglist-detail-container {
   color: var(--primary-font);
-  font-size: 16px;
+  font-size: 1.25vw;
 }
 
 
@@ -17,7 +17,6 @@
     height: 5vw;
     align-items: center;
   }
-
 
 }
 
@@ -55,6 +54,7 @@ button:hover {
   border: 0.5px solid lightgrey;
   border-radius: 5px;
   padding: 1vw;
+  background: white;
 
 }
 
@@ -62,4 +62,17 @@ button:hover {
   border: 0.5px solid var(--primary-color);
   box-shadow: 0 2px 4px 0 lightgrey;
 
+}
+.delete-button {
+  width: 2.25vw;
+}
+
+.delete-button:hover {
+  width: 2.5vw;
+}
+
+
+.table-button {
+  max-width: 3vw;
+  margin-right: 1vw;
 }

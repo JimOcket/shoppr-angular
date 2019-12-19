@@ -6,6 +6,8 @@ import {AppConnect} from './AppConnect';
 import {Entry} from './entry';
 import {AuthenticationService} from './authenticationService';
 import {CreateShoppingList} from './CreateShoppingList';
+import {Recipe} from './recipe';
+import {log} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +40,15 @@ export class ShoppingListService {
   findAllOfUser(userId: string) {
     const headers = AuthenticationService.createHeaders();
     return this.http.get<ShoppingList[]>(`${AppConnect.getSiteUrl()}/users/${userId}/shoppinglists`, headers);
+  }
+
+  deleteShoppingList(id: number): Observable<ShoppingList[]> {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.delete<ShoppingList[]>(`${this.shoppingListUrl}/${id}/delete`, headers);
+  }
+
+  addRecipeToShoppingList(recipe: Recipe, shoppingListId: number) {
+    const headers = AuthenticationService.createHeaders();
+    return this.http.put<ShoppingList>(`${this.shoppingListUrl}/${shoppingListId}/add-recipe`, recipe, headers);
   }
 }

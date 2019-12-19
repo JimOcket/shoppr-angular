@@ -25,12 +25,17 @@ export class CreateAccountComponent implements OnInit {
   createFormGroup(): FormGroup {
     return new FormGroup({
       email: new FormControl('',
-        [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')])
+        [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]),
+      password: new FormControl('', Validators.required)
     });
   }
 
   get email() {
     return this.accountForm.get('email');
+  }
+
+  get password() {
+    return this.accountForm.get('password');
   }
 
   save() {
@@ -40,7 +45,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     this.userService.createAccount(this.accountForm.value).subscribe(
-      createdAccount => this.authService.login(createdAccount.email).subscribe(
+      createdAccount => this.authService.login(createdAccount.email, createdAccount.password).subscribe(
         () => this.router.navigateByUrl('shoppinglist-overview').then(r => r)
       ),
       error => this.duplicate = error);
