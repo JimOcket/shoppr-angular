@@ -13,7 +13,7 @@ export class RecipeOverviewComponent implements OnInit {
 
   recipes: Recipe[];
   recipesForSearch: Recipe[];
-  userId = AuthenticationService.getUserId();
+  userId: number;
   page = 1;
 
   constructor(private recipeService: RecipeService,
@@ -22,6 +22,9 @@ export class RecipeOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.getRecipes();
+    if (!sessionStorage.getItem('currentUser')) {
+      this.userId = AuthenticationService.getUserId();
+    }
   }
 
   getRecipes() {
