@@ -22,7 +22,7 @@ export class RecipeOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.getRecipes();
-    if (!sessionStorage.getItem('currentUser')) {
+    if (sessionStorage.getItem('currentUser')) {
       this.userId = AuthenticationService.getUserId();
     }
   }

@@ -45,8 +45,6 @@ export class CreateAccountComponent implements OnInit {
     }
     this.userService.createAccount(this.accountForm.value).subscribe(
       createdAccount => {
-        while (!createdAccount) {
-        }
         this.authService.login(createdAccount.email, createdAccount.password).subscribe(
           () => {
             this.router.navigateByUrl('shoppinglist-overview').then(r => r);
