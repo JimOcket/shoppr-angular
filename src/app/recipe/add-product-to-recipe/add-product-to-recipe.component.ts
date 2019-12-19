@@ -55,6 +55,7 @@ export class AddProductToRecipeComponent implements OnInit {
     if (this.addProductForm.invalid) {
       return;
     }
+    this.recipeService.addProduct(this.addProductForm.get('productName').value);
     this.sendEntry(this.createEntry());
   }
 
